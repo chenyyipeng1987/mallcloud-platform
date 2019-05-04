@@ -2,6 +2,7 @@ package com.mallplus.order.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mallplus.order.entity.OmsOrder;
+import com.mallplus.order.vo.GroupAndOrderVo;
 import com.mallplus.order.vo.OmsMoneyInfoParam;
 import com.mallplus.order.vo.OmsOrderDeliveryParam;
 import com.mallplus.order.vo.OmsReceiverInfoParam;
@@ -48,4 +49,9 @@ public interface IOmsOrderService extends IService<OmsOrder> {
      */
     @Transactional
     int close(List<Long> ids, String note);
+
+    Object preSingelOrder(GroupAndOrderVo orderParam);
+
+    Object generateSingleOrder(GroupAndOrderVo orderParam);
+
 }

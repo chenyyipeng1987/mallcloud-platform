@@ -2,7 +2,7 @@ package com.mallplus.goods.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.mallplus.goods.entity.PmsProduct;
+import com.central.common.model.PmsProduct;
 import com.mallplus.goods.entity.PmsProductCategory;
 import com.mallplus.goods.entity.PmsProductCategoryAttributeRelation;
 import com.mallplus.goods.mapper.PmsProductCategoryAttributeRelationMapper;

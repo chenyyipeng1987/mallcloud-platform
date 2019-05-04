@@ -3,7 +3,7 @@ package com.mallplus.member.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.central.common.utils.CommonResult;
 import com.central.common.vo.SmsCode;
-import com.mallplus.member.entity.UmsMember;
+import com.central.common.model.UmsMember;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -72,5 +72,7 @@ public interface IUmsMemberService extends IService<UmsMember> {
 
 
     SmsCode generateCode(String phone);
+
+    UmsMember findByOpenId(String openId);
 }
 

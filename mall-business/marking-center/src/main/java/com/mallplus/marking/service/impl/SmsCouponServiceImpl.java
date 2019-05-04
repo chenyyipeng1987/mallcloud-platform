@@ -12,10 +12,11 @@ import com.mallplus.marking.service.ISmsCouponProductCategoryRelationService;
 import com.mallplus.marking.service.ISmsCouponProductRelationService;
 import com.mallplus.marking.service.ISmsCouponService;
 import com.mallplus.marking.vo.SmsCouponParam;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -107,5 +108,12 @@ public class SmsCouponServiceImpl extends ServiceImpl<SmsCouponMapper, SmsCoupon
     @Override
     public SmsCouponParam getItem(Long id) {
         return couponMapper.getItem(id);
+    }
+
+    @Override
+    public List<SmsCoupon> selectNotRecive(){
+        SmsCoupon coupon = new SmsCoupon();
+        coupon.setType(0);
+        return couponMapper.selectList(new QueryWrapper<>(coupon).gt("end_time",new Date()));
     }
 }

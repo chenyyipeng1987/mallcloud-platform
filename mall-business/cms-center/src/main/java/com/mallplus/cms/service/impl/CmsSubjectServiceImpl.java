@@ -4,14 +4,18 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mallplus.cms.entity.CmsSubject;
 import com.mallplus.cms.entity.CmsSubjectCategory;
+import com.mallplus.cms.entity.SmsHomeRecommendSubject;
 import com.mallplus.cms.mapper.CmsSubjectCategoryMapper;
 import com.mallplus.cms.mapper.CmsSubjectMapper;
 import com.mallplus.cms.service.ICmsSubjectService;
+import com.mallplus.cms.service.ISmsHomeRecommendSubjectService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -25,6 +29,8 @@ import java.util.Date;
 public class CmsSubjectServiceImpl extends ServiceImpl<CmsSubjectMapper, CmsSubject> implements ICmsSubjectService {
     @Resource
     private CmsSubjectMapper subjectMapper;
+    @Resource
+    private ISmsHomeRecommendSubjectService homeRecommendSubjectService;
 
 
     @Resource
@@ -53,5 +59,14 @@ public class CmsSubjectServiceImpl extends ServiceImpl<CmsSubjectMapper, CmsSubj
         CmsSubject record = new CmsSubject();
         record.setShowStatus(showStatus);
         return subjectMapper.update(record, new QueryWrapper<CmsSubject>().eq("id",ids));
+    }
+
+    @Override
+    public List<CmsSubject> getRecommendSubjectList(int pageNum, int pageSize) {
+        List<SmsHomeRecommendSubject> brands = homeRecommendSubjectService.list(new QueryWrapper<>());
+        List<Long> ids = brands.stream()
+                .map(SmsHomeRecommendSubject::getId)
+                .collect(Collectors.toList());
+        return (List<CmsSubject>) subjectMapper.selectBatchIds(ids);
     }
 }

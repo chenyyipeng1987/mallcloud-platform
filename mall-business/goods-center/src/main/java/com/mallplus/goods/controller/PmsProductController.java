@@ -4,9 +4,9 @@ import cn.hutool.core.date.DateUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.central.common.annotation.SysLog;
+import com.central.common.model.PmsProduct;
 import com.central.common.utils.CommonResult;
 import com.central.common.utils.ValidatorUtils;
-import com.mallplus.goods.entity.PmsProduct;
 import com.mallplus.goods.entity.PmsProductVertifyRecord;
 import com.mallplus.goods.service.IPmsProductService;
 import com.mallplus.goods.vo.PmsProductParam;
@@ -129,6 +129,11 @@ public class PmsProductController {
             return new CommonResult().failed();
         }
 
+    }
+
+    @GetMapping("/goods/{id}")
+    public PmsProduct findUserById(@PathVariable Long id) {
+        return IPmsProductService.getById(id);
     }
 
     @ApiOperation(value = "批量删除商品信息")

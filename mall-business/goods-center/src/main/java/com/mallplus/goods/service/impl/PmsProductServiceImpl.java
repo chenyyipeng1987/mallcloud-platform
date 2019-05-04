@@ -2,13 +2,12 @@ package com.mallplus.goods.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-
+import com.central.common.model.PmsProduct;
 import com.mallplus.goods.entity.*;
 import com.mallplus.goods.mapper.*;
 import com.mallplus.goods.service.*;
 import com.mallplus.goods.vo.PmsProductParam;
 import com.mallplus.goods.vo.PmsProductResult;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -19,6 +18,7 @@ import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -32,6 +32,14 @@ import java.util.List;
 @Service
 public class PmsProductServiceImpl extends ServiceImpl<PmsProductMapper, PmsProduct> implements IPmsProductService {
 
+    @Resource
+    private IPmsBrandService brandService;
+    @Resource
+    private ISmsHomeBrandService homeBrandService;
+    @Resource
+    private ISmsHomeNewProductService homeNewProductService;
+    @Resource
+    private ISmsHomeRecommendProductService homeRecommendProductService;
     @Resource
     private PmsProductMapper productMapper;
     @Resource
@@ -68,6 +76,8 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductMapper, PmsProd
 
     @Resource
     private PmsProductVertifyRecordMapper productVertifyRecordMapper;
+
+
 
     @Override
     public int create(PmsProductParam productParam) {
@@ -256,6 +266,31 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductMapper, PmsProd
         }
     }
 
+    @Override
+    public List<PmsBrand> getRecommendBrandList(int pageNum, int pageSize) {
+        List<SmsHomeBrand> brands = homeBrandService.list(new QueryWrapper<>());
+        List<Long> ids = brands.stream()
+                .map(SmsHomeBrand::getId)
+                .collect(Collectors.toList());
+        return (List<PmsBrand>) brandService.listByIds(ids);
+
+    }
+    @Override
+    public List<PmsProduct> getNewProductList(int pageNum, int pageSize) {
+        List<SmsHomeNewProduct> brands = homeNewProductService.list(new QueryWrapper<>());
+        List<Long> ids = brands.stream()
+                .map(SmsHomeNewProduct::getId)
+                .collect(Collectors.toList());
+        return (List<PmsProduct>) productMapper.selectBatchIds(ids);
+    }
+    @Override
+    public List<PmsProduct> getHotProductList(int pageNum, int pageSize) {
+        List<SmsHomeRecommendProduct> brands = homeRecommendProductService.list(new QueryWrapper<>());
+        List<Long> ids = brands.stream()
+                .map(SmsHomeRecommendProduct::getId)
+                .collect(Collectors.toList());
+        return (List<PmsProduct>)productMapper.selectBatchIds(ids);
+    }
 }
 
 

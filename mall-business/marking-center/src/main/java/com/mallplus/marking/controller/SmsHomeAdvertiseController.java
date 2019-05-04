@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.central.common.annotation.SysLog;
 import com.mallplus.marking.entity.SmsHomeAdvertise;
-import com.mallplus.marking.entity.SmsHomeNewProduct;
+
 import com.mallplus.marking.service.ISmsHomeAdvertiseService;
 import com.central.common.utils.CommonResult;
 import com.central.common.utils.ValidatorUtils;
@@ -148,25 +148,4 @@ public class SmsHomeAdvertiseController {
 
 
 
-    @ApiOperation("修改推荐排序")
-    @RequestMapping(value = "/update/sort/{id}", method = RequestMethod.POST)
-    @ResponseBody
-    public Object updateSort(@PathVariable Long id, Integer sort) {
-        int count = ISmsHomeAdvertiseService.updateSort(id, sort);
-        if (count > 0) {
-            return new CommonResult().success(count);
-        }
-        return new CommonResult().failed();
-    }
-
-    @ApiOperation("批量修改推荐状态")
-    @RequestMapping(value = "/update/recommendStatus", method = RequestMethod.POST)
-    @ResponseBody
-    public Object updateRecommendStatus(@RequestParam("ids") List<Long> ids, @RequestParam Integer recommendStatus) {
-        int count = ISmsHomeAdvertiseService.updateRecommendStatus(ids, recommendStatus);
-        if (count > 0) {
-            return new CommonResult().success(count);
-        }
-        return new CommonResult().failed();
-    }
 }

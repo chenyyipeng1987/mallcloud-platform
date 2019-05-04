@@ -57,4 +57,7 @@ public class GroupAndOrderVo  {
     private String formId;
 
     private String wxid;
+
+    private Long userId;
+    private String username;
 }

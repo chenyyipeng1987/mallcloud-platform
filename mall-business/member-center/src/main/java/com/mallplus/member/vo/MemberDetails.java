@@ -1,7 +1,7 @@
 package com.mallplus.member.vo;
 
 
-import com.mallplus.member.entity.UmsMember;
+import com.central.common.model.UmsMember;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

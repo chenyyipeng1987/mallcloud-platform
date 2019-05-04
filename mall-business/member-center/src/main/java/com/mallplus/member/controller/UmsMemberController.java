@@ -6,7 +6,7 @@ import com.central.common.annotation.SysLog;
 import com.central.common.utils.CommonResult;
 import com.central.common.utils.DateUtils;
 import com.central.common.utils.ValidatorUtils;
-import com.mallplus.member.entity.UmsMember;
+import com.central.common.model.UmsMember;
 import com.mallplus.member.service.IUmsMemberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -135,6 +135,17 @@ public class UmsMemberController {
             return new CommonResult().failed();
         }
     }
+    /**
+     * 根据OpenId查询用户信息
+     *
+     * @param openId openId
+     */
+    @GetMapping(value = "/openId", params = "openId")
+    @ApiOperation(value = "根据OpenId查询用户")
+    public UmsMember findByOpenId(String openId) {
+        return IUmsMemberService.findByOpenId(openId);
+    }
+
     @ApiOperation("首页会员统计")
     @SysLog(MODULE = "home", REMARK = "首页会员统计")
     @RequestMapping(value = "/userStatic", method = RequestMethod.GET)

@@ -1,7 +1,7 @@
 package com.mallplus.goods.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.mallplus.goods.entity.PmsProduct;
+import com.central.common.model.PmsProduct;
 import com.mallplus.goods.vo.PmsProductResult;
 import com.mallplus.goods.vo.PromotionProduct;
 import org.apache.ibatis.annotations.Param;

@@ -2,7 +2,7 @@ package com.mallplus.goods.vo;
 
 
 
-import com.mallplus.goods.entity.PmsProduct;
+import com.central.common.model.PmsProduct;
 import lombok.Data;
 
 /**

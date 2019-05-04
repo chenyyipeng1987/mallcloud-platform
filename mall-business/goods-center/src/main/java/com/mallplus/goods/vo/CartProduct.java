@@ -1,7 +1,7 @@
 package com.mallplus.goods.vo;
 
 
-import com.mallplus.goods.entity.PmsProduct;
+import com.central.common.model.PmsProduct;
 import com.mallplus.goods.entity.PmsProductAttribute;
 import com.mallplus.goods.entity.PmsSkuStock;
 

@@ -1,9 +1,7 @@
 package com.mallplus.marking.service;
 
-import com.mallplus.marking.entity.SmsHomeAdvertise;
 import com.baomidou.mybatisplus.extension.service.IService;
-
-import java.util.List;
+import com.mallplus.marking.entity.SmsHomeAdvertise;
 
 /**
  * <p>
@@ -15,13 +13,5 @@ import java.util.List;
  */
 public interface ISmsHomeAdvertiseService extends IService<SmsHomeAdvertise> {
 
-    /**
-     * 更新推荐状态
-     */
-    int updateRecommendStatus(List<Long> ids, Integer recommendStatus);
 
-    /**
-     * 修改推荐排序
-     */
-    int updateSort(Long id, Integer sort);
 }

@@ -5,11 +5,12 @@ import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.central.common.exception.ApiMallPlusException;
+import com.central.common.exception.BusinessException;
+import com.central.common.model.UmsMember;
 import com.central.common.utils.CommonResult;
 import com.central.common.vo.SmsCode;
 import com.mallplus.member.config.WxAppletProperties;
 import com.mallplus.member.entity.Sms;
-import com.mallplus.member.entity.UmsMember;
 import com.mallplus.member.mapper.SysAreaMapper;
 import com.mallplus.member.mapper.UmsMemberMapper;
 import com.mallplus.member.mapper.UmsMemberMemberTagRelationMapper;
@@ -287,6 +288,74 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
         try {
             String code = req.getParameter("code");
             if (StringUtils.isEmpty(code)) {
+                throw new BusinessException("code is empty");
+            }
+            String userInfos = req.getParameter("userInfo");
+
+            String signature = req.getParameter("signature");
+
+            Map<String, Object> me = JSONUtil.parseObj(userInfos);
+            if (null == me) {
+                throw new BusinessException("登录失败");
+            }
+
+            Map<String, Object> resultObj = new HashMap<String, Object>();
+            //
+            //获取openid
+            String requestUrl = this.getWebAccess(code);//通过自定义工具类组合出小程序需要的登录凭证 code
+
+            JSONObject sessionData = com.central.util.CommonUtil.httpsRequest(requestUrl, "GET", null);
+
+            if (null == sessionData || StringUtils.isEmpty(sessionData.getStr("openid"))) {
+                throw new BusinessException("登录失败");
+            }
+            //验证用户信息完整性
+            String sha1 = com.central.util.CommonUtil.getSha1(userInfos + sessionData.getStr("session_key"));
+            if (!signature.equals(sha1)) {
+                throw new BusinessException("登录失败");
+            }
+            UmsMember userVo = this.findByOpenId(sessionData.getStr("openid"));
+            resultObj.put("userId",userVo.getId());
+            if (null == userVo) {
+                UmsMember umsMember = new UmsMember();
+                umsMember.setUsername("wxapplet" + CharUtil.getRandomString(12));
+                umsMember.setSourceType(1);
+                umsMember.setPassword(passwordEncoder.encode("123456"));
+                umsMember.setCreateTime(new Date());
+                umsMember.setStatus(1);
+                umsMember.setBlance(new BigDecimal(0));
+                umsMember.setIntegration(0);
+                umsMember.setHistoryIntegration(0);
+                umsMember.setWeixinOpenid(sessionData.getStr("openid"));
+                if (StringUtils.isEmpty(me.get("avatarUrl").toString())) {
+                    //会员头像(默认头像)
+                    umsMember.setIcon("/upload/img/avatar/01.jpg");
+                } else {
+                    umsMember.setIcon(me.get("avatarUrl").toString());
+                }
+                // umsMember.setGender(Integer.parseInt(me.get("gender")));
+                umsMember.setNickname(me.get("nickName").toString());
+                memberMapper.insert(umsMember);
+                resultObj.put("userId",umsMember.getId());
+            }
+            resultObj.put("openId",sessionData.getStr("openid"));
+
+            return   resultObj;
+
+        } catch (ApiMallPlusException e) {
+            e.printStackTrace();
+            throw new BusinessException("登录失败");
+        }catch (Exception e) {
+            e.printStackTrace();
+            throw new BusinessException("登录失败");
+        }
+
+    }
+
+    public Object loginByWeixin1(HttpServletRequest req) {
+        try {
+            String code = req.getParameter("code");
+            if (StringUtils.isEmpty(code)) {
                 System.out.println("code is empty");
             }
             String userInfos = req.getParameter("userInfo");
@@ -402,7 +471,18 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
     }
 
 
-
+    /**
+     * 根据openId查询用户
+     * @param openId
+     * @return
+     */
+    @Override
+    public UmsMember findByOpenId(String openId) {
+        UmsMember users = baseMapper.selectOne(
+                new QueryWrapper<UmsMember>().eq("weixin_openid", openId)
+        );
+        return users;
+    }
 
 
 

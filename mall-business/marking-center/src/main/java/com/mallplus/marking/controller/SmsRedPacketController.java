@@ -143,4 +143,7 @@ public class SmsRedPacketController {
             return new CommonResult().failed("你已经领取此红包");
         }
     }
+
+
+
 }

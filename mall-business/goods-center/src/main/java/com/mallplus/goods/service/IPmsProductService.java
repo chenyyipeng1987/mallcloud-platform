@@ -1,7 +1,8 @@
 package com.mallplus.goods.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.mallplus.goods.entity.PmsProduct;
+import com.mallplus.goods.entity.PmsBrand;
+import com.central.common.model.PmsProduct;
 import com.mallplus.goods.entity.PmsProductVertifyRecord;
 import com.mallplus.goods.vo.PmsProductParam;
 import com.mallplus.goods.vo.PmsProductResult;
@@ -20,6 +21,9 @@ import java.util.List;
  * @since 2019-04-19
  */
 public interface IPmsProductService extends IService<PmsProduct> {
+
+
+
     @Transactional(isolation = Isolation.DEFAULT, propagation = Propagation.REQUIRED)
     int create(PmsProductParam productParam);
 
@@ -69,4 +73,8 @@ public interface IPmsProductService extends IService<PmsProduct> {
     List<PmsProduct> list(String keyword);
 
     List<PmsProductVertifyRecord> getProductVertifyRecord(Long id);
+
+    List<PmsBrand> getRecommendBrandList(int pageNum, int pageSize) ;
+    List<PmsProduct> getNewProductList(int pageNum, int pageSize) ;
+    List<PmsProduct> getHotProductList(int pageNum, int pageSize) ;
 }

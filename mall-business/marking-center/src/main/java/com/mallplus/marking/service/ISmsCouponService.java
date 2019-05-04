@@ -5,6 +5,8 @@ import com.mallplus.marking.entity.SmsCoupon;
 import com.mallplus.marking.vo.SmsCouponParam;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * <p>
  * 优惠卷表 服务类
@@ -32,4 +34,5 @@ public interface ISmsCouponService extends IService<SmsCoupon> {
     @Transactional
     int delete(Long id);
 
+    List<SmsCoupon> selectNotRecive();
 }

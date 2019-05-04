@@ -37,7 +37,9 @@ mall:
         /api-uaa/**,
         /api-user/users-anon/**,
         /login.html,
-        /user/login
+        /user/login,
+        /api/applet/**,
+        /api-member/api/applet/**
       # 配置只认证登录，登录后所有角色都能访问的url
       menusPaths: /api-user/menus/current
     auth:
@@ -46,7 +48,13 @@ mall:
       #是否开启url级别权限
       urlEnabled: false
 
+ribbon:
+   ReadTimeout: 60000
+   ConnectTimeout: 60000
 zuul:
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 60000
   ribbon-isolation-strategy: thread
   ribbon:
     eager-load:
