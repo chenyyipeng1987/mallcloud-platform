@@ -25,6 +25,8 @@ public class PermitProperties {
             "/swagger-ui.html",
             "/swagger-resources/**",
             "/webjars/**",
+            "/api-member/api/applet/**",
+            "/api/applet/**",
             "/druid/**"
     };
 

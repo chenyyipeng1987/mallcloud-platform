@@ -74,6 +74,7 @@ public class RedisRepository {
         this.redisTemplate.opsForCluster().flushDb(node);
     }
 
+
     /**
      * 添加到带有 过期时间的  缓存
      *
@@ -183,7 +184,13 @@ public class RedisRepository {
         });
         return keysList;
     }
+    public Long willExpire(final String key) {
+        Long execute = redisTemplate.execute((RedisCallback<Long>) connection -> {
+            return connection.ttl(key.getBytes(DEFAULT_CHARSET));
 
+        });
+        return 0L;
+    }
 
     /**
      * 查询在以keyPatten的所有  key

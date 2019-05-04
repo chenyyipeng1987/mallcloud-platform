@@ -1,10 +1,13 @@
+
+
 package com.mallplus.order.service.impl;
 
 
 import cn.hutool.json.JSON;
 import cn.hutool.json.JSONUtil;
+import com.central.common.lock.DistributedLock;
+import com.central.common.redis.template.RedisRepository;
 import com.mallplus.order.config.WxAppletProperties;
-import com.mallplus.order.utils.JedisLock;
 import com.mallplus.order.utils.MyX509TrustManager;
 import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpResponse;
@@ -13,9 +16,8 @@ import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
 
 import javax.annotation.Resource;
 import javax.net.ssl.HttpsURLConnection;
@@ -29,7 +31,6 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -43,14 +44,15 @@ public class WechatApiService {
     private static final String WECHAT_API_TICKET = WECHAT_API + "/ticket/getticket?type=jsapi&access_token=";
     public final static String access_token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
 
-    // 存放：1.token，2：获取token的时间,3.过期时间
-    public final static Map<String,Object> accessTokenMap = new HashMap<String,Object>();
-    @Resource
-    private WxAppletProperties wxAppletProperties;
 
-    private Jedis jedis;
+@Resource
+private WxAppletProperties wxAppletProperties;
+
     @Resource
-    private JedisPool jedisPool;
+    private RedisRepository redisRepository;
+
+    @Autowired
+    private DistributedLock lock;
 
     private final HttpClient httpclient;
 
@@ -62,7 +64,6 @@ public class WechatApiService {
                 .build();
         httpclient = HttpClients.custom().setDefaultRequestConfig(config).build();
     }
-
     /**
      * 获取默认公众号的 access_token
      *
@@ -85,31 +86,21 @@ public class WechatApiService {
     public String getAccessToken(String appid, String appSecret) throws Exception {
 
         String key = "access_token:" + appid;
-        jedis=jedisPool.getResource();
-        if (jedis.ttl(key) > 30) {
-        	try {
-        		return jedis.get(key);
-        	} finally {
-        		jedis.close();
-        	}
-            
+        if (redisRepository.willExpire(key) > 30) {
+            return redisRepository.get(key).toString();
+
         }
 
         //https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET
         String lockKey = "lock_" + key;
-        JedisLock lock = new JedisLock(jedis, lockKey);
-        boolean acquired = lock.acquire();
+
+        boolean acquired = lock.lock(lockKey);
         if (!acquired) {
-        	jedis.close();
             throw new Exception("acquired lock: " + lockKey + " timeout");
         }
         try {
-            if (jedis.ttl(key) > 30) {
-            	try {
-            		return jedis.get(key);
-            	} finally {
-            		jedis.close();
-            	}
+            if (redisRepository.willExpire(key) > 30) {
+                return redisRepository.get(key).toString();
             }
 
             HttpGet get = new HttpGet(WECHAT_API_TOKEN + "?grant_type=client_credential&appid=" + appid + "&secret=" + appSecret);
@@ -119,12 +110,11 @@ public class WechatApiService {
             String accessToken = (String) resultMap.get("access_token");
             int expiresIn = (int) resultMap.get("expires_in");
 
-            jedis.set(key, accessToken);
-            jedis.expire(key, expiresIn);
+            //redisRepository.set(key, accessToken);
+            redisRepository.setExpire(key, accessToken,expiresIn);
             return accessToken;
         } finally {
-            lock.release();
-            jedis.close();
+            lock.releaseLock(lockKey);
         }
     }
 
@@ -215,28 +205,23 @@ public class WechatApiService {
      * @throws Exception
      */
     public String getJsTicket(String appid, String appSecret) throws Exception {
-        jedis=jedisPool.getResource();
+
         String key = "jsapi_ticket:" + appid;
 
-        if (jedis.ttl(key) > 30) {
-        	try {
-        		return jedis.get(key);
-        	} finally {
-        		jedis.close();
-        	}
+        if (redisRepository.willExpire(key) > 30) {
+            return redisRepository.get(key).toString();
         }
 
         String lockKey = "lock_" + key;
-        JedisLock lock = new JedisLock(jedis, lockKey);
-        boolean acquired = lock.acquire();
+
+        boolean acquired = lock.lock(lockKey);
         if (!acquired) {
-        	jedis.close();
             throw new Exception("acquired lock: " + lockKey + " timeout");
         }
 
         try {
-            if (jedis.ttl(key) > 30) {
-                return jedis.get(key);
+            if (redisRepository.willExpire(key) > 30) {
+                return redisRepository.get(key).toString();
             }
 
             HttpGet get = new HttpGet(WECHAT_API_TICKET + getAccessToken(appid, appSecret));
@@ -246,12 +231,12 @@ public class WechatApiService {
             String ticket = (String) resultMap.get("ticket");
             int expiresIn = (int) resultMap.get("expires_in");
 
-            jedis.set(key, ticket);
-            jedis.expire(key, expiresIn);
+            redisRepository.setExpire(key, ticket,expiresIn);
+
             return ticket;
         } finally {
-            lock.release();
-            jedis.close();
+            lock.releaseLock(lockKey);
+
         }
     }
 }

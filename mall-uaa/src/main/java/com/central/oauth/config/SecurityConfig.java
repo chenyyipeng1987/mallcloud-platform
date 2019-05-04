@@ -4,6 +4,7 @@ import com.central.common.config.DefaultPasswordConfig;
 import com.central.oauth.mobile.MobileAuthenticationSecurityConfig;
 import com.central.oauth.openid.OpenIdAuthenticationSecurityConfig;
 import com.central.oauth2.common.properties.SecurityProperties;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -31,6 +32,7 @@ import javax.annotation.Resource;
  * 
  * @author mall
  */
+@Slf4j
 @Configuration
 @EnableConfigurationProperties(SecurityProperties.class)
 @Import(DefaultPasswordConfig.class)
@@ -80,6 +82,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
+		log.info("configure");
 		/*http.authorizeRequests()
                     .antMatchers( securityProperties.getIgnore().getUrls())
                     .permitAll()
@@ -125,7 +128,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 						"/v2/api-docs/**"
 				)
 				.permitAll()
-				.antMatchers("/admin/login", "/admin/register")// 对登录注册要允许匿名访问
+				.antMatchers("/admin/login", "/admin/register","/api-member/api/applet/login_by_weixin","/api/applet/login_by_weixin")// 对登录注册要允许匿名访问
 				.permitAll()
 				.antMatchers(HttpMethod.OPTIONS)//跨域请求会先进行一次options请求
 				.permitAll()

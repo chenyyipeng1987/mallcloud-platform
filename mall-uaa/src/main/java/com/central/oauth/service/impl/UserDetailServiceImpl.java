@@ -1,9 +1,12 @@
 package com.central.oauth.service.impl;
 
+import com.central.common.feign.MemberFeignClient;
 import com.central.common.feign.UserService;
 import com.central.common.model.LoginAppUser;
+import com.central.common.model.UmsMember;
 import com.central.oauth.service.ZltUserDetailsService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.social.security.SocialUserDetails;
@@ -20,7 +23,8 @@ import javax.annotation.Resource;
 public class UserDetailServiceImpl implements ZltUserDetailsService, SocialUserDetailsService {
     @Resource
     private UserService userService;
-
+    @Resource
+    private MemberFeignClient memberFeignClient;
     @Override
     public UserDetails loadUserByUsername(String username) {
         LoginAppUser loginAppUser = userService.findByUsername(username);
@@ -32,8 +36,8 @@ public class UserDetailServiceImpl implements ZltUserDetailsService, SocialUserD
 
     @Override
     public SocialUserDetails loadUserByUserId(String openId) {
-        LoginAppUser loginAppUser = userService.findByOpenId(openId);
-        return checkUser(loginAppUser);
+        UmsMember loginAppUser = memberFeignClient.findByOpenId(openId);
+        return loginAppUser;
     }
 
     @Override
@@ -43,9 +47,9 @@ public class UserDetailServiceImpl implements ZltUserDetailsService, SocialUserD
     }
 
     private LoginAppUser checkUser(LoginAppUser loginAppUser) {
-        /*if (loginAppUser != null && !loginAppUser.isEnabled()) {
+        if (loginAppUser != null && !loginAppUser.isEnabled()) {
             throw new DisabledException("用户已作废");
-        }*/
+        }
         return loginAppUser;
     }
 }

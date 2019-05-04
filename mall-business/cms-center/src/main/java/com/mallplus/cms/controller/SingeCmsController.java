@@ -9,9 +9,11 @@ import com.central.common.utils.CommonResult;
 import com.mallplus.cms.entity.CmsSubject;
 import com.mallplus.cms.entity.CmsSubjectCategory;
 import com.mallplus.cms.entity.CmsSubjectComment;
+import com.mallplus.cms.entity.CmsTopic;
 import com.mallplus.cms.service.ICmsSubjectCategoryService;
 import com.mallplus.cms.service.ICmsSubjectCommentService;
 import com.mallplus.cms.service.ICmsSubjectService;
+import com.mallplus.cms.service.ICmsTopicService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,7 +41,8 @@ public class SingeCmsController  {
     private ICmsSubjectService subjectService;
     @Resource
     private ICmsSubjectCommentService commentService;
-
+    @Resource
+    private ICmsTopicService topicService;
     @IgnoreAuth
     @SysLog(MODULE = "cms", REMARK = "查询文章列表")
     @ApiOperation(value = "查询文章列表")
@@ -49,7 +52,14 @@ public class SingeCmsController  {
                               @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum) {
         return new CommonResult().success(subjectService.page(new Page<CmsSubject>(pageNum, pageSize), new QueryWrapper<>(subject)));
     }
-
+    @SysLog(MODULE = "pms", REMARK = "查询商品详情信息")
+    @IgnoreAuth
+    @GetMapping(value = "/subject/detail")
+    @ApiOperation(value = "查询商品详情信息")
+    public Object queryProductDetail(@RequestParam(value = "id", required = false, defaultValue = "0") Long id) {
+        CmsSubject productResult = subjectService.getById(id);
+        return new CommonResult().success(productResult);
+    }
 
     @SysLog(MODULE = "cms", REMARK = "查询文章分类列表")
     @IgnoreAuth
@@ -81,6 +91,21 @@ public class SingeCmsController  {
 
         return new CommonResult().success(subjectService.getRecommendSubjectList(1,1));
     }
-
-
+    @SysLog(MODULE = "cms", REMARK = "查询文章评论列表")
+    @IgnoreAuth
+    @ApiOperation(value = "查询文章评论列表")
+    @GetMapping(value = "/topic/list")
+    public Object subjectList(CmsTopic topic,
+                              @RequestParam(value = "pageSize", required = false, defaultValue = "5") Integer pageSize,
+                              @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum) {
+        return new CommonResult().success(topicService.page(new Page<CmsTopic>(pageNum, pageSize), new QueryWrapper<>(topic)));
+    }
+    @SysLog(MODULE = "pms", REMARK = "查询商品详情信息")
+    @IgnoreAuth
+    @GetMapping(value = "/topic/detail")
+    @ApiOperation(value = "查询商品详情信息")
+    public Object topicDetail(@RequestParam(value = "id", required = false, defaultValue = "0") Long id) {
+        CmsTopic productResult = topicService.getById(id);
+        return new CommonResult().success(productResult);
+    }
 }

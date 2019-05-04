@@ -128,6 +128,11 @@ public interface SecurityConstants {
      * 默认的OPENID登录请求处理url
      */
     String OPENID_TOKEN_URL = "/oauth/openId/token";
+
+    /**
+     * 默认的OPENID登录请求处理url
+     */
+    String WEIXIN_TOKEN_URL = "/oauth/weixin/token";
     /**
      * 手机登录URL
      */

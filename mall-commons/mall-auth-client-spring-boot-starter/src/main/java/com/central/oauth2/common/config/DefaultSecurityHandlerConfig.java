@@ -2,6 +2,7 @@ package com.central.oauth2.common.config;
 
 import com.central.common.utils.ResponseUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ import java.io.IOException;
 /**
  * @author mall
  */
+@Slf4j
 public class DefaultSecurityHandlerConfig {
     @Resource
     private ObjectMapper objectMapper;
@@ -30,7 +32,14 @@ public class DefaultSecurityHandlerConfig {
      */
     @Bean
     public AuthenticationEntryPoint authenticationEntryPoint() {
-        return (request, response, authException) -> ResponseUtil.responseWriter(objectMapper, response, authException.getMessage(), HttpStatus.UNAUTHORIZED.value());
+        System.out.println("authenticationEntryPoint err");
+        try {
+            return (request, response, authException) -> ResponseUtil.responseWriter(objectMapper, response, authException.getMessage(), HttpStatus.UNAUTHORIZED.value());
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+
     }
 
     @Bean
@@ -45,6 +54,7 @@ public class DefaultSecurityHandlerConfig {
      */
     @Bean
     public OAuth2AccessDeniedHandler oAuth2AccessDeniedHandler() {
+        System.out.println("oAuth2AccessDeniedHandler");
         return new OAuth2AccessDeniedHandler() {
 
             @Override

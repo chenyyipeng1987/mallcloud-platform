@@ -40,6 +40,7 @@ public class SecurityHandlerConfig {
      */
     @Bean
     public AuthenticationFailureHandler loginFailureHandler() {
+        System.out.println("loginFailureHandler");
         return (request, response, exception) -> {
             String msg;
             if (exception instanceof BadCredentialsException) {

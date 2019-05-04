@@ -3,6 +3,7 @@ package com.mallplus.order.controller;
 import cn.hutool.core.date.DateUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.central.common.annotation.IgnoreAuth;
 import com.central.common.annotation.SysLog;
 import com.central.common.utils.CommonResult;
 import com.central.common.utils.DateUtils;
@@ -296,5 +297,52 @@ public class OmsOrderController {
         data.setWeekOrderCount(weekOrderCount);
         data.setWeekOrderPay(weekOrderPay);
         return new CommonResult().success(data);
+    }
+
+    @IgnoreAuth
+    @ApiOperation("小程序用户详情")
+    @SysLog(MODULE = "applet", REMARK = "小程序用户详情")
+    @GetMapping("/order/front_static")
+    public Object user(Long userId) {
+
+            OmsOrder param = new OmsOrder();
+            param.setMemberId(userId);
+            List<OmsOrder> list = IOmsOrderService.list(new QueryWrapper<>(param));
+            int status0 = 0;
+            int status1 = 0;
+            int status2 = 0;
+            int status3 = 0;
+            int status4 = 0;
+            int status5 = 0;
+            OrderStatusCount count = new OrderStatusCount();
+            for (OmsOrder consult : list) {
+                if (consult.getStatus() == 0) {
+                    status0++;
+                }
+                if (consult.getStatus() == 1) {
+                    status1++;
+                }
+                if (consult.getStatus() == 2) {
+                    status2++;
+                }
+                if (consult.getStatus() == 3) {
+                    status2++;
+                }
+                if (consult.getStatus() == 4) {
+                    status4++;
+                }
+                if (consult.getStatus() == 5) {
+                    status5++;
+                }
+            }
+            count.setStatus0(status0);
+            count.setStatus1(status1);
+            count.setStatus2(status2);
+            count.setStatus3(status3);
+            count.setStatus4(status4);
+            count.setStatus5(status5);
+
+            return new CommonResult().success(count);
+
     }
 }

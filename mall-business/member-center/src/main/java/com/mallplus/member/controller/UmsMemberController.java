@@ -106,7 +106,7 @@ public class UmsMemberController {
 
     @SysLog(MODULE = "ums", REMARK = "给会员表分配会员表")
     @ApiOperation("查询会员表明细")
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/detail/{id}")
     @PreAuthorize("hasAuthority('ums:UmsMember:read')")
     public Object getUmsMemberById(@ApiParam("会员表id") @PathVariable Long id) {
         try {

@@ -28,6 +28,8 @@ mall:
     ignore:
       # 忽略认证的地址
       httpUrls: >
+        /api-member/api/applet/**,
+        /api/applet/**,
         /validata/**,
         /clients,
         /clients/**,
@@ -44,3 +46,19 @@ jwt:
   secret: mySecret
   tokenHead: 'Bearer '
   tokenHeader: Authorization
+wx:
+    appId: wx15d4269d3210863d
+    certName: /cert/apiclient_cert.p12
+    getCode: https://open.weixin.qq.com/connect/oauth2/authorize?appid=%s&redirect_uri=%s&response_type=code&scope=%s&state=STAT#wechat_redirect
+    mchId: ''
+    notifyUrl: http://localhost:8085/api/pay/notify
+    orderquery: https://api.mch.weixin.qq.com/pay/orderquery
+    paySignKey: ''
+    refundUrl: https://api.mch.weixin.qq.com/secapi/pay/refund
+    refundqueryUrl: https://api.mch.weixin.qq.com/pay/refundquery
+    secret: 661e82bcf46dbe6c203c9f2f91d8937d
+    templateId: nAt_DYLLwYXkIhtDb5nyEm0ynrt98OK3Z3MmeUooPz4
+    tradeType: JSAPI
+    uniformorder: https://api.mch.weixin.qq.com/pay/unifiedorder
+    userMessage: https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s&lang=zh_CN
+    webAccessTokenhttps: https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code
