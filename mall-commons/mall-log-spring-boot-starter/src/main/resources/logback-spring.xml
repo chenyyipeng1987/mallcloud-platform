@@ -73,7 +73,7 @@
         <discardingThreshold>0</discardingThreshold>
         <appender-ref ref="point_log"/>
     </appender>
-    <logger name="com.central.log.monitor" level="info" addtivity="false">
+    <logger name="com.mallplus.log.monitor" level="info" addtivity="false">
         <appender-ref ref="point_log_async" />
     </logger>
 

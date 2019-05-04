@@ -2,11 +2,11 @@ package com.mallplus.cms.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.central.common.annotation.SysLog;
+import com.mallplus.common.annotation.SysLog;
 import com.mallplus.cms.entity.CmsTopicComment;
 import com.mallplus.cms.service.ICmsTopicCommentService;
-import com.central.common.utils.CommonResult;
-import com.central.common.utils.ValidatorUtils;
+import com.mallplus.common.utils.CommonResult;
+import com.mallplus.common.utils.ValidatorUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

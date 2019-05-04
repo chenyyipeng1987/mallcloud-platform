@@ -1,6 +1,6 @@
 package com.mallplus.marking.config;
 
-import com.central.common.config.DefaultAsycTaskConfig;
+import com.mallplus.common.config.DefaultAsycTaskConfig;
 import org.springframework.context.annotation.Configuration;
 
 /**

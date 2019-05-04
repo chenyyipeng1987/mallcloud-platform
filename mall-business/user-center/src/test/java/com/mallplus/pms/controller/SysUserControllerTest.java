@@ -1,6 +1,6 @@
 package com.mallplus.pms.controller;
 
-import com.central.UserCenterApp;
+import com.mallplus.UserCenterApp;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

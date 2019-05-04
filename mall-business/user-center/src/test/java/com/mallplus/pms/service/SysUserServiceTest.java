@@ -1,8 +1,8 @@
 package com.mallplus.pms.service;
 
-import com.central.UserCenterApp;
-import com.central.common.model.SysRoleMenu;
-import com.central.user.service.ISysRolePermissionService;
+import com.mallplus.UserCenterApp;
+import com.mallplus.common.model.SysRoleMenu;
+import com.mallplus.user.service.ISysRolePermissionService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

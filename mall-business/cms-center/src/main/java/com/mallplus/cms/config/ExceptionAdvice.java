@@ -1,6 +1,6 @@
 package com.mallplus.cms.config;
 
-import com.central.common.exception.DefaultExceptionAdvice;
+import com.mallplus.common.exception.DefaultExceptionAdvice;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 
 /**

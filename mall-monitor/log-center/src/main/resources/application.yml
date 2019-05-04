@@ -12,4 +12,4 @@ mall:
     title: 日志中心
     description: 日志中心接口文档
     version: 1.0
-    base-package: com.central.log.controller
+    base-package: com.mallplus.log.controller

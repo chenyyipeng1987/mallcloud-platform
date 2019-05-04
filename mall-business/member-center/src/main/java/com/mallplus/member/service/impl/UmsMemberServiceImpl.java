@@ -4,11 +4,11 @@ import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.central.common.exception.ApiMallPlusException;
-import com.central.common.exception.BusinessException;
-import com.central.common.model.UmsMember;
-import com.central.common.utils.CommonResult;
-import com.central.common.vo.SmsCode;
+import com.mallplus.common.exception.ApiMallPlusException;
+import com.mallplus.common.exception.BusinessException;
+import com.mallplus.common.model.UmsMember;
+import com.mallplus.common.utils.CommonResult;
+import com.mallplus.common.vo.SmsCode;
 import com.mallplus.member.config.WxAppletProperties;
 import com.mallplus.member.entity.Sms;
 import com.mallplus.member.mapper.SysAreaMapper;
@@ -304,13 +304,13 @@ public class UmsMemberServiceImpl extends ServiceImpl<UmsMemberMapper, UmsMember
             //获取openid
             String requestUrl = this.getWebAccess(code);//通过自定义工具类组合出小程序需要的登录凭证 code
 
-            JSONObject sessionData = com.central.util.CommonUtil.httpsRequest(requestUrl, "GET", null);
+            JSONObject sessionData = com.mallplus.util.CommonUtil.httpsRequest(requestUrl, "GET", null);
 
             if (null == sessionData || StringUtils.isEmpty(sessionData.getStr("openid"))) {
                 throw new BusinessException("登录失败");
             }
             //验证用户信息完整性
-            String sha1 = com.central.util.CommonUtil.getSha1(userInfos + sessionData.getStr("session_key"));
+            String sha1 = com.mallplus.util.CommonUtil.getSha1(userInfos + sessionData.getStr("session_key"));
             if (!signature.equals(sha1)) {
                 throw new BusinessException("登录失败");
             }

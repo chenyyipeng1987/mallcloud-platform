@@ -1,7 +1,7 @@
 package com.mallplus.goods.vo;
 
 
-import com.central.common.model.PmsProduct;
+import com.mallplus.common.model.PmsProduct;
 import com.mallplus.goods.entity.CmsPrefrenceAreaProductRelation;
 import com.mallplus.goods.entity.CmsSubjectProductRelation;
 import com.mallplus.goods.entity.*;

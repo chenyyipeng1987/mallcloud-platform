@@ -5,8 +5,8 @@ package com.mallplus.order.service.impl;
 
 import cn.hutool.json.JSON;
 import cn.hutool.json.JSONUtil;
-import com.central.common.lock.DistributedLock;
-import com.central.common.redis.template.RedisRepository;
+import com.mallplus.common.lock.DistributedLock;
+import com.mallplus.common.redis.template.RedisRepository;
 import com.mallplus.order.config.WxAppletProperties;
 import com.mallplus.order.utils.MyX509TrustManager;
 import org.apache.commons.lang.StringUtils;

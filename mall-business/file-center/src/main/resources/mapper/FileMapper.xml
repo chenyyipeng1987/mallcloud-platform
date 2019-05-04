@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.central.file.mapper.FileMapper">
+<mapper namespace="com.mallplus.file.mapper.FileMapper">
 
 	<sql id="where">
 		<where>
@@ -20,7 +20,7 @@
 		</where>
 	</sql>
 
-	<select id="findList" resultType="com.central.file.model.FileInfo">
+	<select id="findList" resultType="com.mallplus.file.model.FileInfo">
 		select * from file_info t
 		<include refid="where" />
 		order by t.create_time desc

@@ -2,9 +2,9 @@ package com.mallplus.member.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.central.common.annotation.SysLog;
-import com.central.common.utils.CommonResult;
-import com.central.common.utils.ValidatorUtils;
+import com.mallplus.common.annotation.SysLog;
+import com.mallplus.common.utils.CommonResult;
+import com.mallplus.common.utils.ValidatorUtils;
 import com.mallplus.member.entity.UmsGrowthChangeHistory;
 import com.mallplus.member.service.IUmsGrowthChangeHistoryService;
 import io.swagger.annotations.Api;

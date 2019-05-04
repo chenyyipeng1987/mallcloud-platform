@@ -19,7 +19,7 @@ mall:
     title: 商品中心
     description: 商品中心接口文档
     version: 1.0
-    base-package: com.central.user.controller
+    base-package: com.mallplus.goods.controller
   cache-manager:
     configs:
       - key: menu

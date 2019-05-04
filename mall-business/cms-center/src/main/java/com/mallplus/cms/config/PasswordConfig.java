@@ -1,6 +1,6 @@
 package com.mallplus.cms.config;
 
-import com.central.common.config.DefaultPasswordConfig;
+import com.mallplus.common.config.DefaultPasswordConfig;
 import org.springframework.context.annotation.Configuration;
 
 /**

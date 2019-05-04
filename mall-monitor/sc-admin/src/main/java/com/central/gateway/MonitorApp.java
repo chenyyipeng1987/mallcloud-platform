@@ -1,4 +1,4 @@
-package com.central.gateway;
+package com.mallplus.gateway;
 
 import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;

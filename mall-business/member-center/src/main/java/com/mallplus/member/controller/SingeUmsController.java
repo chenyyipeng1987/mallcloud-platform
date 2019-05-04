@@ -2,13 +2,13 @@ package com.mallplus.member.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.central.common.annotation.IgnoreAuth;
-import com.central.common.annotation.SysLog;
-import com.central.common.utils.CommonResult;
-import com.central.common.utils.ValidatorUtils;
+import com.mallplus.common.annotation.IgnoreAuth;
+import com.mallplus.common.annotation.SysLog;
+import com.mallplus.common.utils.CommonResult;
+import com.mallplus.common.utils.ValidatorUtils;
 import com.mallplus.member.entity.SysArea;
 import com.mallplus.member.entity.SysSchool;
-import com.central.common.model.UmsMember;
+import com.mallplus.common.model.UmsMember;
 import com.mallplus.member.entity.UmsMemberMemberTagRelation;
 import com.mallplus.member.service.ISysAreaService;
 import com.mallplus.member.service.ISysSchoolService;

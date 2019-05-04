@@ -1,7 +1,7 @@
 package com.mallplus.member.vo;
 
 
-import com.central.common.vo.TArticleDO;
+import com.mallplus.common.vo.TArticleDO;
 import lombok.Data;
 
 import java.util.List;

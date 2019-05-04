@@ -1,6 +1,6 @@
 package com.sharding;
 
-import com.central.common.utils.IdGenerator;
+import com.mallplus.common.utils.IdGenerator;
 
 /**
  * sharding-jdbc demo

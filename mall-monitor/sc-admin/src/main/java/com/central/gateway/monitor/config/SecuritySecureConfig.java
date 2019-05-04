@@ -1,4 +1,4 @@
-package com.central.gateway.monitor.config;
+package com.mallplus.gateway.monitor.config;
 
 import de.codecentric.boot.admin.server.config.AdminServerProperties;
 import org.springframework.context.annotation.Configuration;

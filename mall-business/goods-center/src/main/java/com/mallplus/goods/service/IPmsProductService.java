@@ -2,7 +2,7 @@ package com.mallplus.goods.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mallplus.goods.entity.PmsBrand;
-import com.central.common.model.PmsProduct;
+import com.mallplus.common.model.PmsProduct;
 import com.mallplus.goods.entity.PmsProductVertifyRecord;
 import com.mallplus.goods.vo.PmsProductParam;
 import com.mallplus.goods.vo.PmsProductResult;

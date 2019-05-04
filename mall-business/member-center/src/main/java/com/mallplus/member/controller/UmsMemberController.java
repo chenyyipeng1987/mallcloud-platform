@@ -2,11 +2,11 @@ package com.mallplus.member.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.central.common.annotation.SysLog;
-import com.central.common.utils.CommonResult;
-import com.central.common.utils.DateUtils;
-import com.central.common.utils.ValidatorUtils;
-import com.central.common.model.UmsMember;
+import com.mallplus.common.annotation.SysLog;
+import com.mallplus.common.utils.CommonResult;
+import com.mallplus.common.utils.DateUtils;
+import com.mallplus.common.utils.ValidatorUtils;
+import com.mallplus.common.model.UmsMember;
 import com.mallplus.member.service.IUmsMemberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

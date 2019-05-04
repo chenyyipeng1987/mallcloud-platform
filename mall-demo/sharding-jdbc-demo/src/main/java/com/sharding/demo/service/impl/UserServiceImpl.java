@@ -1,6 +1,6 @@
 package com.sharding.demo.service.impl;
 
-import com.central.common.service.impl.SuperServiceImpl;
+import com.mallplus.common.service.impl.SuperServiceImpl;
 import com.sharding.demo.mapper.UserMapper;
 import com.sharding.demo.model.User;
 import com.sharding.demo.service.IUserService;

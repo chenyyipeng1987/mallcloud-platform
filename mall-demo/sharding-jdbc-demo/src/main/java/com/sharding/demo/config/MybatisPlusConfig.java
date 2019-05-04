@@ -2,7 +2,7 @@ package com.sharding.demo.config;
 
 import com.baomidou.mybatisplus.core.injector.ISqlInjector;
 import com.baomidou.mybatisplus.extension.injector.LogicSqlInjector;
-import com.central.db.config.DefaultMybatisPlusConfig;
+import com.mallplus.db.config.DefaultMybatisPlusConfig;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,8 +1,8 @@
 package com.mallplus.pms.mapper;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.central.common.model.SysUser;
-import com.central.user.mapper.SysUserMapper;
+import com.mallplus.common.model.SysUser;
+import com.mallplus.user.mapper.SysUserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

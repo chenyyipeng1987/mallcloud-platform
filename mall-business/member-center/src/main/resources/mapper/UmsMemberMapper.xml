@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.member.mapper.UmsMemberMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.central.common.model.UmsMember">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.model.UmsMember">
         <id column="id" property="id" />
         <result column="member_level_id" property="memberLevelId" />
         <result column="username" property="username" />

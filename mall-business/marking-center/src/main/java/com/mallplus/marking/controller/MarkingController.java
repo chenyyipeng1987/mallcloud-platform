@@ -1,8 +1,8 @@
 package com.mallplus.marking.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.central.common.annotation.SysLog;
-import com.central.common.utils.CommonResult;
+import com.mallplus.common.annotation.SysLog;
+import com.mallplus.common.utils.CommonResult;
 import com.mallplus.marking.entity.SmsRedPacket;
 import com.mallplus.marking.entity.SmsUserRedPacket;
 import com.mallplus.marking.service.ISmsCouponService;

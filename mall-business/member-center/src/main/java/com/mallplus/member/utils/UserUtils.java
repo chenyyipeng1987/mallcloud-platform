@@ -1,7 +1,7 @@
 package com.mallplus.member.utils;
 
 
-import com.central.common.model.UmsMember;
+import com.mallplus.common.model.UmsMember;
 import com.mallplus.member.vo.MemberDetails;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;

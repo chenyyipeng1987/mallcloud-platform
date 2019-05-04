@@ -1,7 +1,7 @@
 package com.mallplus.order.vo;
 
 
-import com.central.common.model.PmsProduct;
+import com.mallplus.common.model.PmsProduct;
 import com.mallplus.order.entity.UmsMemberReceiveAddress;
 import lombok.Data;
 

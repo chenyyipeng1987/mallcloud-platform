@@ -3,10 +3,10 @@ package com.mallplus.goods.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.central.common.annotation.IgnoreAuth;
-import com.central.common.annotation.SysLog;
-import com.central.common.model.PmsProduct;
-import com.central.common.utils.CommonResult;
+import com.mallplus.common.annotation.IgnoreAuth;
+import com.mallplus.common.annotation.SysLog;
+import com.mallplus.common.model.PmsProduct;
+import com.mallplus.common.utils.CommonResult;
 import com.mallplus.goods.entity.PmsProductAttributeCategory;
 import com.mallplus.goods.entity.PmsProductCategory;
 import com.mallplus.goods.entity.PmsProductConsult;

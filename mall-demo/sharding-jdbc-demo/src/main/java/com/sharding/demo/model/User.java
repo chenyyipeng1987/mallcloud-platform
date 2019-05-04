@@ -1,7 +1,7 @@
 package com.sharding.demo.model;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.central.common.model.SuperEntity;
+import com.mallplus.common.model.SuperEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
