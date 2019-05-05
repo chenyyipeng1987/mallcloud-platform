@@ -30,6 +30,18 @@ public class MemberFeignClientFallbackFactory implements FallbackFactory<MemberF
                 log.error("saveUmsMember异常:{}", entity, throwable);
                 return new UmsMember();
             }
+
+            @Override
+            public UmsMember findByUsername(String username) {
+                log.error("通过username查询会员异常:{}", username, throwable);
+                return new UmsMember();
+            }
+
+            @Override
+            public UmsMember findByMobile(String mobile) {
+                log.error("通过mobile查询会员异常:{}", mobile, throwable);
+                return new UmsMember();
+            }
         };
     }
 }

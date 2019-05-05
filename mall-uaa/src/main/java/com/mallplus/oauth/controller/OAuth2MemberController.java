@@ -1,13 +1,14 @@
 package com.mallplus.oauth.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mallplus.common.constant.SecurityConstants;
-import com.mallplus.common.feign.UserService;
+import com.mallplus.common.constant.SecurityMemberConstants;
+import com.mallplus.common.feign.MemberFeignClient;
 import com.mallplus.common.model.Result;
 import com.mallplus.common.model.SysUser;
+import com.mallplus.common.model.UmsMember;
 import com.mallplus.common.utils.SpringUtil;
 import com.mallplus.oauth.mobile.MobileAuthenticationToken;
-import com.mallplus.oauth.openid.OpenIdAuthenticationToken;
+import com.mallplus.oauth.openid.member.OpenIdMemberAuthenticationToken;
 import com.mallplus.oauth.service.impl.RedisClientDetailsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -46,8 +47,9 @@ import java.io.Writer;
 @Api(tags = "OAuth2相关操作")
 @Slf4j
 @RestController
-public class OAuth2Controller {
-
+public class OAuth2MemberController {
+    @Resource
+    private MemberFeignClient memberFeignClient;
     @Resource
     private ObjectMapper objectMapper;
 
@@ -60,11 +62,10 @@ public class OAuth2Controller {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Resource
-    private UserService userService;
+   
 
     @ApiOperation(value = "用户名密码获取token")
-    @PostMapping(SecurityConstants.PASSWORD_LOGIN_PRO_URL)
+    @PostMapping(SecurityMemberConstants.PASSWORD_LOGIN_PRO_URL)
     public void getUserTokenInfo(@RequestBody SysUser umsAdminLoginParam,
             HttpServletRequest request, HttpServletResponse response) throws IOException {
         if (umsAdminLoginParam.getUsername() == null || "".equals(umsAdminLoginParam.getUsername())) {
@@ -74,7 +75,7 @@ public class OAuth2Controller {
             throw new UnapprovedClientAuthenticationException("密码为空");
         }
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(umsAdminLoginParam.getUsername(), umsAdminLoginParam.getPassword());
-       SysUser user = userService.selectByUsername(umsAdminLoginParam.getUsername());
+        UmsMember user = memberFeignClient.findByUsername(umsAdminLoginParam.getUsername());
        if (user!=null){
            writerToken(request, response, token, "用户名或密码错误",user.getId());
        }else {
@@ -84,12 +85,12 @@ public class OAuth2Controller {
     }
 
     @ApiOperation(value = "openId获取token")
-    @PostMapping(SecurityConstants.OPENID_TOKEN_URL)
+    @PostMapping(SecurityMemberConstants.OPENID_TOKEN_URL)
     public void getTokenByOpenId(
             @ApiParam(required = true, name = "openId", value = "openId") String openId,
             HttpServletRequest request, HttpServletResponse response) throws IOException {
-        OpenIdAuthenticationToken token = new OpenIdAuthenticationToken(openId);
-        SysUser member = userService.findByOpenId(openId);
+        OpenIdMemberAuthenticationToken token = new OpenIdMemberAuthenticationToken(openId);
+        UmsMember member = memberFeignClient.findByOpenId(openId);
         if (member!=null){
             writerToken(request, response, token, "openId错误",member.getId());
         }else {
@@ -99,10 +100,8 @@ public class OAuth2Controller {
     }
 
 
-
-
     @ApiOperation(value = "mobile获取token")
-    @PostMapping(SecurityConstants.MOBILE_TOKEN_URL)
+    @PostMapping(SecurityMemberConstants.MOBILE_TOKEN_URL)
     public void getTokenByMobile(
             @ApiParam(required = true, name = "mobile", value = "mobile") String mobile,
             @ApiParam(required = true, name = "password", value = "密码") String password,

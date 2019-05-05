@@ -146,6 +146,32 @@ public class UmsMemberController {
         return IUmsMemberService.findByOpenId(openId);
     }
 
+    /**
+     * 根据OpenId查询用户信息
+     *
+     * @param username openId
+     */
+    @GetMapping(value = "/username", params = "username")
+    @ApiOperation(value = "username")
+    public UmsMember findByusername(String username) {
+        return IUmsMemberService.getOne(
+                new QueryWrapper<UmsMember>().eq("username", username)
+        );
+    }
+
+    /**
+     * 根据OpenId查询用户信息
+     *
+     * @param  mobile
+     */
+    @GetMapping(value = "/mobile", params = "mobile")
+    @ApiOperation(value = "mobile")
+    public UmsMember findBymobile(String mobile) {
+        return IUmsMemberService.getOne(
+                new QueryWrapper<UmsMember>().eq("phone", mobile)
+        );
+    }
+
     @ApiOperation("首页会员统计")
     @SysLog(MODULE = "home", REMARK = "首页会员统计")
     @RequestMapping(value = "/userStatic", method = RequestMethod.GET)

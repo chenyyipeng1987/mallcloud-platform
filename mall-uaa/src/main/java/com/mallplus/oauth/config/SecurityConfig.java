@@ -2,7 +2,9 @@ package com.mallplus.oauth.config;
 
 import com.mallplus.common.config.DefaultPasswordConfig;
 import com.mallplus.oauth.mobile.MobileAuthenticationSecurityConfig;
+import com.mallplus.oauth.mobile.member.MobileMemberAuthenticationSecurityConfig;
 import com.mallplus.oauth.openid.OpenIdAuthenticationSecurityConfig;
+import com.mallplus.oauth.openid.member.OpenIdMemberAuthenticationSecurityConfig;
 import com.mallplus.oauth2.common.properties.SecurityProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,7 +65,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private OpenIdAuthenticationSecurityConfig openIdAuthenticationSecurityConfig;
-
+	@Autowired
+	private OpenIdMemberAuthenticationSecurityConfig openIdMemberAuthenticationSecurityConfig;
+	@Autowired
+	private MobileMemberAuthenticationSecurityConfig mobileMemberAuthenticationSecurityConfig;
 	@Autowired
 	private MobileAuthenticationSecurityConfig mobileAuthenticationSecurityConfig;
 	@Autowired
@@ -114,7 +119,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 				.apply(openIdAuthenticationSecurityConfig)
 				.and()
+				.apply(openIdMemberAuthenticationSecurityConfig)
+				.and()
 				.apply(mobileAuthenticationSecurityConfig)
+				.and()
+				.apply(mobileMemberAuthenticationSecurityConfig)
 				.and()
 				.authorizeRequests()
 				.antMatchers(HttpMethod.GET, // 允许对于网站静态资源的无授权访问

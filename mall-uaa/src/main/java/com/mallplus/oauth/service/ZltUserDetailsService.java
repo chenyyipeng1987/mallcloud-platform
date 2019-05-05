@@ -2,7 +2,6 @@ package com.mallplus.oauth.service;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 /**
  * @author mall
@@ -16,4 +15,17 @@ public interface ZltUserDetailsService extends UserDetailsService {
      * @return
      */
     UserDetails loadUserByMobile(String mobile);
+
+
+
+    // 获取前台用户信息
+    public UserDetails loadMemberByUsername(String username);
+
+    public UserDetails loadMemberByOpenId(String openId);
+
+    public UserDetails loadMemberByMobile(String mobile);
+
+
+
+
 }

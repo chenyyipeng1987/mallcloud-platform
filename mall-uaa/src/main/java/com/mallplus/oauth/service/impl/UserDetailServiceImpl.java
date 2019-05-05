@@ -43,6 +43,9 @@ public class UserDetailServiceImpl implements ZltUserDetailsService, SocialUserD
     @Override
     public UserDetails loadUserByMobile(String mobile) {
         LoginAppUser loginAppUser = userService.findByMobile(mobile);
+        if (loginAppUser == null) {
+            throw new InternalAuthenticationServiceException("手机号错误或没有注册");
+        }
         return checkUser(loginAppUser);
     }
 
@@ -51,5 +54,40 @@ public class UserDetailServiceImpl implements ZltUserDetailsService, SocialUserD
             throw new DisabledException("用户已作废");
         }
         return loginAppUser;
+    }
+
+    private UmsMember checkMember(UmsMember loginAppUser) {
+        if (loginAppUser != null && loginAppUser.getStatus()==2) {
+            throw new DisabledException("用户已作废");
+        }
+        return loginAppUser;
+    }
+
+    @Override
+    public UserDetails loadMemberByUsername(String username) {
+        UmsMember loginAppUser = memberFeignClient.findByUsername(username);
+        if (loginAppUser == null) {
+            throw new InternalAuthenticationServiceException("用户名或密码错误");
+        }
+        return checkMember(loginAppUser);
+    }
+
+    @Override
+    public SocialUserDetails loadMemberByOpenId(String openId) {
+        UmsMember loginAppUser = memberFeignClient.findByOpenId(openId);
+        if (loginAppUser == null) {
+            throw new InternalAuthenticationServiceException("用户名或密码错误");
+        }
+        return checkMember(loginAppUser);
+
+    }
+
+    @Override
+    public UserDetails loadMemberByMobile(String mobile) {
+        UmsMember loginAppUser = memberFeignClient.findByMobile(mobile);
+        if (loginAppUser == null) {
+            throw new InternalAuthenticationServiceException("手机号错误或没有注册");
+        }
+        return checkMember(loginAppUser);
     }
 }

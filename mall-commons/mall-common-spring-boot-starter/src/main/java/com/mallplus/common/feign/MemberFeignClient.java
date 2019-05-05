@@ -25,4 +25,12 @@ public interface MemberFeignClient {
     @PostMapping(value = "/ums/UmsMember/create")
     public Object saveUmsMember(@RequestBody UmsMember entity);
 
+
+    @GetMapping(value = "/ums/UmsMember/username", params = "username")
+    UmsMember findByUsername(@RequestParam("username") String username);
+
+    @GetMapping(value = "/ums/UmsMember/mobile", params = "mobile")
+    UmsMember findByMobile(@RequestParam("mobile") String mobile);
+
+
 }
