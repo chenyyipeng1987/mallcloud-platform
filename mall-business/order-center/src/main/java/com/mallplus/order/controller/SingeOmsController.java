@@ -38,6 +38,15 @@ public class SingeOmsController  {
                               @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum) {
         return new CommonResult().success(orderService.page(new Page<OmsOrder>(pageNum, pageSize), new QueryWrapper<>(order)));
     }
+    @IgnoreAuth
+    @SysLog(MODULE = "oms", REMARK = "查询订单列表")
+    @ApiOperation(value = "查询订单列表")
+    @GetMapping(value = "/cart/list")
+    public Object cartList(OmsOrder order,
+                            @RequestParam(value = "pageSize", required = false, defaultValue = "5") Integer pageSize,
+                            @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum) {
+        return new CommonResult().success(orderService.page(new Page<OmsOrder>(pageNum, pageSize), new QueryWrapper<>(order)));
+    }
 
 
     /**

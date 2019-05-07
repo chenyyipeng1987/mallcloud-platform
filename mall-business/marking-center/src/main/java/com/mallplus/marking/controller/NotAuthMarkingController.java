@@ -99,4 +99,15 @@ public class NotAuthMarkingController {
         }
         return new CommonResult().failed();
     }
+    @SysLog(MODULE = "marking", REMARK = "根据条件查询所有导航栏列表")
+    @ApiOperation("根据条件查询所有导航栏列表")
+    @GetMapping(value = "/nav/list")
+    public Object getNavByPage(SmsRedPacket entity) {
+        try {
+            return new CommonResult().success(couponService.selectNotRecive());
+        } catch (Exception e) {
+            log.error("根据条件查询所有红包列表：%s", e.getMessage(), e);
+        }
+        return new CommonResult().failed();
+    }
 }
