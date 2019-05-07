@@ -1,6 +1,7 @@
 package com.mallplus.oauth.config;
 
 import com.mallplus.common.config.DefaultPasswordConfig;
+import com.mallplus.common.constant.SecurityConstants;
 import com.mallplus.oauth.mobile.MobileAuthenticationSecurityConfig;
 import com.mallplus.oauth.mobile.member.MobileMemberAuthenticationSecurityConfig;
 import com.mallplus.oauth.openid.OpenIdAuthenticationSecurityConfig;
@@ -12,7 +13,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -23,7 +23,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 
 import javax.annotation.Resource;
@@ -88,33 +88,59 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		log.info("configure");
-		/*http.authorizeRequests()
-                    .antMatchers( securityProperties.getIgnore().getUrls())
-                    .permitAll()
-                    .anyRequest().authenticated()
-                    .and()
-                .apply(validateCodeSecurityConfig)
-                    .and()
-                .apply(openIdAuthenticationSecurityConfig)
-                    .and()
+		httpSecurity.headers().cacheControl();
+
+		/*httpSecurity.addFilterBefore(jwtAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+
+		httpSecurity.exceptionHandling()
+				.accessDeniedHandler(restfulAccessDeniedHandler)
+				.authenticationEntryPoint(restAuthenticationEntryPoint);*/
+
+		httpSecurity.authorizeRequests()
+				.antMatchers( securityProperties.getIgnore().getUrls())
+				.permitAll()
+				.anyRequest().authenticated()
+				.and()
+				/*.formLogin()
+				.loginPage(SecurityConstants.LOGIN_PAGE)
+				.loginProcessingUrl(SecurityConstants.OAUTH_LOGIN_PRO_URL)
+				.successHandler(authenticationSuccessHandler)
+				.failureHandler(authenticationFailureHandler)
+				.and()*/
+				.logout()
+				.logoutUrl(SecurityConstants.LOGOUT_URL)
+				.logoutSuccessUrl(SecurityConstants.LOGIN_PAGE)
+				.logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler())
+				.addLogoutHandler(oauthLogoutHandler)
+				.clearAuthentication(true)
+				.and()
+				.apply(validateCodeSecurityConfig)
+				.and()
+				.apply(openIdAuthenticationSecurityConfig)
+				.and()
+				.apply(openIdMemberAuthenticationSecurityConfig)
+				.and()
 				.apply(mobileAuthenticationSecurityConfig)
-					.and()
-                .csrf().disable()
+				.and()
+				.apply(mobileMemberAuthenticationSecurityConfig)
+				.and()
+				.csrf().disable()
 				// 解决不允许显示在iframe的问题
 				.headers().frameOptions().disable().cacheControl();
-			// 添加JWT filter
-		http.addFilterBefore(jwtAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+
 		// 基于密码 等模式可以无session,不支持授权码模式
 		if (authenticationEntryPoint != null) {
-			http.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
-			http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+			httpSecurity.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint);
+			httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		} else {
 			// 授权码模式单独处理，需要session的支持，此模式可以支持所有oauth2的认证
-			http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED);
-		}*/
-		httpSecurity.csrf()// 由于使用的是JWT，我们这里不需要csrf
+			httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED);
+		}
+
+
+	/*	httpSecurity.csrf()
 				.disable()
-				.sessionManagement()// 基于token，所以不需要session
+				.sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and()
 				.apply(openIdAuthenticationSecurityConfig)
@@ -126,38 +152,33 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.apply(mobileMemberAuthenticationSecurityConfig)
 				.and()
 				.authorizeRequests()
-				.antMatchers(HttpMethod.GET, // 允许对于网站静态资源的无授权访问
-						"/",
-						"/*.html",
-						"/favicon.ico",
-						"/**/*.html",
-						"/**/*.css",
-						"/**/*.js",
-						"/swagger-resources/**",
-						"/v2/api-docs/**"
-				)
+				.antMatchers( securityProperties.getIgnore().getUrls())
+				.permitAll()
+
 				.permitAll()
 				.antMatchers("/admin/login", "/admin/register","/api-member/api/applet/login_by_weixin","/api/applet/login_by_weixin")// 对登录注册要允许匿名访问
 				.permitAll()
-				.antMatchers(HttpMethod.OPTIONS)//跨域请求会先进行一次options请求
+				.antMatchers(HttpMethod.OPTIONS)
 				.permitAll()
-				.antMatchers("/**")//测试时全部运行访问
+				.antMatchers("/**")
 				.permitAll()
-				.anyRequest()// 除上面外的所有请求全部需要鉴权认证
+				.anyRequest()
 				.authenticated();
-		// 禁用缓存
+
 		httpSecurity.headers().cacheControl();
-		// 添加JWT filter
+
 		httpSecurity.addFilterBefore(jwtAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-		//添加自定义未授权和未登录结果返回
+
 		httpSecurity.exceptionHandling()
 				.accessDeniedHandler(restfulAccessDeniedHandler)
-				.authenticationEntryPoint(restAuthenticationEntryPoint);
+				.authenticationEntryPoint(restAuthenticationEntryPoint);*/
 	}
+/*
 	@Bean
 	public JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter() {
 		return new JwtAuthenticationTokenFilter();
 	}
+*/
 
 		/**
          * 全局用户信息

@@ -6,6 +6,7 @@ import com.mallplus.common.feign.MemberFeignClient;
 import com.mallplus.common.model.Result;
 import com.mallplus.common.model.SysUser;
 import com.mallplus.common.model.UmsMember;
+import com.mallplus.common.utils.CommonResult;
 import com.mallplus.common.utils.SpringUtil;
 import com.mallplus.oauth.mobile.MobileAuthenticationToken;
 import com.mallplus.oauth.openid.member.OpenIdMemberAuthenticationToken;
@@ -31,6 +32,7 @@ import org.springframework.security.oauth2.provider.TokenRequest;
 import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -110,6 +112,18 @@ public class OAuth2MemberController {
         writerToken(request, response, token, "手机号或密码错误",1L);
     }
 
+    /**
+     * 当前登陆用户信息
+     * security获取当前登录用户的方法是SecurityContextHolder.getContext().getAuthentication()
+     * 这里的实现类是org.springframework.security.oauth2.provider.OAuth2Authentication
+     *
+     * @return
+     */
+    @ApiOperation(value = "当前登陆用户信息")
+    @RequestMapping(value = { "/oauth/member/userinfo" }, produces = "application/json") // 获取用户信息。/auth/user
+    public Object getCurrentUserDetail() {
+        return new CommonResult().success(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+    }
     private void writerToken(HttpServletRequest request, HttpServletResponse response, AbstractAuthenticationToken token
             , String badCredenbtialsMsg,Long userId) throws IOException {
         try {

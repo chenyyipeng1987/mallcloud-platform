@@ -30,6 +30,10 @@ public class PermitProperties {
             "/druid/**"
     };
 
+    private static final String[] marking = {
+            "/api-marking/notAuth/**",
+            "/api-marking/auth/**"
+    };
     /**
      * 设置不用认证的url
      */
@@ -49,6 +53,9 @@ public class PermitProperties {
             list.add(url);
         }
         for (String url : httpUrls) {
+            list.add(url);
+        }
+        for (String url : marking) {
             list.add(url);
         }
         return list.toArray(new String[list.size()]);

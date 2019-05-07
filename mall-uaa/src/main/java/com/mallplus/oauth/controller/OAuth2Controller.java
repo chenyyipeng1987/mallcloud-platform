@@ -5,6 +5,7 @@ import com.mallplus.common.constant.SecurityConstants;
 import com.mallplus.common.feign.UserService;
 import com.mallplus.common.model.Result;
 import com.mallplus.common.model.SysUser;
+import com.mallplus.common.utils.CommonResult;
 import com.mallplus.common.utils.SpringUtil;
 import com.mallplus.oauth.mobile.MobileAuthenticationToken;
 import com.mallplus.oauth.openid.OpenIdAuthenticationToken;
@@ -29,7 +30,7 @@ import org.springframework.security.oauth2.provider.OAuth2Request;
 import org.springframework.security.oauth2.provider.TokenRequest;
 import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -65,16 +66,17 @@ public class OAuth2Controller {
 
     @ApiOperation(value = "用户名密码获取token")
     @PostMapping(SecurityConstants.PASSWORD_LOGIN_PRO_URL)
-    public void getUserTokenInfo(@RequestBody SysUser umsAdminLoginParam,
+    public void getUserTokenInfo( @ApiParam(required = true, name = "username", value = "账号") String username,
+                                  @ApiParam(required = true, name = "password", value = "密码") String password,
             HttpServletRequest request, HttpServletResponse response) throws IOException {
-        if (umsAdminLoginParam.getUsername() == null || "".equals(umsAdminLoginParam.getUsername())) {
+        if (username == null || "".equals(username)) {
             throw new UnapprovedClientAuthenticationException("用户名为空");
         }
-        if (umsAdminLoginParam.getPassword() == null || "".equals(umsAdminLoginParam.getPassword())) {
+        if ( password == null || "".equals( password)) {
             throw new UnapprovedClientAuthenticationException("密码为空");
         }
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(umsAdminLoginParam.getUsername(), umsAdminLoginParam.getPassword());
-       SysUser user = userService.selectByUsername(umsAdminLoginParam.getUsername());
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username,  password);
+       SysUser user = userService.selectByUsername(username);
        if (user!=null){
            writerToken(request, response, token, "用户名或密码错误",user.getId());
        }else {
@@ -109,6 +111,20 @@ public class OAuth2Controller {
             HttpServletRequest request, HttpServletResponse response) throws IOException {
         MobileAuthenticationToken token = new MobileAuthenticationToken(mobile, password);
         writerToken(request, response, token, "手机号或密码错误",1L);
+    }
+
+
+    /**
+     * 当前登陆用户信息
+     * security获取当前登录用户的方法是SecurityContextHolder.getContext().getAuthentication()
+     * 这里的实现类是org.springframework.security.oauth2.provider.OAuth2Authentication
+     *
+     * @return
+     */
+    @ApiOperation(value = "当前登陆用户信息")
+    @RequestMapping(value = { "/oauth/userinfo" }, produces = "application/json") // 获取用户信息。/auth/user
+    public Object getCurrentUserDetail() {
+        return new CommonResult().success(SecurityContextHolder.getContext().getAuthentication().getPrincipal());
     }
 
     private void writerToken(HttpServletRequest request, HttpServletResponse response, AbstractAuthenticationToken token

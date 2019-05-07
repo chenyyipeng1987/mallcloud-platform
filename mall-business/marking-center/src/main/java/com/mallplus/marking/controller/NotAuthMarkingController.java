@@ -1,6 +1,7 @@
 package com.mallplus.marking.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.mallplus.common.annotation.IgnoreAuth;
 import com.mallplus.common.annotation.SysLog;
 import com.mallplus.common.utils.CommonResult;
 import com.mallplus.marking.entity.SmsRedPacket;
@@ -28,9 +29,9 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-@Api(tags = "MarkingController", description = "")
-@RequestMapping("/api/marking")
-public class MarkingController {
+@Api(tags = "NotAuthMarkingController", description = "")
+@RequestMapping("/notAuth")
+public class NotAuthMarkingController {
     @Resource
     private ISmsCouponService couponService;
 
@@ -40,7 +41,7 @@ public class MarkingController {
     private ISmsUserRedPacketService userRedPacketService;
 
 
-
+    @IgnoreAuth
     @SysLog(MODULE = "marking", REMARK = "根据条件查询所有红包列表")
     @ApiOperation("根据条件查询所有红包列表")
     @GetMapping(value = "/redPacket/list")
@@ -67,6 +68,7 @@ public class MarkingController {
         }
         return new CommonResult().failed();
     }
+    @IgnoreAuth
     @SysLog(MODULE = "marking", REMARK = "根据条件查询所有红包列表")
     @ApiOperation("根据条件查询所有红包列表")
     @GetMapping(value = "/coupon/list")
