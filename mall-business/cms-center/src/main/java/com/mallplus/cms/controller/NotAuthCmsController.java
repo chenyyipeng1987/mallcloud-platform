@@ -29,9 +29,9 @@ import javax.annotation.Resource;
  * @Description:
  */
 @RestController
-@Api(tags = "SingeCmsController", description = "内容关系管理")
-@RequestMapping("/api/single/cms")
-public class SingeCmsController  {
+@Api(tags = "NotAuthCmsController", description = "内容关系管理")
+@RequestMapping("/notAuth")
+public class NotAuthCmsController {
 
 
 

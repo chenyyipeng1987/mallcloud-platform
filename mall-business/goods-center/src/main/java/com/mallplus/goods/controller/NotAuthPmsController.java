@@ -7,16 +7,15 @@ import com.mallplus.common.annotation.IgnoreAuth;
 import com.mallplus.common.annotation.SysLog;
 import com.mallplus.common.model.PmsProduct;
 import com.mallplus.common.utils.CommonResult;
+import com.mallplus.goods.entity.PmsBrand;
 import com.mallplus.goods.entity.PmsProductAttributeCategory;
 import com.mallplus.goods.entity.PmsProductCategory;
 import com.mallplus.goods.entity.PmsProductConsult;
-import com.mallplus.goods.service.IPmsProductAttributeCategoryService;
-import com.mallplus.goods.service.IPmsProductCategoryService;
-import com.mallplus.goods.service.IPmsProductConsultService;
-import com.mallplus.goods.service.IPmsProductService;
+import com.mallplus.goods.service.*;
 import com.mallplus.goods.vo.ConsultTypeCount;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,10 +29,11 @@ import java.util.Map;
  * @Date: 2019/4/2 15:02
  * @Description:
  */
+@Slf4j
 @RestController
-@Api(tags = "SingePmsController", description = "商品关系管理")
-@RequestMapping("/api/single/pms")
-public class SingePmsController  {
+@Api(tags = "NotAuthPmsController", description = "商品关系管理")
+@RequestMapping("/notAuth")
+public class NotAuthPmsController {
 
     @Autowired
     private IPmsProductConsultService pmsProductConsultService;
@@ -44,7 +44,8 @@ public class SingePmsController  {
     @Resource
     private IPmsProductCategoryService productCategoryService;
 
-
+    @Resource
+    private IPmsBrandService IPmsBrandService;
 
     @SysLog(MODULE = "pms", REMARK = "查询商品详情信息")
     @IgnoreAuth
@@ -54,7 +55,20 @@ public class SingePmsController  {
         PmsProduct productResult = pmsProductService.getById(id);
         return new CommonResult().success(productResult);
     }
-
+    @SysLog(MODULE = "pms", REMARK = "根据条件查询所有品牌表列表")
+    @ApiOperation("根据条件查询所有品牌表列表")
+    @GetMapping(value = "/brand/list")
+    public Object getPmsBrandByPage(PmsBrand entity,
+                                    @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
+                                    @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize
+    ) {
+        try {
+            return new CommonResult().success(IPmsBrandService.page(new Page<PmsBrand>(pageNum, pageSize), new QueryWrapper<>(entity)));
+        } catch (Exception e) {
+            log.error("根据条件查询所有品牌表列表：%s", e.getMessage(), e);
+        }
+        return new CommonResult().failed();
+    }
     @IgnoreAuth
     @ApiOperation("获取某个商品的评价")
     @RequestMapping(value = "/consult/list", method = RequestMethod.GET)

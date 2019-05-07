@@ -31,8 +31,19 @@ public class PermitProperties {
     };
 
     private static final String[] marking = {
-            "/api-marking/notAuth/**",
-            "/api-marking/auth/**"
+            "/api-marking/notAuth/**"
+    };
+    private static final String[] cms = {
+            "/api-cms/notAuth/**"
+    };
+    private static final String[] order = {
+            "/api-order/notAuth/**"
+    };
+    private static final String[] goods = {
+            "/api-goods/notAuth/**"
+    };
+    private static final String[] member = {
+            "/api-member/notAuth/**"
     };
     /**
      * 设置不用认证的url
@@ -56,6 +67,18 @@ public class PermitProperties {
             list.add(url);
         }
         for (String url : marking) {
+            list.add(url);
+        }
+        for (String url : cms) {
+            list.add(url);
+        }
+        for (String url : order) {
+            list.add(url);
+        }
+        for (String url : goods) {
+            list.add(url);
+        }
+        for (String url : member) {
             list.add(url);
         }
         return list.toArray(new String[list.size()]);

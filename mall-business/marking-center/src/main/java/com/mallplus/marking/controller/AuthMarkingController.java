@@ -1,22 +1,16 @@
 package com.mallplus.marking.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mallplus.common.annotation.SysLog;
 import com.mallplus.common.utils.CommonResult;
-import com.mallplus.marking.entity.SmsHomeAdvertise;
 import com.mallplus.marking.service.ISmsCouponService;
+import com.mallplus.marking.service.ISmsHomeAdvertiseService;
 import com.mallplus.marking.service.ISmsRedPacketService;
 import com.mallplus.marking.service.ISmsUserRedPacketService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import com.mallplus.marking.service.ISmsHomeAdvertiseService;
 import javax.annotation.Resource;
 
 /**
@@ -36,25 +30,21 @@ public class AuthMarkingController {
     private ISmsCouponService couponService;
 
     @Resource
-    private ISmsRedPacketService redPacketService;
-    @Resource
     private ISmsUserRedPacketService userRedPacketService;
-
+    @Resource
+    private ISmsRedPacketService ISmsRedPacketService;
     @Resource
     private ISmsHomeAdvertiseService ISmsHomeAdvertiseService;
 
-    @SysLog(MODULE = "marking", REMARK = "根据条件查询所有首页轮播广告表列表")
-    @ApiOperation("根据条件查询所有首页轮播广告表列表")
-    @GetMapping(value = "/list")
-    public Object getSmsHomeAdvertiseByPage(SmsHomeAdvertise entity,
-                                            @RequestParam(value = "pageNum", defaultValue = "1") Integer pageNum,
-                                            @RequestParam(value = "pageSize", defaultValue = "5") Integer pageSize
-    ) {
-        try {
-            return new CommonResult().success(ISmsHomeAdvertiseService.page(new Page<SmsHomeAdvertise>(pageNum, pageSize), new QueryWrapper<>(entity)));
-        } catch (Exception e) {
-            log.error("根据条件查询所有首页轮播广告表列表：%s", e.getMessage(), e);
+    @SysLog(MODULE = "sms", REMARK = "领取红包")
+    @ApiOperation(value = "领取红包")
+    @RequestMapping(value = "/redPacket/accept/{id}", method = RequestMethod.GET)
+    public Object accept(@PathVariable("id") Integer id) {
+        int count = ISmsRedPacketService.acceptRedPacket(id,1L);
+        if (count == 1) {
+            return new CommonResult().success("领取成功");
+        } else {
+            return new CommonResult().failed("你已经领取此红包");
         }
-        return new CommonResult().failed();
     }
 }
