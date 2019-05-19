@@ -1,5 +1,6 @@
 package com.mallplus.oauth.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mallplus.common.constant.SecurityConstants;
 import com.mallplus.common.feign.UserService;
@@ -24,11 +25,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.common.exceptions.UnapprovedClientAuthenticationException;
-import org.springframework.security.oauth2.provider.ClientDetails;
-import org.springframework.security.oauth2.provider.OAuth2Authentication;
-import org.springframework.security.oauth2.provider.OAuth2Request;
-import org.springframework.security.oauth2.provider.TokenRequest;
+import org.springframework.security.oauth2.provider.*;
+import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
+import org.springframework.security.oauth2.provider.refresh.RefreshTokenGranter;
+import org.springframework.security.oauth2.provider.request.DefaultOAuth2RequestFactory;
 import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
+import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,6 +40,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * OAuth2相关操作
@@ -63,6 +67,9 @@ public class OAuth2Controller {
 
     @Resource
     private UserService userService;
+
+    @Autowired
+    private TokenStore tokenStore;
 
     @ApiOperation(value = "用户名密码获取token")
     @PostMapping(SecurityConstants.PASSWORD_LOGIN_PRO_URL)
@@ -158,6 +165,102 @@ public class OAuth2Controller {
         }
     }
 
+    @ApiOperation(value = "access_token刷新token")
+    @PostMapping(value = "/oauth/refresh/token", params = "access_token")
+    public void refreshTokenInfo(String access_token, HttpServletRequest request, HttpServletResponse response) {
+
+        // 拿到当前用户信息
+        try {
+            Authentication user = SecurityContextHolder.getContext().getAuthentication();
+
+            if (user != null) {
+                if (user instanceof OAuth2Authentication) {
+                    Authentication athentication = (Authentication) user;
+                    OAuth2AuthenticationDetails details = (OAuth2AuthenticationDetails) athentication.getDetails();
+                }
+
+            }
+            OAuth2AccessToken accessToken = tokenStore.readAccessToken(access_token);
+            OAuth2Authentication auth = (OAuth2Authentication) user;
+            RedisClientDetailsService clientDetailsService = SpringUtil.getBean(RedisClientDetailsService.class);
+
+            ClientDetails clientDetails = clientDetailsService
+                    .loadClientByClientId(auth.getOAuth2Request().getClientId());
+
+            AuthorizationServerTokenServices authorizationServerTokenServices = SpringUtil
+                    .getBean("defaultAuthorizationServerTokenServices", AuthorizationServerTokenServices.class);
+            OAuth2RequestFactory requestFactory = new DefaultOAuth2RequestFactory(clientDetailsService);
+
+            RefreshTokenGranter refreshTokenGranter = new RefreshTokenGranter(authorizationServerTokenServices,
+                    clientDetailsService, requestFactory);
+
+            Map<String, String> map = new HashMap<>();
+            map.put("grant_type", "refresh_token");
+            map.put("refresh_token", accessToken.getRefreshToken().getValue());
+            TokenRequest tokenRequest = new TokenRequest(map, auth.getOAuth2Request().getClientId(),
+                    auth.getOAuth2Request().getScope(), "refresh_token");
+
+            OAuth2AccessToken oAuth2AccessToken = refreshTokenGranter.grant("refresh_token", tokenRequest);
+
+            tokenStore.removeAccessToken(accessToken);
+
+            response.setContentType("application/json;charset=UTF-8");
+            response.getWriter().write(objectMapper.writeValueAsString(oAuth2AccessToken));
+            response.getWriter().flush();
+            response.getWriter().close();
+        } catch (Exception e) {
+            response.setStatus(HttpStatus.UNAUTHORIZED.value());
+            response.setContentType("application/json;charset=UTF-8");
+            Map<String, String> rsp = new HashMap<>();
+            rsp.put("resp_code", HttpStatus.UNAUTHORIZED.value() + "");
+            rsp.put("rsp_msg", e.getMessage());
+
+            try {
+                response.getWriter().write(objectMapper.writeValueAsString(rsp));
+                response.getWriter().flush();
+                response.getWriter().close();
+            } catch (JsonProcessingException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }
+
+    }
+
+    /**
+     * 移除access_token和refresh_token
+     *
+     * @param access_token
+     */
+    @ApiOperation(value = "移除token")
+    @PostMapping(value = "/oauth/remove/token", params = "access_token")
+    public void removeToken(String access_token) {
+
+        // 拿到当前用户信息
+        Authentication user = SecurityContextHolder.getContext().getAuthentication();
+
+        if (user != null) {
+            if (user instanceof OAuth2Authentication) {
+                Authentication athentication = (Authentication) user;
+                OAuth2AuthenticationDetails details = (OAuth2AuthenticationDetails) athentication.getDetails();
+            }
+
+        }
+        OAuth2AccessToken accessToken = tokenStore.readAccessToken(access_token);
+        if (accessToken != null) {
+            // 移除access_token
+            tokenStore.removeAccessToken(accessToken);
+
+            // 移除refresh_token
+            if (accessToken.getRefreshToken() != null) {
+                tokenStore.removeRefreshToken(accessToken.getRefreshToken());
+            }
+
+        }
+    }
     private void exceptionHandler(HttpServletResponse response, Exception e) throws IOException {
         log.error("exceptionHandler-error:", e);
         exceptionHandler(response, e.getMessage());
