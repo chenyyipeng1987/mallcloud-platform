@@ -1,6 +1,6 @@
 package com.mallplus.marking.mapper;
 
-import com.mallplus.marking.entity.SmsHomeAdvertise;
+import com.mallplus.common.entity.sms.SmsHomeAdvertise;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

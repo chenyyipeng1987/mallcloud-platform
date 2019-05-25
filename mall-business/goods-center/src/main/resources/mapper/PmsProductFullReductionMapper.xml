@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.goods.mapper.PmsProductFullReductionMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.goods.entity.PmsProductFullReduction">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.pms.PmsProductFullReduction">
         <id column="id" property="id" />
         <result column="product_id" property="productId" />
         <result column="full_price" property="fullPrice" />

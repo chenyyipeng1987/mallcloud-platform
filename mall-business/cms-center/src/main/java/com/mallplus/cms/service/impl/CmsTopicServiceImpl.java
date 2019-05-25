@@ -1,9 +1,11 @@
 package com.mallplus.cms.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.mallplus.cms.entity.*;
 import com.mallplus.cms.mapper.*;
 import com.mallplus.cms.service.ICmsTopicService;
+import com.mallplus.common.entity.cms.CmsTopic;
+import com.mallplus.common.entity.cms.CmsTopicCategory;
+import com.mallplus.common.entity.cms.CmsTopicMember;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

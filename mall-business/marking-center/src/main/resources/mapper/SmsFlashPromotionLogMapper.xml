@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.marking.mapper.SmsFlashPromotionLogMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.marking.entity.SmsFlashPromotionLog">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.sms.SmsFlashPromotionLog">
         <id column="id" property="id" />
         <result column="member_id" property="memberId" />
         <result column="product_id" property="productId" />

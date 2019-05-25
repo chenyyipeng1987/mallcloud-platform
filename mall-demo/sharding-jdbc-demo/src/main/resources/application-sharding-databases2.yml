@@ -22,7 +22,7 @@ sharding:
             algorithm-expression: ds-$->{company_id}
         tables:
           user:
-            actual-data-nodes: ds-$->{['alibaba','baidu']}.member
+            actual-data-nodes: ds-$->{['alibaba','baidu']}.ums
             key-generator-column-name: id
       props:
         sql:

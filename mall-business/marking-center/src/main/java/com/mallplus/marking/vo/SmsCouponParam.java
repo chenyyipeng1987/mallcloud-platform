@@ -1,9 +1,9 @@
 package com.mallplus.marking.vo;
 
 
-import com.mallplus.marking.entity.SmsCoupon;
-import com.mallplus.marking.entity.SmsCouponProductCategoryRelation;
-import com.mallplus.marking.entity.SmsCouponProductRelation;
+import com.mallplus.common.entity.sms.SmsCoupon;
+import com.mallplus.common.entity.sms.SmsCouponProductCategoryRelation;
+import com.mallplus.common.entity.sms.SmsCouponProductRelation;
 
 import java.util.List;
 

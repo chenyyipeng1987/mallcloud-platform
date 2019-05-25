@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.goods.mapper.PmsAlbumMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.goods.entity.PmsAlbum">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.pms.PmsAlbum">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="cover_pic" property="coverPic" />

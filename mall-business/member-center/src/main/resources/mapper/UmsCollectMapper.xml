@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.member.mapper.UmsCollectMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.member.entity.UmsCollect">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.ums.UmsCollect">
         <id column="id" property="id" />
         <result column="member_id" property="memberId" />
         <result column="goods_id" property="goodsId" />

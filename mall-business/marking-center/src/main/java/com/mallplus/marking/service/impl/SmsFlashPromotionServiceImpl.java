@@ -1,6 +1,6 @@
 package com.mallplus.marking.service.impl;
 
-import com.mallplus.marking.entity.SmsFlashPromotion;
+import com.mallplus.common.entity.sms.SmsFlashPromotion;
 import com.mallplus.marking.mapper.SmsFlashPromotionMapper;
 import com.mallplus.marking.service.ISmsFlashPromotionService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

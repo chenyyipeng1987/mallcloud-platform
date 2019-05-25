@@ -1,6 +1,6 @@
 package com.mallplus.order.mapper;
 
-import com.mallplus.order.entity.OmsCompanyAddress;
+import com.mallplus.common.entity.oms.OmsCompanyAddress;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

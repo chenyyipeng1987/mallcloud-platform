@@ -2,7 +2,7 @@ package com.mallplus.goods.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.mallplus.goods.entity.PmsSkuStock;
+import com.mallplus.common.entity.pms.PmsSkuStock;
 import com.mallplus.goods.mapper.PmsSkuStockMapper;
 import com.mallplus.goods.service.IPmsSkuStockService;
 import org.springframework.stereotype.Service;

@@ -7,7 +7,7 @@ mall:
 
 spring:
   application:
-    name: member-center
+    name: ums-center
   cloud:
     nacos:
       config:

@@ -15,7 +15,7 @@ public interface ServiceNameConstants {
     /**
      * 会员服务
      */
-    String MEMBER_SERVICE = "member-center";
+    String MEMBER_SERVICE = "ums-center";
     /**
      * 商品服务
      */
@@ -27,7 +27,7 @@ public interface ServiceNameConstants {
     /**
      * 营销服务
      */
-    String MARKING_SERVICE = "marking-center";
+    String MARKING_SERVICE = "sms-center";
     /**
      * 内容服务
      */

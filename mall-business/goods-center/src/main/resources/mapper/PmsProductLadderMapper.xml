@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.goods.mapper.PmsProductLadderMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.goods.entity.PmsProductLadder">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.pms.PmsProductLadder">
         <id column="id" property="id" />
         <result column="product_id" property="productId" />
         <result column="count" property="count" />

@@ -3,7 +3,7 @@ package com.mallplus.marking.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mallplus.common.annotation.SysLog;
-import com.mallplus.marking.entity.SmsFlashPromotionProductRelation;
+import com.mallplus.common.entity.sms.SmsFlashPromotionProductRelation;
 import com.mallplus.marking.service.ISmsFlashPromotionProductRelationService;
 import com.mallplus.common.utils.CommonResult;
 import com.mallplus.common.utils.ValidatorUtils;
@@ -33,7 +33,7 @@ public class SmsFlashPromotionProductRelationController {
     @Resource
     private ISmsFlashPromotionProductRelationService ISmsFlashPromotionProductRelationService;
 
-    @SysLog(MODULE = "marking", REMARK = "根据条件查询所有商品限时购与商品关系表列表")
+    @SysLog(MODULE = "sms", REMARK = "根据条件查询所有商品限时购与商品关系表列表")
     @ApiOperation("根据条件查询所有商品限时购与商品关系表列表")
     @GetMapping(value = "/list")
     @PreAuthorize("hasAuthority('marking:SmsFlashPromotionProductRelation:read')")
@@ -61,7 +61,7 @@ public class SmsFlashPromotionProductRelationController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "保存商品限时购与商品关系表")
+    @SysLog(MODULE = "sms", REMARK = "保存商品限时购与商品关系表")
     @ApiOperation("保存商品限时购与商品关系表")
     @PostMapping(value = "/create")
     @PreAuthorize("hasAuthority('marking:SmsFlashPromotionProductRelation:create')")
@@ -77,7 +77,7 @@ public class SmsFlashPromotionProductRelationController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "更新商品限时购与商品关系表")
+    @SysLog(MODULE = "sms", REMARK = "更新商品限时购与商品关系表")
     @ApiOperation("更新商品限时购与商品关系表")
     @PostMapping(value = "/update/{id}")
     @PreAuthorize("hasAuthority('marking:SmsFlashPromotionProductRelation:update')")
@@ -93,7 +93,7 @@ public class SmsFlashPromotionProductRelationController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "删除商品限时购与商品关系表")
+    @SysLog(MODULE = "sms", REMARK = "删除商品限时购与商品关系表")
     @ApiOperation("删除商品限时购与商品关系表")
     @DeleteMapping(value = "/delete/{id}")
     @PreAuthorize("hasAuthority('marking:SmsFlashPromotionProductRelation:delete')")
@@ -112,7 +112,7 @@ public class SmsFlashPromotionProductRelationController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "给商品限时购与商品关系表分配商品限时购与商品关系表")
+    @SysLog(MODULE = "sms", REMARK = "给商品限时购与商品关系表分配商品限时购与商品关系表")
     @ApiOperation("查询商品限时购与商品关系表明细")
     @GetMapping(value = "/{id}")
     @PreAuthorize("hasAuthority('marking:SmsFlashPromotionProductRelation:read')")

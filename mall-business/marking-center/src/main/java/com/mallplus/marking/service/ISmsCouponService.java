@@ -1,8 +1,11 @@
 package com.mallplus.marking.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.mallplus.marking.entity.SmsCoupon;
-import com.mallplus.marking.vo.SmsCouponParam;
+import com.mallplus.common.entity.sms.SmsCoupon;
+import com.mallplus.common.entity.sms.SmsCouponHistory;
+import com.mallplus.common.utils.CommonResult;
+import com.mallplus.common.vo.CartPromotionItem;
+import com.mallplus.common.vo.SmsCouponHistoryDetail;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -17,22 +20,29 @@ import java.util.List;
  */
 public interface ISmsCouponService extends IService<SmsCoupon> {
 
-    boolean saves(SmsCouponParam entity);
-
-    boolean updateByIds(SmsCouponParam entity);
-
     /**
-     * 获取优惠券详情
-     *
-     * @param id 优惠券表id
-     */
-    SmsCouponParam getItem(Long id);
-
-    /**
-     * 根据优惠券id删除优惠券
+     * 会员添加优惠券
      */
     @Transactional
-    int delete(Long id);
+    CommonResult add(Long couponId,Long memberId);
+
+    /**
+     * 获取优惠券列表
+     *
+     * @param useStatus 优惠券的使用状态
+     */
+    List<SmsCouponHistory> list(Integer useStatus,Long memberId);
+
+    /**
+     * 根据购物车信息获取可用优惠券
+     */
+    List<SmsCouponHistoryDetail> listCart(List<CartPromotionItem> cartItemList, Integer type,Long memberId);
+
+
+    List<SmsCoupon> selectNotRecive(Long memberId);
+
+    List<SmsCoupon> selectRecive(Long memberId);
 
     List<SmsCoupon> selectNotRecive();
+
 }

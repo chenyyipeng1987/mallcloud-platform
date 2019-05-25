@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.member.mapper.UmsMemberRuleSettingMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.member.entity.UmsMemberRuleSetting">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.ums.UmsMemberRuleSetting">
         <id column="id" property="id" />
         <result column="continue_sign_day" property="continueSignDay" />
         <result column="continue_sign_point" property="continueSignPoint" />

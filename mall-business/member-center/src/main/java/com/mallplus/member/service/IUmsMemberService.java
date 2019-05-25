@@ -3,7 +3,7 @@ package com.mallplus.member.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mallplus.common.utils.CommonResult;
 import com.mallplus.common.vo.SmsCode;
-import com.mallplus.common.model.UmsMember;
+import com.mallplus.common.entity.ums.UmsMember;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;

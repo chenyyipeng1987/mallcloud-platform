@@ -2,7 +2,7 @@ package com.mallplus.goods.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.mallplus.goods.entity.PmsBrand;
+import com.mallplus.common.entity.pms.PmsBrand;
 import com.mallplus.goods.mapper.PmsBrandMapper;
 import com.mallplus.goods.service.IPmsBrandService;
 import org.springframework.stereotype.Service;

@@ -2,7 +2,7 @@ package com.mallplus.member.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.mallplus.member.entity.SysArea;
+import com.mallplus.common.entity.ums.SysArea;
 import com.mallplus.member.mapper.SysAreaMapper;
 import com.mallplus.member.service.ISysAreaService;
 import org.springframework.stereotype.Service;

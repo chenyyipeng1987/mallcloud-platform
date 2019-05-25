@@ -1,7 +1,7 @@
 package com.mallplus.member.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.mallplus.member.entity.UmsMemberMemberTagRelation;
+import com.mallplus.common.entity.ums.UmsMemberMemberTagRelation;
 import com.mallplus.member.mapper.UmsMemberMemberTagRelationMapper;
 import com.mallplus.member.service.IUmsMemberMemberTagRelationService;
 import org.springframework.stereotype.Service;

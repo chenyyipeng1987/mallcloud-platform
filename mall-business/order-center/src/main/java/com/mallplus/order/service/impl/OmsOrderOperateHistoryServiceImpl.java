@@ -1,6 +1,6 @@
 package com.mallplus.order.service.impl;
 
-import com.mallplus.order.entity.OmsOrderOperateHistory;
+import com.mallplus.common.entity.oms.OmsOrderOperateHistory;
 import com.mallplus.order.mapper.OmsOrderOperateHistoryMapper;
 import com.mallplus.order.service.IOmsOrderOperateHistoryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

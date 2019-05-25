@@ -4,10 +4,10 @@ import cn.hutool.core.date.DateUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mallplus.common.annotation.SysLog;
-import com.mallplus.common.model.PmsProduct;
+import com.mallplus.common.entity.pms.PmsProduct;
+import com.mallplus.common.entity.pms.PmsProductVertifyRecord;
 import com.mallplus.common.utils.CommonResult;
 import com.mallplus.common.utils.ValidatorUtils;
-import com.mallplus.goods.entity.PmsProductVertifyRecord;
 import com.mallplus.goods.service.IPmsProductService;
 import com.mallplus.goods.vo.PmsProductParam;
 import com.mallplus.goods.vo.PmsProductResult;
@@ -129,6 +129,11 @@ public class PmsProductController {
             return new CommonResult().failed();
         }
 
+    }
+    @GetMapping(value = "/id", params = "id")
+    @ApiOperation(value = "根据Id查询")
+    public PmsProduct findById(Long id) {
+        return IPmsProductService.getById(id);
     }
 
     @GetMapping("/goods/{id}")

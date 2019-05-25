@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.cms.mapper.CmsSubjectMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.cms.entity.CmsSubject">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.cms.CmsSubject">
         <id column="id" property="id" />
         <result column="category_id" property="categoryId" />
         <result column="title" property="title" />

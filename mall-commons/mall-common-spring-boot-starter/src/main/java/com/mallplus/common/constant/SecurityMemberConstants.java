@@ -49,12 +49,12 @@ public interface SecurityMemberConstants {
     /**
      * 默认的处理验证码的url前缀
      */
-    String DEFAULT_VALIDATE_CODE_URL_PREFIX = "/validata/member/code";
+    String DEFAULT_VALIDATE_CODE_URL_PREFIX = "/validata/ums/code";
 
     /**
      * 手机号的处理验证码的url前缀
      */
-    String MOBILE_VALIDATE_CODE_URL_PREFIX = "/validata/member/smsCode";
+    String MOBILE_VALIDATE_CODE_URL_PREFIX = "/validata/ums/smsCode";
 
     /**
      * 默认生成图形验证码宽度
@@ -111,11 +111,11 @@ public interface SecurityMemberConstants {
     /**
      * OAUTH模式登录处理地址
      */
-    String OAUTH_LOGIN_PRO_URL = "/user/member/login";
+    String OAUTH_LOGIN_PRO_URL = "/user/ums/login";
     /**
      * PASSWORD模式登录处理地址
      */
-    String PASSWORD_LOGIN_PRO_URL = "/oauth/user/member/token";
+    String PASSWORD_LOGIN_PRO_URL = "/oauth/user/ums/token";
     /**
      * 获取授权码地址
      */
@@ -127,18 +127,18 @@ public interface SecurityMemberConstants {
     /**
      * 默认的OPENID登录请求处理url
      */
-    String OPENID_TOKEN_URL = "/oauth/openId/member/token";
+    String OPENID_TOKEN_URL = "/oauth/openId/ums/token";
 
     /**
      * 默认的OPENID登录请求处理url
      */
-    String WEIXIN_TOKEN_URL = "/oauth/weixin/member/token";
+    String WEIXIN_TOKEN_URL = "/oauth/weixin/ums/token";
     /**
      * 手机登录URL
      */
-    String MOBILE_TOKEN_URL = "/oauth/mobile/member/token";
+    String MOBILE_TOKEN_URL = "/oauth/mobile/ums/token";
     /**
      * 登出URL
      */
-    String LOGOUT_URL = "/oauth/remove/member/token";
+    String LOGOUT_URL = "/oauth/remove/ums/token";
 }

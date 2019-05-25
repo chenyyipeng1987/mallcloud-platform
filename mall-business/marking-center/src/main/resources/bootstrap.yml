@@ -7,7 +7,7 @@ mall:
 
 spring:
   application:
-    name: marking-center
+    name: sms-center
   cloud:
     nacos:
       config:

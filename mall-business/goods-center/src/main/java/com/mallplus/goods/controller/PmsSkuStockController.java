@@ -3,10 +3,10 @@ package com.mallplus.goods.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mallplus.common.annotation.SysLog;
-import com.mallplus.goods.entity.PmsSkuStock;
-import com.mallplus.goods.service.IPmsSkuStockService;
+import com.mallplus.common.entity.pms.PmsSkuStock;
 import com.mallplus.common.utils.CommonResult;
 import com.mallplus.common.utils.ValidatorUtils;
+import com.mallplus.goods.service.IPmsSkuStockService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -100,6 +100,11 @@ public class PmsSkuStockController {
         return new CommonResult().failed();
     }
 
+    @GetMapping(value = "/id", params = "id")
+    @ApiOperation(value = "根据Id查询")
+    public PmsSkuStock findById(Long id) {
+        return IPmsSkuStockService.getById(id);
+    }
     @SysLog(MODULE = "pms", REMARK = "给sku的库存分配sku的库存")
     @ApiOperation("查询sku的库存明细")
     @GetMapping(value = "/{id}")

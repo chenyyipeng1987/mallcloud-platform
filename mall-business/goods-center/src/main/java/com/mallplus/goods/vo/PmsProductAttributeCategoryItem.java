@@ -1,8 +1,8 @@
 package com.mallplus.goods.vo;
 
 
-import com.mallplus.goods.entity.PmsProductAttribute;
-import com.mallplus.goods.entity.PmsProductAttributeCategory;
+import com.mallplus.common.entity.pms.PmsProductAttribute;
+import com.mallplus.common.entity.pms.PmsProductAttributeCategory;
 
 import java.util.List;
 

@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiParam;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
-import com.mallplus.marking.entity.SmsCouponProductRelation;
+import com.mallplus.common.entity.sms.SmsCouponProductRelation;
 import com.mallplus.marking.service.ISmsCouponProductRelationService;
 import com.mallplus.common.utils.ValidatorUtils;
 import com.mallplus.common.annotation.SysLog;
@@ -36,7 +36,7 @@ public class SmsCouponProductRelationController {
     @Resource
     private ISmsCouponProductRelationService ISmsCouponProductRelationService;
 
-    @SysLog(MODULE = "marking", REMARK = "根据条件查询所有优惠券和产品的关系表列表")
+    @SysLog(MODULE = "sms", REMARK = "根据条件查询所有优惠券和产品的关系表列表")
     @ApiOperation("根据条件查询所有优惠券和产品的关系表列表")
     @GetMapping(value = "/list")
     @PreAuthorize("hasAuthority('marking:SmsCouponProductRelation:read')")
@@ -52,7 +52,7 @@ public class SmsCouponProductRelationController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "保存优惠券和产品的关系表")
+    @SysLog(MODULE = "sms", REMARK = "保存优惠券和产品的关系表")
     @ApiOperation("保存优惠券和产品的关系表")
     @PostMapping(value = "/create")
     @PreAuthorize("hasAuthority('marking:SmsCouponProductRelation:create')")
@@ -68,7 +68,7 @@ public class SmsCouponProductRelationController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "更新优惠券和产品的关系表")
+    @SysLog(MODULE = "sms", REMARK = "更新优惠券和产品的关系表")
     @ApiOperation("更新优惠券和产品的关系表")
     @PostMapping(value = "/update/{id}")
     @PreAuthorize("hasAuthority('marking:SmsCouponProductRelation:update')")
@@ -84,7 +84,7 @@ public class SmsCouponProductRelationController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "删除优惠券和产品的关系表")
+    @SysLog(MODULE = "sms", REMARK = "删除优惠券和产品的关系表")
     @ApiOperation("删除优惠券和产品的关系表")
     @DeleteMapping(value = "/delete/{id}")
     @PreAuthorize("hasAuthority('marking:SmsCouponProductRelation:delete')")
@@ -103,7 +103,7 @@ public class SmsCouponProductRelationController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "给优惠券和产品的关系表分配优惠券和产品的关系表")
+    @SysLog(MODULE = "sms", REMARK = "给优惠券和产品的关系表分配优惠券和产品的关系表")
     @ApiOperation("查询优惠券和产品的关系表明细")
     @GetMapping(value = "/{id}")
     @PreAuthorize("hasAuthority('marking:SmsCouponProductRelation:read')")

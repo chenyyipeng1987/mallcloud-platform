@@ -1,6 +1,6 @@
 package com.mallplus.goods.mapper;
 
-import com.mallplus.goods.entity.PmsProductLadder;
+import com.mallplus.common.entity.pms.PmsProductLadder;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

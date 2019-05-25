@@ -2,7 +2,7 @@ package com.mallplus.goods.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.mallplus.goods.entity.CmsPrefrenceAreaProductRelation;
+import com.mallplus.common.entity.pms.CmsPrefrenceAreaProductRelation;
 
 /**
  * <p>

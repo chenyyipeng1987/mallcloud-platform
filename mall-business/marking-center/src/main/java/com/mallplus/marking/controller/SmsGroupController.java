@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mallplus.common.annotation.SysLog;
-import com.mallplus.marking.entity.SmsGroup;
+import com.mallplus.common.entity.sms.SmsGroup;
 import com.mallplus.marking.service.ISmsGroupService;
 import com.mallplus.common.utils.CommonResult;
 import com.mallplus.common.utils.ValidatorUtils;
@@ -35,7 +35,7 @@ public class SmsGroupController {
     @Resource
     private ISmsGroupService ISmsGroupService;
 
-    @SysLog(MODULE = "marking", REMARK = "根据条件查询所有列表")
+    @SysLog(MODULE = "sms", REMARK = "根据条件查询所有列表")
     @ApiOperation("根据条件查询所有列表")
     @GetMapping(value = "/list")
     @PreAuthorize("hasAuthority('marking:SmsGroup:read')")
@@ -55,7 +55,7 @@ public class SmsGroupController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "保存")
+    @SysLog(MODULE = "sms", REMARK = "保存")
     @ApiOperation("保存")
     @PostMapping(value = "/create")
     @PreAuthorize("hasAuthority('marking:SmsGroup:create')")
@@ -89,7 +89,7 @@ public class SmsGroupController {
 
     }
 
-    @SysLog(MODULE = "marking", REMARK = "更新")
+    @SysLog(MODULE = "sms", REMARK = "更新")
     @ApiOperation("更新")
     @PostMapping(value = "/update/{id}")
     @PreAuthorize("hasAuthority('marking:SmsGroup:update')")
@@ -105,7 +105,7 @@ public class SmsGroupController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "删除")
+    @SysLog(MODULE = "sms", REMARK = "删除")
     @ApiOperation("删除")
     @DeleteMapping(value = "/delete/{id}")
     @PreAuthorize("hasAuthority('marking:SmsGroup:delete')")
@@ -124,7 +124,7 @@ public class SmsGroupController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "给分配")
+    @SysLog(MODULE = "sms", REMARK = "给分配")
     @ApiOperation("查询明细")
     @GetMapping(value = "/{id}")
     @PreAuthorize("hasAuthority('marking:SmsGroup:read')")

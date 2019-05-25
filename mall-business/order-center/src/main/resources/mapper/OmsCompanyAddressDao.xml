@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.order.mapper.OmsCompanyAddressMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.order.entity.OmsCompanyAddress">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.oms.OmsCompanyAddress">
         <id column="id" property="id" />
         <result column="address_name" property="addressName" />
         <result column="send_status" property="sendStatus" />

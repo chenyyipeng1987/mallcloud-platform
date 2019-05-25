@@ -1,8 +1,8 @@
 package com.mallplus.order.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.mallplus.order.entity.OmsOrder;
-import com.mallplus.order.entity.OmsOrderItem;
+import com.mallplus.common.entity.oms.OmsOrder;
+import com.mallplus.common.entity.oms.OmsOrderItem;
 import com.mallplus.order.vo.OmsOrderDeliveryParam;
 import com.mallplus.order.vo.OmsOrderDetail;
 import org.apache.ibatis.annotations.Param;

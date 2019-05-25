@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.goods.mapper.PmsProductAttributeCategoryMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.goods.entity.PmsProductAttributeCategory">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.pms.PmsProductAttributeCategory">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="attribute_count" property="attributeCount" />

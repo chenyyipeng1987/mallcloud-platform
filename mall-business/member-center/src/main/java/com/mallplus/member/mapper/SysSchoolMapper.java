@@ -2,7 +2,7 @@ package com.mallplus.member.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.mallplus.member.entity.SysSchool;
+import com.mallplus.common.entity.ums.SysSchool;
 
 /**
  * <p>

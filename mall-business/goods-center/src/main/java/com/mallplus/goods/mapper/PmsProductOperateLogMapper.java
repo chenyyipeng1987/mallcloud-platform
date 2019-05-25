@@ -1,6 +1,6 @@
 package com.mallplus.goods.mapper;
 
-import com.mallplus.goods.entity.PmsProductOperateLog;
+import com.mallplus.common.entity.pms.PmsProductOperateLog;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

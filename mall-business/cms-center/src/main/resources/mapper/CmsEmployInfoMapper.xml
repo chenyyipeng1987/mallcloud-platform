@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.cms.mapper.CmsEmployInfoMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.cms.entity.CmsEmployInfo">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.cms.CmsEmployInfo">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="age" property="age" />

@@ -1,6 +1,6 @@
 package com.mallplus.cms.service.impl;
 
-import com.mallplus.cms.entity.CmsHelpCategory;
+import com.mallplus.common.entity.cms.CmsHelpCategory;
 import com.mallplus.cms.mapper.CmsHelpCategoryMapper;
 import com.mallplus.cms.service.ICmsHelpCategoryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

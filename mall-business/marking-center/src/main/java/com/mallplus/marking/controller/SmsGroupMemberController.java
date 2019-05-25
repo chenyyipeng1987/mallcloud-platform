@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiParam;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
-import com.mallplus.marking.entity.SmsGroupMember;
+import com.mallplus.common.entity.sms.SmsGroupMember;
 import com.mallplus.marking.service.ISmsGroupMemberService;
 import com.mallplus.common.utils.ValidatorUtils;
 import com.mallplus.common.annotation.SysLog;
@@ -36,7 +36,7 @@ public class SmsGroupMemberController {
     @Resource
     private ISmsGroupMemberService ISmsGroupMemberService;
 
-    @SysLog(MODULE = "marking", REMARK = "根据条件查询所有列表")
+    @SysLog(MODULE = "sms", REMARK = "根据条件查询所有列表")
     @ApiOperation("根据条件查询所有列表")
     @GetMapping(value = "/list")
     @PreAuthorize("hasAuthority('marking:SmsGroupMember:read')")
@@ -52,7 +52,7 @@ public class SmsGroupMemberController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "保存")
+    @SysLog(MODULE = "sms", REMARK = "保存")
     @ApiOperation("保存")
     @PostMapping(value = "/create")
     @PreAuthorize("hasAuthority('marking:SmsGroupMember:create')")
@@ -68,7 +68,7 @@ public class SmsGroupMemberController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "更新")
+    @SysLog(MODULE = "sms", REMARK = "更新")
     @ApiOperation("更新")
     @PostMapping(value = "/update/{id}")
     @PreAuthorize("hasAuthority('marking:SmsGroupMember:update')")
@@ -84,7 +84,7 @@ public class SmsGroupMemberController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "删除")
+    @SysLog(MODULE = "sms", REMARK = "删除")
     @ApiOperation("删除")
     @DeleteMapping(value = "/delete/{id}")
     @PreAuthorize("hasAuthority('marking:SmsGroupMember:delete')")
@@ -103,7 +103,7 @@ public class SmsGroupMemberController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "给分配")
+    @SysLog(MODULE = "sms", REMARK = "给分配")
     @ApiOperation("查询明细")
     @GetMapping(value = "/{id}")
     @PreAuthorize("hasAuthority('marking:SmsGroupMember:read')")

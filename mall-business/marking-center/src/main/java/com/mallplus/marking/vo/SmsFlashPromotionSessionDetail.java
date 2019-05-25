@@ -1,7 +1,7 @@
 package com.mallplus.marking.vo;
 
 
-import com.mallplus.marking.entity.SmsFlashPromotionSession;
+import com.mallplus.common.entity.sms.SmsFlashPromotionSession;
 import lombok.Getter;
 import lombok.Setter;
 

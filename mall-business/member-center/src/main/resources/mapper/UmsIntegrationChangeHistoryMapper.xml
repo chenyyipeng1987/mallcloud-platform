@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.member.mapper.UmsIntegrationChangeHistoryMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.member.entity.UmsIntegrationChangeHistory">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.ums.UmsIntegrationChangeHistory">
         <id column="id" property="id" />
         <result column="member_id" property="memberId" />
         <result column="create_time" property="createTime" />

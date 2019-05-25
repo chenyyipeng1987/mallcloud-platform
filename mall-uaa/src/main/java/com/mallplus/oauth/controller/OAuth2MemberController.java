@@ -5,7 +5,7 @@ import com.mallplus.common.constant.SecurityMemberConstants;
 import com.mallplus.common.feign.MemberFeignClient;
 import com.mallplus.common.model.Result;
 import com.mallplus.common.model.SysUser;
-import com.mallplus.common.model.UmsMember;
+import com.mallplus.common.entity.ums.UmsMember;
 import com.mallplus.common.utils.CommonResult;
 import com.mallplus.common.utils.SpringUtil;
 import com.mallplus.oauth.mobile.MobileAuthenticationToken;

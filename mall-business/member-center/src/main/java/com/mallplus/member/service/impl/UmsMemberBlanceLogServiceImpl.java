@@ -1,7 +1,7 @@
 package com.mallplus.member.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.mallplus.member.entity.UmsMemberBlanceLog;
+import com.mallplus.common.entity.ums.UmsMemberBlanceLog;
 import com.mallplus.member.mapper.UmsMemberBlanceLogMapper;
 import com.mallplus.member.service.IUmsMemberBlanceLogService;
 import org.springframework.stereotype.Service;

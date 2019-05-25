@@ -2,7 +2,7 @@ package com.mallplus.member.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.mallplus.member.entity.SysSchool;
+import com.mallplus.common.entity.ums.SysSchool;
 import com.mallplus.member.mapper.SysSchoolMapper;
 import com.mallplus.member.service.ISysSchoolService;
 import org.springframework.stereotype.Service;

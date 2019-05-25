@@ -1,7 +1,7 @@
 package com.mallplus.member.service;
 
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
-import com.mallplus.member.entity.Sms;
+import com.mallplus.common.entity.ums.Sms;
 
 import java.util.Map;
 

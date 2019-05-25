@@ -1,7 +1,7 @@
 package com.mallplus.order.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.mallplus.order.entity.OmsOrderReturnApply;
+import com.mallplus.common.entity.oms.OmsOrderReturnApply;
 import com.mallplus.order.vo.OmsUpdateStatusParam;
 
 /**

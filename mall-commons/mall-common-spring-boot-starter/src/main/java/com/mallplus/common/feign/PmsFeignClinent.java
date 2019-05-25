@@ -1,11 +1,15 @@
 package com.mallplus.common.feign;
 
 import com.mallplus.common.constant.ServiceNameConstants;
+import com.mallplus.common.entity.pms.PmsProduct;
+import com.mallplus.common.entity.pms.PmsSkuStock;
 import com.mallplus.common.feign.fallback.PmsFeignClientFallbackFactory;
-import com.mallplus.common.model.PmsProduct;
+import com.mallplus.common.vo.PromotionProduct;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 /**
  * @author mall
@@ -19,7 +23,16 @@ public interface PmsFeignClinent {
      * @param id
      * @return
      */
-    @GetMapping(value = "/goods/{id}")
-    PmsProduct selectById(@PathVariable("id") Long id);
 
+
+    @GetMapping(value = "/pms/PmsProduct/id", params = "id")
+    PmsProduct selectById(@RequestParam("id") Long id);
+
+    @GetMapping(value = "/pms/PmsSkuStock/id", params = "id")
+    PmsSkuStock selectSkuById(@RequestParam("id") Long id);
+
+    @GetMapping(value = "/notAuth/getPromotionProductList", params = "productIdList")
+    List<PromotionProduct> getPromotionProductList(List<Long> productIdList);
+
+    void updateSkuById(PmsSkuStock skuStock);
 }

@@ -1,9 +1,9 @@
 package com.mallplus.order.vo;
 
 
-import com.mallplus.order.entity.OmsOrder;
-import com.mallplus.order.entity.OmsOrderItem;
-import com.mallplus.order.entity.OmsOrderOperateHistory;
+import com.mallplus.common.entity.oms.OmsOrder;
+import com.mallplus.common.entity.oms.OmsOrderItem;
+import com.mallplus.common.entity.oms.OmsOrderOperateHistory;
 import lombok.Getter;
 import lombok.Setter;
 

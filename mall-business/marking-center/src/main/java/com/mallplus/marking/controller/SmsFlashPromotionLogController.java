@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiParam;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
-import com.mallplus.marking.entity.SmsFlashPromotionLog;
+import com.mallplus.common.entity.sms.SmsFlashPromotionLog;
 import com.mallplus.marking.service.ISmsFlashPromotionLogService;
 import com.mallplus.common.utils.ValidatorUtils;
 import com.mallplus.common.annotation.SysLog;
@@ -36,7 +36,7 @@ public class SmsFlashPromotionLogController {
     @Resource
     private ISmsFlashPromotionLogService ISmsFlashPromotionLogService;
 
-    @SysLog(MODULE = "marking", REMARK = "根据条件查询所有限时购通知记录列表")
+    @SysLog(MODULE = "sms", REMARK = "根据条件查询所有限时购通知记录列表")
     @ApiOperation("根据条件查询所有限时购通知记录列表")
     @GetMapping(value = "/list")
     @PreAuthorize("hasAuthority('marking:SmsFlashPromotionLog:read')")
@@ -52,7 +52,7 @@ public class SmsFlashPromotionLogController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "保存限时购通知记录")
+    @SysLog(MODULE = "sms", REMARK = "保存限时购通知记录")
     @ApiOperation("保存限时购通知记录")
     @PostMapping(value = "/create")
     @PreAuthorize("hasAuthority('marking:SmsFlashPromotionLog:create')")
@@ -68,7 +68,7 @@ public class SmsFlashPromotionLogController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "更新限时购通知记录")
+    @SysLog(MODULE = "sms", REMARK = "更新限时购通知记录")
     @ApiOperation("更新限时购通知记录")
     @PostMapping(value = "/update/{id}")
     @PreAuthorize("hasAuthority('marking:SmsFlashPromotionLog:update')")
@@ -84,7 +84,7 @@ public class SmsFlashPromotionLogController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "删除限时购通知记录")
+    @SysLog(MODULE = "sms", REMARK = "删除限时购通知记录")
     @ApiOperation("删除限时购通知记录")
     @DeleteMapping(value = "/delete/{id}")
     @PreAuthorize("hasAuthority('marking:SmsFlashPromotionLog:delete')")
@@ -103,7 +103,7 @@ public class SmsFlashPromotionLogController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "给限时购通知记录分配限时购通知记录")
+    @SysLog(MODULE = "sms", REMARK = "给限时购通知记录分配限时购通知记录")
     @ApiOperation("查询限时购通知记录明细")
     @GetMapping(value = "/{id}")
     @PreAuthorize("hasAuthority('marking:SmsFlashPromotionLog:read')")

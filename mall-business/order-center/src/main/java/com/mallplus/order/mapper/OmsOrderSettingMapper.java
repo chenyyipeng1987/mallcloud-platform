@@ -1,6 +1,6 @@
 package com.mallplus.order.mapper;
 
-import com.mallplus.order.entity.OmsOrderSetting;
+import com.mallplus.common.entity.oms.OmsOrderSetting;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

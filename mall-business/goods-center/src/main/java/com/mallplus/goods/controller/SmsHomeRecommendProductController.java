@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mallplus.common.annotation.SysLog;
 import com.mallplus.common.utils.CommonResult;
 import com.mallplus.common.utils.ValidatorUtils;
-import com.mallplus.goods.entity.SmsHomeRecommendProduct;
+import com.mallplus.common.entity.pms.SmsHomeRecommendProduct;
 import com.mallplus.goods.service.ISmsHomeRecommendProductService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -33,7 +33,7 @@ public class SmsHomeRecommendProductController {
     @Resource
     private ISmsHomeRecommendProductService ISmsHomeRecommendProductService;
 
-    @SysLog(MODULE = "marking", REMARK = "根据条件查询所有人气推荐商品表列表")
+    @SysLog(MODULE = "sms", REMARK = "根据条件查询所有人气推荐商品表列表")
     @ApiOperation("根据条件查询所有人气推荐商品表列表")
     @GetMapping(value = "/list")
     @PreAuthorize("hasAuthority('marking:SmsHomeRecommendProduct:read')")
@@ -49,7 +49,7 @@ public class SmsHomeRecommendProductController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "保存人气推荐商品表")
+    @SysLog(MODULE = "sms", REMARK = "保存人气推荐商品表")
     @ApiOperation("保存人气推荐商品表")
     @PostMapping(value = "/create")
     @PreAuthorize("hasAuthority('marking:SmsHomeRecommendProduct:create')")
@@ -65,7 +65,7 @@ public class SmsHomeRecommendProductController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "更新人气推荐商品表")
+    @SysLog(MODULE = "sms", REMARK = "更新人气推荐商品表")
     @ApiOperation("更新人气推荐商品表")
     @PostMapping(value = "/update/{id}")
     @PreAuthorize("hasAuthority('marking:SmsHomeRecommendProduct:update')")
@@ -81,7 +81,7 @@ public class SmsHomeRecommendProductController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "删除人气推荐商品表")
+    @SysLog(MODULE = "sms", REMARK = "删除人气推荐商品表")
     @ApiOperation("删除人气推荐商品表")
     @DeleteMapping(value = "/delete/{id}")
     @PreAuthorize("hasAuthority('marking:SmsHomeRecommendProduct:delete')")
@@ -100,7 +100,7 @@ public class SmsHomeRecommendProductController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "给人气推荐商品表分配人气推荐商品表")
+    @SysLog(MODULE = "sms", REMARK = "给人气推荐商品表分配人气推荐商品表")
     @ApiOperation("查询人气推荐商品表明细")
     @GetMapping(value = "/{id}")
     @PreAuthorize("hasAuthority('marking:SmsHomeRecommendProduct:read')")

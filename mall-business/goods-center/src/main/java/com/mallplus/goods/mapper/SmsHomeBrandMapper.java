@@ -1,7 +1,7 @@
 package com.mallplus.goods.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.mallplus.goods.entity.SmsHomeBrand;
+import com.mallplus.common.entity.pms.SmsHomeBrand;
 
 /**
  * <p>

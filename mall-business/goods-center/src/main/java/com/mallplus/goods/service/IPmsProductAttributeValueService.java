@@ -1,6 +1,6 @@
 package com.mallplus.goods.service;
 
-import com.mallplus.goods.entity.PmsProductAttributeValue;
+import com.mallplus.common.entity.pms.PmsProductAttributeValue;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

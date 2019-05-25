@@ -1,6 +1,6 @@
 package com.mallplus.goods.service.impl;
 
-import com.mallplus.goods.entity.PmsProductVertifyRecord;
+import com.mallplus.common.entity.pms.PmsProductVertifyRecord;
 import com.mallplus.goods.mapper.PmsProductVertifyRecordMapper;
 import com.mallplus.goods.service.IPmsProductVertifyRecordService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

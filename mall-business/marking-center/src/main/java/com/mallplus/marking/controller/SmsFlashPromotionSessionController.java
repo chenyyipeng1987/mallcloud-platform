@@ -3,7 +3,7 @@ package com.mallplus.marking.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mallplus.common.annotation.SysLog;
-import com.mallplus.marking.entity.SmsFlashPromotionSession;
+import com.mallplus.common.entity.sms.SmsFlashPromotionSession;
 import com.mallplus.marking.service.ISmsFlashPromotionSessionService;
 import com.mallplus.marking.vo.SmsFlashPromotionSessionDetail;
 import com.mallplus.common.utils.CommonResult;
@@ -34,7 +34,7 @@ public class SmsFlashPromotionSessionController {
     @Resource
     private ISmsFlashPromotionSessionService ISmsFlashPromotionSessionService;
 
-    @SysLog(MODULE = "marking", REMARK = "根据条件查询所有限时购场次表列表")
+    @SysLog(MODULE = "sms", REMARK = "根据条件查询所有限时购场次表列表")
     @ApiOperation("根据条件查询所有限时购场次表列表")
     @GetMapping(value = "/list")
     @PreAuthorize("hasAuthority('marking:SmsFlashPromotionSession:read')")
@@ -50,7 +50,7 @@ public class SmsFlashPromotionSessionController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "保存限时购场次表")
+    @SysLog(MODULE = "sms", REMARK = "保存限时购场次表")
     @ApiOperation("保存限时购场次表")
     @PostMapping(value = "/create")
     @PreAuthorize("hasAuthority('marking:SmsFlashPromotionSession:create')")
@@ -66,7 +66,7 @@ public class SmsFlashPromotionSessionController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "更新限时购场次表")
+    @SysLog(MODULE = "sms", REMARK = "更新限时购场次表")
     @ApiOperation("更新限时购场次表")
     @PostMapping(value = "/update/{id}")
     @PreAuthorize("hasAuthority('marking:SmsFlashPromotionSession:update')")
@@ -82,7 +82,7 @@ public class SmsFlashPromotionSessionController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "删除限时购场次表")
+    @SysLog(MODULE = "sms", REMARK = "删除限时购场次表")
     @ApiOperation("删除限时购场次表")
     @DeleteMapping(value = "/delete/{id}")
     @PreAuthorize("hasAuthority('marking:SmsFlashPromotionSession:delete')")
@@ -101,7 +101,7 @@ public class SmsFlashPromotionSessionController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "给限时购场次表分配限时购场次表")
+    @SysLog(MODULE = "sms", REMARK = "给限时购场次表分配限时购场次表")
     @ApiOperation("查询限时购场次表明细")
     @GetMapping(value = "/{id}")
     @PreAuthorize("hasAuthority('marking:SmsFlashPromotionSession:read')")

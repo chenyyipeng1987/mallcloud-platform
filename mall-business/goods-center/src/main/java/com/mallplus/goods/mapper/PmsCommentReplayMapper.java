@@ -1,6 +1,6 @@
 package com.mallplus.goods.mapper;
 
-import com.mallplus.goods.entity.PmsCommentReplay;
+import com.mallplus.common.entity.pms.PmsCommentReplay;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

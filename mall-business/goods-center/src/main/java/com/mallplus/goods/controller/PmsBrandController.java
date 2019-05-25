@@ -3,7 +3,7 @@ package com.mallplus.goods.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mallplus.common.annotation.SysLog;
-import com.mallplus.goods.entity.PmsBrand;
+import com.mallplus.common.entity.pms.PmsBrand;
 import com.mallplus.goods.service.IPmsBrandService;
 import com.mallplus.common.utils.CommonResult;
 import com.mallplus.common.utils.ValidatorUtils;

@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.marking.mapper.SmsGroupMemberMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.marking.entity.SmsGroupMember">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.sms.SmsGroupMember">
         <id column="id" property="id" />
         <result column="group_id" property="groupId" />
         <result column="member_id" property="memberId" />

@@ -117,8 +117,8 @@ zuul:
       service-id: code-generator
       strip-prefix: true
     member:
-      path: /api-member/**
-      service-id: member-center
+      path: /api-ums/**
+      service-id: ums-center
       strip-prefix: true
       custom-sensitive-headers: true
     goods:
@@ -132,8 +132,8 @@ zuul:
       strip-prefix: true
       custom-sensitive-headers: true
     marking:
-      path: /api-marking/**
-      service-id: marking-center
+      path: /api-sms/**
+      service-id: sms-center
       strip-prefix: true
       custom-sensitive-headers: true
     cms:
@@ -162,4 +162,4 @@ swagger:
     api-docs-path:  v2/api-docs
     swagger-version: 2.0
     auto-generate-from-zuul-routes: true
-    generate-routes: user,file,goods-center,member-center,order-center,marking-center,cms-center
+    generate-routes: user,file,goods-center,ums-center,order-center,sms-center,cms-center

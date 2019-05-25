@@ -156,7 +156,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.permitAll()
 
 				.permitAll()
-				.antMatchers("/admin/login", "/admin/register","/api-member/api/applet/login_by_weixin","/api/applet/login_by_weixin")// 对登录注册要允许匿名访问
+				.antMatchers("/admin/login", "/admin/register","/api-ums/api/applet/login_by_weixin","/api/applet/login_by_weixin")// 对登录注册要允许匿名访问
 				.permitAll()
 				.antMatchers(HttpMethod.OPTIONS)
 				.permitAll()

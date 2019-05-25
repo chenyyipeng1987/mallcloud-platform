@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.member.mapper.UmsIntegrationConsumeSettingMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.member.entity.UmsIntegrationConsumeSetting">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.ums.UmsIntegrationConsumeSetting">
         <id column="id" property="id" />
         <result column="deduction_per_amount" property="deductionPerAmount" />
         <result column="max_percent_per_order" property="maxPercentPerOrder" />

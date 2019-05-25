@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.goods.mapper.SmsHomeNewProductMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.goods.entity.SmsHomeNewProduct">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.pms.SmsHomeNewProduct">
         <id column="id" property="id" />
         <result column="product_id" property="productId" />
         <result column="product_name" property="productName" />

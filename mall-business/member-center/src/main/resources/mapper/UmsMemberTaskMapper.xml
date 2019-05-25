@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.member.mapper.UmsMemberTaskMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.member.entity.UmsMemberTask">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.ums.UmsMemberTask">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="growth" property="growth" />

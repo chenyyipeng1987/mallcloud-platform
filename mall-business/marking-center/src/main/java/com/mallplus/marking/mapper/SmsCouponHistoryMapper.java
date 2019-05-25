@@ -1,8 +1,8 @@
 package com.mallplus.marking.mapper;
 
-import com.mallplus.marking.entity.SmsCouponHistory;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.mallplus.marking.vo.SmsCouponHistoryDetail;
+import com.mallplus.common.entity.sms.SmsCouponHistory;
+import com.mallplus.common.vo.SmsCouponHistoryDetail;
 
 import java.util.List;
 

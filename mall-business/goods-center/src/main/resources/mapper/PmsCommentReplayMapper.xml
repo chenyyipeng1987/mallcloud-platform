@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.goods.mapper.PmsCommentReplayMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.goods.entity.PmsCommentReplay">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.pms.PmsCommentReplay">
         <id column="id" property="id" />
         <result column="comment_id" property="commentId" />
         <result column="member_nick_name" property="memberNickName" />

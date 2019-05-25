@@ -3,7 +3,7 @@ package com.mallplus.marking.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mallplus.common.annotation.SysLog;
-import com.mallplus.marking.entity.SmsCoupon;
+import com.mallplus.common.entity.sms.SmsCoupon;
 import com.mallplus.marking.service.ISmsCouponService;
 import com.mallplus.marking.vo.SmsCouponParam;
 import com.mallplus.common.utils.CommonResult;
@@ -33,7 +33,7 @@ public class SmsCouponController {
     @Resource
     private ISmsCouponService ISmsCouponService;
 
-    @SysLog(MODULE = "marking", REMARK = "根据条件查询所有优惠卷表列表")
+    @SysLog(MODULE = "sms", REMARK = "根据条件查询所有优惠卷表列表")
     @ApiOperation("根据条件查询所有优惠卷表列表")
     @GetMapping(value = "/list")
     @PreAuthorize("hasAuthority('marking:SmsCoupon:read')")
@@ -49,7 +49,7 @@ public class SmsCouponController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "保存优惠卷表")
+    @SysLog(MODULE = "sms", REMARK = "保存优惠卷表")
     @ApiOperation("保存优惠卷表")
     @PostMapping(value = "/create")
     @PreAuthorize("hasAuthority('marking:SmsCoupon:create')")
@@ -65,7 +65,7 @@ public class SmsCouponController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "更新优惠卷表")
+    @SysLog(MODULE = "sms", REMARK = "更新优惠卷表")
     @ApiOperation("更新优惠卷表")
     @PostMapping(value = "/update/{id}")
     @PreAuthorize("hasAuthority('marking:SmsCoupon:update')")
@@ -81,7 +81,7 @@ public class SmsCouponController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "删除优惠卷表")
+    @SysLog(MODULE = "sms", REMARK = "删除优惠卷表")
     @ApiOperation("删除优惠卷表")
     @DeleteMapping(value = "/delete/{id}")
     @PreAuthorize("hasAuthority('marking:SmsCoupon:delete')")
@@ -100,7 +100,7 @@ public class SmsCouponController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "给优惠卷表分配优惠卷表")
+    @SysLog(MODULE = "sms", REMARK = "给优惠卷表分配优惠卷表")
     @ApiOperation("查询优惠卷表明细")
     @GetMapping(value = "/{id}")
     @PreAuthorize("hasAuthority('marking:SmsCoupon:read')")

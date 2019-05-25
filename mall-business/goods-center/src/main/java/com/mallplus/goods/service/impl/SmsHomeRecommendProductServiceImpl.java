@@ -2,7 +2,7 @@ package com.mallplus.goods.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.mallplus.goods.entity.SmsHomeRecommendProduct;
+import com.mallplus.common.entity.pms.SmsHomeRecommendProduct;
 import com.mallplus.goods.mapper.SmsHomeRecommendProductMapper;
 import com.mallplus.goods.service.ISmsHomeRecommendProductService;
 import org.springframework.stereotype.Service;

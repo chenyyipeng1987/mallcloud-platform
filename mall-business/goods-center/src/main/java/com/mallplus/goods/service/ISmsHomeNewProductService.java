@@ -2,7 +2,7 @@ package com.mallplus.goods.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.mallplus.goods.entity.SmsHomeNewProduct;
+import com.mallplus.common.entity.pms.SmsHomeNewProduct;
 
 import java.util.List;
 

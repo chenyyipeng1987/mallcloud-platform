@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.member.mapper.SysAreaMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.member.entity.SysArea">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.ums.SysArea">
         <result column="id" property="id" />
         <result column="pid" property="pid" />
         <result column="deep" property="deep" />

@@ -1,7 +1,7 @@
 package com.mallplus.order.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.mallplus.order.entity.UmsMemberReceiveAddress;
+import com.mallplus.common.entity.oms.UmsMemberReceiveAddress;
 
 
 /**

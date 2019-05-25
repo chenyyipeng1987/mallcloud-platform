@@ -1,8 +1,11 @@
 package com.mallplus.order.vo;
 
 
-import com.mallplus.common.model.PmsProduct;
-import com.mallplus.order.entity.UmsMemberReceiveAddress;
+import com.mallplus.common.entity.oms.UmsMemberReceiveAddress;
+import com.mallplus.common.entity.pms.PmsProduct;
+import com.mallplus.common.entity.ums.UmsIntegrationConsumeSetting;
+import com.mallplus.common.vo.CartPromotionItem;
+import com.mallplus.common.vo.SmsCouponHistoryDetail;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -15,19 +18,22 @@ import java.util.List;
 @Data
 public class ConfirmOrderResult {
 
+
     private UmsMemberReceiveAddress address;
     //包含优惠信息的购物车信息
     private List<CartPromotionItem> cartPromotionItemList;
     //用户收货地址列表
     private List<UmsMemberReceiveAddress> memberReceiveAddressList;
-
+    //用户可用优惠券列表
+    private List<SmsCouponHistoryDetail> couponHistoryDetailList;
+    //积分使用规则
+    private UmsIntegrationConsumeSetting integrationConsumeSetting;
     //会员持有的积分
     private Integer memberIntegration;
     //计算的金额
     private CalcAmount calcAmount;
     private PmsProduct goods;
     private GroupAndOrderVo groupAndOrderVo;
-
 
 
     public static class CalcAmount {

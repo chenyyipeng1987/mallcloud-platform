@@ -1,6 +1,6 @@
 package com.mallplus.cms.service;
 
-import com.mallplus.cms.entity.CmsPrefrenceArea;
+import com.mallplus.common.entity.cms.CmsPrefrenceArea;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

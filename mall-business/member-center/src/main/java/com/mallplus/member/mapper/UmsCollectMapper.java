@@ -1,6 +1,6 @@
 package com.mallplus.member.mapper;
 
-import com.mallplus.member.entity.UmsCollect;
+import com.mallplus.common.entity.ums.UmsCollect;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

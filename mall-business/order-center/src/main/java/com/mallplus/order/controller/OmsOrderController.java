@@ -8,7 +8,7 @@ import com.mallplus.common.annotation.SysLog;
 import com.mallplus.common.utils.CommonResult;
 import com.mallplus.common.utils.DateUtils;
 import com.mallplus.common.utils.ValidatorUtils;
-import com.mallplus.order.entity.OmsOrder;
+import com.mallplus.common.entity.oms.OmsOrder;
 import com.mallplus.order.service.IOmsOrderService;
 import com.mallplus.order.vo.*;
 import io.swagger.annotations.Api;

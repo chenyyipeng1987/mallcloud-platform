@@ -1,12 +1,11 @@
 package com.mallplus.goods.service.impl;
 
-import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.mallplus.common.model.PmsProduct;
+import com.mallplus.common.entity.pms.*;
+import com.mallplus.common.entity.pms.PmsProduct;
 import com.mallplus.common.redis.constant.RedisToolsConstant;
 import com.mallplus.common.redis.template.RedisRepository;
-import com.mallplus.goods.entity.*;
 import com.mallplus.goods.mapper.*;
 import com.mallplus.goods.service.*;
 import com.mallplus.goods.vo.PmsProductParam;

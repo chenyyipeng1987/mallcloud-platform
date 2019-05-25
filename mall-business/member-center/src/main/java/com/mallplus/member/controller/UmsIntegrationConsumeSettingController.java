@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiParam;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
-import com.mallplus.member.entity.UmsIntegrationConsumeSetting;
+import com.mallplus.common.entity.ums.UmsIntegrationConsumeSetting;
 import com.mallplus.member.service.IUmsIntegrationConsumeSettingService;
 import com.mallplus.common.utils.ValidatorUtils;
 import com.mallplus.common.annotation.SysLog;

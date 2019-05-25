@@ -1,7 +1,7 @@
 package com.mallplus.member.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.mallplus.member.entity.UmsGrowthChangeHistory;
+import com.mallplus.common.entity.ums.UmsGrowthChangeHistory;
 import com.mallplus.member.mapper.UmsGrowthChangeHistoryMapper;
 import com.mallplus.member.service.IUmsGrowthChangeHistoryService;
 import org.springframework.stereotype.Service;

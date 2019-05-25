@@ -7,7 +7,7 @@ import com.aliyuncs.dysmsapi.model.v20170525.SendSmsRequest;
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.http.MethodType;
-import com.mallplus.member.entity.Sms;
+import com.mallplus.common.entity.ums.Sms;
 import com.mallplus.member.mapper.SmsDao;
 import com.mallplus.member.service.SmsService;
 import lombok.extern.slf4j.Slf4j;

@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.member.mapper.UmsMemberMemberTagRelationMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.member.entity.UmsMemberMemberTagRelation">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.ums.UmsMemberMemberTagRelation">
         <id column="id" property="id" />
         <result column="member_id" property="memberId" />
         <result column="tag_id" property="tagId" />

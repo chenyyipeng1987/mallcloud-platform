@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.marking.mapper.SmsUserRedPacketMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.marking.entity.SmsUserRedPacket">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.sms.SmsUserRedPacket">
         <id column="id" property="id" />
         <result column="red_packet_id" property="redPacketId" />
         <result column="admin_id" property="adminId" />

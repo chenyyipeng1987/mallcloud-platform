@@ -42,7 +42,7 @@ public class GroupAndOrderVo  {
 
     @TableField("order_id")
     private Long orderId;
-    private String type ; // 0 下单 1 拼团 2 发起拼团
+
 
     //收货地址id
     private Long addressId;
@@ -58,6 +58,18 @@ public class GroupAndOrderVo  {
 
     private String wxid;
 
-    private Long userId;
     private String username;
+
+    String platform = "2";
+
+    //优惠券id
+    private Long couponId;
+    //使用的积分数
+    private Integer useIntegration;
+
+    private Integer offline;// 0 送货 1 自取
+    private String content;
+    private String cartId;
+    private String cartIds;
+    private String type; // 1 商品详情 2 勾选购物车 3全部购物车的商品
 }

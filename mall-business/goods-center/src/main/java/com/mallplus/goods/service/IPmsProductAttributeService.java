@@ -1,7 +1,7 @@
 package com.mallplus.goods.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.mallplus.goods.entity.PmsProductAttribute;
+import com.mallplus.common.entity.pms.PmsProductAttribute;
 import com.mallplus.goods.vo.ProductAttrInfo;
 
 import java.util.List;

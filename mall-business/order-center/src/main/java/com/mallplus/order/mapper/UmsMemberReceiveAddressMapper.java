@@ -2,7 +2,7 @@ package com.mallplus.order.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.mallplus.order.entity.UmsMemberReceiveAddress;
+import com.mallplus.common.entity.oms.UmsMemberReceiveAddress;
 
 /**
  * <p>

@@ -1,6 +1,6 @@
 package com.mallplus.marking.service.impl;
 
-import com.mallplus.marking.entity.SmsCouponHistory;
+import com.mallplus.common.entity.sms.SmsCouponHistory;
 import com.mallplus.marking.mapper.SmsCouponHistoryMapper;
 import com.mallplus.marking.service.ISmsCouponHistoryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

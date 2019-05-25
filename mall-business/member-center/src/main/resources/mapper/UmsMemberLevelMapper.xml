@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.member.mapper.UmsMemberLevelMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.member.entity.UmsMemberLevel">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.ums.UmsMemberLevel">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="growth_point" property="growthPoint" />

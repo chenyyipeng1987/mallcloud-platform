@@ -1,6 +1,6 @@
 package com.mallplus.goods.service.impl;
 
-import com.mallplus.goods.entity.PmsProductLadder;
+import com.mallplus.common.entity.pms.PmsProductLadder;
 import com.mallplus.goods.mapper.PmsProductLadderMapper;
 import com.mallplus.goods.service.IPmsProductLadderService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

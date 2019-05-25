@@ -3,7 +3,7 @@ package com.mallplus.goods.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mallplus.common.annotation.SysLog;
-import com.mallplus.goods.entity.SmsHomeBrand;
+import com.mallplus.common.entity.pms.SmsHomeBrand;
 import com.mallplus.goods.service.ISmsHomeBrandService;
 import com.mallplus.common.utils.CommonResult;
 import com.mallplus.common.utils.ValidatorUtils;
@@ -33,7 +33,7 @@ public class SmsHomeBrandController {
     @Resource
     private ISmsHomeBrandService ISmsHomeBrandService;
 
-    @SysLog(MODULE = "marking", REMARK = "根据条件查询所有首页推荐品牌表列表")
+    @SysLog(MODULE = "sms", REMARK = "根据条件查询所有首页推荐品牌表列表")
     @ApiOperation("根据条件查询所有首页推荐品牌表列表")
     @GetMapping(value = "/list")
     @PreAuthorize("hasAuthority('marking:SmsHomeBrand:read')")
@@ -49,7 +49,7 @@ public class SmsHomeBrandController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "保存首页推荐品牌表")
+    @SysLog(MODULE = "sms", REMARK = "保存首页推荐品牌表")
     @ApiOperation("保存首页推荐品牌表")
     @PostMapping(value = "/create")
     @PreAuthorize("hasAuthority('marking:SmsHomeBrand:create')")
@@ -65,7 +65,7 @@ public class SmsHomeBrandController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "更新首页推荐品牌表")
+    @SysLog(MODULE = "sms", REMARK = "更新首页推荐品牌表")
     @ApiOperation("更新首页推荐品牌表")
     @PostMapping(value = "/update/{id}")
     @PreAuthorize("hasAuthority('marking:SmsHomeBrand:update')")
@@ -81,7 +81,7 @@ public class SmsHomeBrandController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "删除首页推荐品牌表")
+    @SysLog(MODULE = "sms", REMARK = "删除首页推荐品牌表")
     @ApiOperation("删除首页推荐品牌表")
     @DeleteMapping(value = "/delete/{id}")
     @PreAuthorize("hasAuthority('marking:SmsHomeBrand:delete')")
@@ -100,7 +100,7 @@ public class SmsHomeBrandController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "给首页推荐品牌表分配首页推荐品牌表")
+    @SysLog(MODULE = "sms", REMARK = "给首页推荐品牌表分配首页推荐品牌表")
     @ApiOperation("查询首页推荐品牌表明细")
     @GetMapping(value = "/{id}")
     @PreAuthorize("hasAuthority('marking:SmsHomeBrand:read')")

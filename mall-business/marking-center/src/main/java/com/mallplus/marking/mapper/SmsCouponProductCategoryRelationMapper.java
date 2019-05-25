@@ -1,6 +1,6 @@
 package com.mallplus.marking.mapper;
 
-import com.mallplus.marking.entity.SmsCouponProductCategoryRelation;
+import com.mallplus.common.entity.sms.SmsCouponProductCategoryRelation;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

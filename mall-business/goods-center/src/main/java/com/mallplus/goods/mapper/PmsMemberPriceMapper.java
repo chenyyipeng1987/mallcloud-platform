@@ -1,6 +1,6 @@
 package com.mallplus.goods.mapper;
 
-import com.mallplus.goods.entity.PmsMemberPrice;
+import com.mallplus.common.entity.pms.PmsMemberPrice;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

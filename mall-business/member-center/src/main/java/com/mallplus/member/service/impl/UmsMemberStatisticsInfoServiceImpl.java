@@ -1,7 +1,7 @@
 package com.mallplus.member.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.mallplus.member.entity.UmsMemberStatisticsInfo;
+import com.mallplus.common.entity.ums.UmsMemberStatisticsInfo;
 import com.mallplus.member.mapper.UmsMemberStatisticsInfoMapper;
 import com.mallplus.member.service.IUmsMemberStatisticsInfoService;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 package com.mallplus.cms.service.impl;
 
-import com.mallplus.cms.entity.CmsEmployInfo;
+import com.mallplus.common.entity.cms.CmsEmployInfo;
 import com.mallplus.cms.mapper.CmsEmployInfoMapper;
 import com.mallplus.cms.service.ICmsEmployInfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

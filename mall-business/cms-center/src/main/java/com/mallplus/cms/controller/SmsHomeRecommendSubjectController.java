@@ -3,7 +3,7 @@ package com.mallplus.cms.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mallplus.common.annotation.SysLog;
-import com.mallplus.cms.entity.SmsHomeRecommendSubject;
+import com.mallplus.common.entity.cms.SmsHomeRecommendSubject;
 
 import com.mallplus.cms.service.ISmsHomeRecommendSubjectService;
 import com.mallplus.common.utils.CommonResult;
@@ -34,7 +34,7 @@ public class SmsHomeRecommendSubjectController {
     @Resource
     private ISmsHomeRecommendSubjectService ISmsHomeRecommendSubjectService;
 
-    @SysLog(MODULE = "marking", REMARK = "根据条件查询所有首页推荐专题表列表")
+    @SysLog(MODULE = "sms", REMARK = "根据条件查询所有首页推荐专题表列表")
     @ApiOperation("根据条件查询所有首页推荐专题表列表")
     @GetMapping(value = "/list")
     @PreAuthorize("hasAuthority('marking:SmsHomeRecommendSubject:read')")
@@ -50,7 +50,7 @@ public class SmsHomeRecommendSubjectController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "保存首页推荐专题表")
+    @SysLog(MODULE = "sms", REMARK = "保存首页推荐专题表")
     @ApiOperation("保存首页推荐专题表")
     @PostMapping(value = "/create")
     @PreAuthorize("hasAuthority('marking:SmsHomeRecommendSubject:create')")
@@ -66,7 +66,7 @@ public class SmsHomeRecommendSubjectController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "更新首页推荐专题表")
+    @SysLog(MODULE = "sms", REMARK = "更新首页推荐专题表")
     @ApiOperation("更新首页推荐专题表")
     @PostMapping(value = "/update/{id}")
     @PreAuthorize("hasAuthority('marking:SmsHomeRecommendSubject:update')")
@@ -82,7 +82,7 @@ public class SmsHomeRecommendSubjectController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "删除首页推荐专题表")
+    @SysLog(MODULE = "sms", REMARK = "删除首页推荐专题表")
     @ApiOperation("删除首页推荐专题表")
     @DeleteMapping(value = "/delete/{id}")
     @PreAuthorize("hasAuthority('marking:SmsHomeRecommendSubject:delete')")
@@ -101,7 +101,7 @@ public class SmsHomeRecommendSubjectController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "给首页推荐专题表分配首页推荐专题表")
+    @SysLog(MODULE = "sms", REMARK = "给首页推荐专题表分配首页推荐专题表")
     @ApiOperation("查询首页推荐专题表明细")
     @GetMapping(value = "/{id}")
     @PreAuthorize("hasAuthority('marking:SmsHomeRecommendSubject:read')")

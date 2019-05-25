@@ -1,6 +1,6 @@
 package com.mallplus.order.service;
 
-import com.mallplus.order.entity.OmsOrderReturnReason;
+import com.mallplus.common.entity.oms.OmsOrderReturnReason;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;

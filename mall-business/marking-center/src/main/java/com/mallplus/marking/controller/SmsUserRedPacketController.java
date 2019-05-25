@@ -3,7 +3,7 @@ package com.mallplus.marking.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mallplus.common.annotation.SysLog;
-import com.mallplus.marking.entity.SmsUserRedPacket;
+import com.mallplus.common.entity.sms.SmsUserRedPacket;
 import com.mallplus.marking.service.ISmsUserRedPacketService;
 import com.mallplus.common.utils.CommonResult;
 import com.mallplus.common.utils.ValidatorUtils;
@@ -33,7 +33,7 @@ public class SmsUserRedPacketController {
     @Resource
     private ISmsUserRedPacketService ISmsUserRedPacketService;
 
-    @SysLog(MODULE = "marking", REMARK = "根据条件查询所有用户红包列表")
+    @SysLog(MODULE = "sms", REMARK = "根据条件查询所有用户红包列表")
     @ApiOperation("根据条件查询所有用户红包列表")
     @GetMapping(value = "/list")
     @PreAuthorize("hasAuthority('marking:SmsUserRedPacket:read')")
@@ -49,7 +49,7 @@ public class SmsUserRedPacketController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "保存用户红包")
+    @SysLog(MODULE = "sms", REMARK = "保存用户红包")
     @ApiOperation("保存用户红包")
     @PostMapping(value = "/create")
     @PreAuthorize("hasAuthority('marking:SmsUserRedPacket:create')")
@@ -65,7 +65,7 @@ public class SmsUserRedPacketController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "更新用户红包")
+    @SysLog(MODULE = "sms", REMARK = "更新用户红包")
     @ApiOperation("更新用户红包")
     @PostMapping(value = "/update/{id}")
     @PreAuthorize("hasAuthority('marking:SmsUserRedPacket:update')")
@@ -81,7 +81,7 @@ public class SmsUserRedPacketController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "删除用户红包")
+    @SysLog(MODULE = "sms", REMARK = "删除用户红包")
     @ApiOperation("删除用户红包")
     @DeleteMapping(value = "/delete/{id}")
     @PreAuthorize("hasAuthority('marking:SmsUserRedPacket:delete')")
@@ -100,7 +100,7 @@ public class SmsUserRedPacketController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "给用户红包分配用户红包")
+    @SysLog(MODULE = "sms", REMARK = "给用户红包分配用户红包")
     @ApiOperation("查询用户红包明细")
     @GetMapping(value = "/{id}")
     @PreAuthorize("hasAuthority('marking:SmsUserRedPacket:read')")

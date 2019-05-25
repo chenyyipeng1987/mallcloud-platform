@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.cms.mapper.CmsParterMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.cms.entity.CmsParter">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.cms.CmsParter">
         <id column="id" property="id" />
         <result column="companyname" property="companyname" />
         <result column="name" property="name" />

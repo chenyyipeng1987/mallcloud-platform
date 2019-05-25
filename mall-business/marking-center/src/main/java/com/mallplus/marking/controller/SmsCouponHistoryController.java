@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiParam;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
-import com.mallplus.marking.entity.SmsCouponHistory;
+import com.mallplus.common.entity.sms.SmsCouponHistory;
 import com.mallplus.marking.service.ISmsCouponHistoryService;
 import com.mallplus.common.utils.ValidatorUtils;
 import com.mallplus.common.annotation.SysLog;
@@ -36,7 +36,7 @@ public class SmsCouponHistoryController {
     @Resource
     private ISmsCouponHistoryService ISmsCouponHistoryService;
 
-    @SysLog(MODULE = "marking", REMARK = "根据条件查询所有优惠券使用、领取历史表列表")
+    @SysLog(MODULE = "sms", REMARK = "根据条件查询所有优惠券使用、领取历史表列表")
     @ApiOperation("根据条件查询所有优惠券使用、领取历史表列表")
     @GetMapping(value = "/list")
     @PreAuthorize("hasAuthority('marking:SmsCouponHistory:read')")
@@ -52,7 +52,7 @@ public class SmsCouponHistoryController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "保存优惠券使用、领取历史表")
+    @SysLog(MODULE = "sms", REMARK = "保存优惠券使用、领取历史表")
     @ApiOperation("保存优惠券使用、领取历史表")
     @PostMapping(value = "/create")
     @PreAuthorize("hasAuthority('marking:SmsCouponHistory:create')")
@@ -68,7 +68,7 @@ public class SmsCouponHistoryController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "更新优惠券使用、领取历史表")
+    @SysLog(MODULE = "sms", REMARK = "更新优惠券使用、领取历史表")
     @ApiOperation("更新优惠券使用、领取历史表")
     @PostMapping(value = "/update/{id}")
     @PreAuthorize("hasAuthority('marking:SmsCouponHistory:update')")
@@ -84,7 +84,7 @@ public class SmsCouponHistoryController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "删除优惠券使用、领取历史表")
+    @SysLog(MODULE = "sms", REMARK = "删除优惠券使用、领取历史表")
     @ApiOperation("删除优惠券使用、领取历史表")
     @DeleteMapping(value = "/delete/{id}")
     @PreAuthorize("hasAuthority('marking:SmsCouponHistory:delete')")
@@ -103,7 +103,7 @@ public class SmsCouponHistoryController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "给优惠券使用、领取历史表分配优惠券使用、领取历史表")
+    @SysLog(MODULE = "sms", REMARK = "给优惠券使用、领取历史表分配优惠券使用、领取历史表")
     @ApiOperation("查询优惠券使用、领取历史表明细")
     @GetMapping(value = "/{id}")
     @PreAuthorize("hasAuthority('marking:SmsCouponHistory:read')")

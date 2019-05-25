@@ -1,6 +1,6 @@
 package com.mallplus.goods.mapper;
 
-import com.mallplus.goods.entity.PmsProductVertifyRecord;
+import com.mallplus.common.entity.pms.PmsProductVertifyRecord;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

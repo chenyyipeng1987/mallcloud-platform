@@ -1,7 +1,7 @@
 package com.mallplus.marking.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.mallplus.marking.entity.SmsHomeAdvertise;
+import com.mallplus.common.entity.sms.SmsHomeAdvertise;
 
 /**
  * <p>

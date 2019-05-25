@@ -1,10 +1,10 @@
 package com.mallplus.goods.vo;
 
 
-import com.mallplus.common.model.PmsProduct;
-import com.mallplus.goods.entity.PmsProductFullReduction;
-import com.mallplus.goods.entity.PmsProductLadder;
-import com.mallplus.goods.entity.PmsSkuStock;
+import com.mallplus.common.entity.pms.PmsProduct;
+import com.mallplus.common.entity.pms.PmsProductFullReduction;
+import com.mallplus.common.entity.pms.PmsProductLadder;
+import com.mallplus.common.entity.pms.PmsSkuStock;
 
 import java.util.List;
 

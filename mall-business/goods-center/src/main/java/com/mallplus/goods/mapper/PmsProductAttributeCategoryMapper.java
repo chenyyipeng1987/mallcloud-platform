@@ -1,6 +1,6 @@
 package com.mallplus.goods.mapper;
 
-import com.mallplus.goods.entity.PmsProductAttributeCategory;
+import com.mallplus.common.entity.pms.PmsProductAttributeCategory;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mallplus.goods.vo.PmsProductAttributeCategoryItem;
 

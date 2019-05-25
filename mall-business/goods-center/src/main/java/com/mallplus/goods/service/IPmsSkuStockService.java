@@ -1,6 +1,6 @@
 package com.mallplus.goods.service;
 
-import com.mallplus.goods.entity.PmsSkuStock;
+import com.mallplus.common.entity.pms.PmsSkuStock;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;

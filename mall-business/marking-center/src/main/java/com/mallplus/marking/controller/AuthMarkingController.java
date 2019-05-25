@@ -2,6 +2,8 @@ package com.mallplus.marking.controller;
 
 import com.mallplus.common.annotation.SysLog;
 import com.mallplus.common.utils.CommonResult;
+import com.mallplus.common.vo.CartPromotionItem;
+import com.mallplus.common.vo.SmsCouponHistoryDetail;
 import com.mallplus.marking.service.ISmsCouponService;
 import com.mallplus.marking.service.ISmsHomeAdvertiseService;
 import com.mallplus.marking.service.ISmsRedPacketService;
@@ -9,9 +11,13 @@ import com.mallplus.marking.service.ISmsUserRedPacketService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -47,4 +53,11 @@ public class AuthMarkingController {
             return new CommonResult().failed("你已经领取此红包");
         }
     }
+
+
+    @RequestMapping(value = "/listCart", method = RequestMethod.GET)
+    List<SmsCouponHistoryDetail> listCart(List<CartPromotionItem> cartItemList, Integer type,Long memberId){
+        return couponService.listCart(cartItemList,type,memberId);
+    }
+
 }

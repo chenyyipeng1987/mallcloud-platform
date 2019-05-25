@@ -1,6 +1,6 @@
 package com.mallplus.goods.mapper;
 
-import com.mallplus.goods.entity.PmsFeightTemplate;
+import com.mallplus.common.entity.pms.PmsFeightTemplate;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

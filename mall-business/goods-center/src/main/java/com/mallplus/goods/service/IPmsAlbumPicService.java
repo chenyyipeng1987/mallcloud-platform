@@ -1,6 +1,6 @@
 package com.mallplus.goods.service;
 
-import com.mallplus.goods.entity.PmsAlbumPic;
+import com.mallplus.common.entity.pms.PmsAlbumPic;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

@@ -3,7 +3,7 @@ package com.mallplus.member.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mallplus.common.annotation.SysLog;
-import com.mallplus.member.entity.UmsMemberTask;
+import com.mallplus.common.entity.ums.UmsMemberTask;
 import com.mallplus.member.service.IUmsMemberTaskService;
 import com.mallplus.common.utils.CommonResult;
 import com.mallplus.common.utils.ValidatorUtils;

@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.member.mapper.UmsMemberBlanceLogMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.member.entity.UmsMemberBlanceLog">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.ums.UmsMemberBlanceLog">
         <id column="id" property="id" />
         <result column="member_id" property="memberId" />
         <result column="price" property="price" />

@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mallplus.common.annotation.SysLog;
 import com.mallplus.common.utils.CommonResult;
 import com.mallplus.common.utils.ValidatorUtils;
-import com.mallplus.member.entity.UmsGrowthChangeHistory;
+import com.mallplus.common.entity.ums.UmsGrowthChangeHistory;
 import com.mallplus.member.service.IUmsGrowthChangeHistoryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

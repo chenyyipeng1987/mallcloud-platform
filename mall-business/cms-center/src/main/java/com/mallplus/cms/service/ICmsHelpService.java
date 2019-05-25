@@ -1,6 +1,6 @@
 package com.mallplus.cms.service;
 
-import com.mallplus.cms.entity.CmsHelp;
+import com.mallplus.common.entity.cms.CmsHelp;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

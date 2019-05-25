@@ -1,8 +1,9 @@
 package com.mallplus.common.feign;
 
 import com.mallplus.common.constant.ServiceNameConstants;
+import com.mallplus.common.entity.ums.UmsIntegrationConsumeSetting;
 import com.mallplus.common.feign.fallback.MemberFeignClientFallbackFactory;
-import com.mallplus.common.model.UmsMember;
+import com.mallplus.common.entity.ums.UmsMember;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,4 +37,7 @@ public interface MemberFeignClient {
     UmsMember findByMobile(@RequestParam("mobile") String mobile);
 
 
+    void updateIntegration(Long id, int i);
+
+    UmsIntegrationConsumeSetting selectIntegrationConsumeSettingById(long l);
 }

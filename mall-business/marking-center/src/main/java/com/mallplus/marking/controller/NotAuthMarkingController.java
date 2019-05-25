@@ -5,9 +5,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mallplus.common.annotation.IgnoreAuth;
 import com.mallplus.common.annotation.SysLog;
 import com.mallplus.common.utils.CommonResult;
-import com.mallplus.marking.entity.SmsHomeAdvertise;
-import com.mallplus.marking.entity.SmsRedPacket;
-import com.mallplus.marking.entity.SmsUserRedPacket;
+import com.mallplus.common.entity.sms.SmsHomeAdvertise;
+import com.mallplus.common.entity.sms.SmsRedPacket;
+import com.mallplus.common.entity.sms.SmsUserRedPacket;
 import com.mallplus.marking.service.ISmsCouponService;
 import com.mallplus.marking.service.ISmsRedPacketService;
 import com.mallplus.marking.service.ISmsUserRedPacketService;
@@ -45,7 +45,7 @@ public class NotAuthMarkingController {
     @Resource
     private ISmsHomeAdvertiseService ISmsHomeAdvertiseService;
 
-    @SysLog(MODULE = "marking", REMARK = "根据条件查询所有首页轮播广告表列表")
+    @SysLog(MODULE = "sms", REMARK = "根据条件查询所有首页轮播广告表列表")
     @ApiOperation("根据条件查询所有首页轮播广告表列表")
     @GetMapping(value = "/adv/list")
     public Object getSmsHomeAdvertiseByPage(SmsHomeAdvertise entity,
@@ -61,7 +61,7 @@ public class NotAuthMarkingController {
     }
 
     @IgnoreAuth
-    @SysLog(MODULE = "marking", REMARK = "根据条件查询所有红包列表")
+    @SysLog(MODULE = "sms", REMARK = "根据条件查询所有红包列表")
     @ApiOperation("根据条件查询所有红包列表")
     @GetMapping(value = "/redPacket/list")
     public Object getSmsRedPacketByPage(SmsRedPacket entity) {
@@ -88,7 +88,7 @@ public class NotAuthMarkingController {
         return new CommonResult().failed();
     }
     @IgnoreAuth
-    @SysLog(MODULE = "marking", REMARK = "根据条件查询所有红包列表")
+    @SysLog(MODULE = "sms", REMARK = "根据条件查询所有红包列表")
     @ApiOperation("根据条件查询所有红包列表")
     @GetMapping(value = "/coupon/list")
     public Object getCouponByPage(SmsRedPacket entity) {
@@ -99,7 +99,7 @@ public class NotAuthMarkingController {
         }
         return new CommonResult().failed();
     }
-    @SysLog(MODULE = "marking", REMARK = "根据条件查询所有导航栏列表")
+    @SysLog(MODULE = "sms", REMARK = "根据条件查询所有导航栏列表")
     @ApiOperation("根据条件查询所有导航栏列表")
     @GetMapping(value = "/nav/list")
     public Object getNavByPage(SmsRedPacket entity) {

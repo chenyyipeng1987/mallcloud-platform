@@ -1,6 +1,6 @@
 package com.mallplus.cms.service;
 
-import com.mallplus.cms.entity.CmsSubject;
+import com.mallplus.common.entity.cms.CmsSubject;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;

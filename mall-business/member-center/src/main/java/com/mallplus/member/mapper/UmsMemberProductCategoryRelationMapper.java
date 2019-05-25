@@ -1,6 +1,6 @@
 package com.mallplus.member.mapper;
 
-import com.mallplus.member.entity.UmsMemberProductCategoryRelation;
+import com.mallplus.common.entity.ums.UmsMemberProductCategoryRelation;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

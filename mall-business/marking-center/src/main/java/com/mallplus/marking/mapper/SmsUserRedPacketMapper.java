@@ -1,7 +1,7 @@
 package com.mallplus.marking.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.mallplus.marking.entity.SmsUserRedPacket;
+import com.mallplus.common.entity.sms.SmsUserRedPacket;
 import org.apache.ibatis.annotations.Param;
 
 /**

@@ -1,6 +1,6 @@
 package com.mallplus.order.service.impl;
 
-import com.mallplus.order.entity.OmsCompanyAddress;
+import com.mallplus.common.entity.oms.OmsCompanyAddress;
 import com.mallplus.order.mapper.OmsCompanyAddressMapper;
 import com.mallplus.order.service.IOmsCompanyAddressService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

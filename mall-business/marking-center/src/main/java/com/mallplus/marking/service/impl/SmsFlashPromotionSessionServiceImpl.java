@@ -2,7 +2,7 @@ package com.mallplus.marking.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.mallplus.marking.entity.SmsFlashPromotionSession;
+import com.mallplus.common.entity.sms.SmsFlashPromotionSession;
 import com.mallplus.marking.mapper.SmsFlashPromotionSessionMapper;
 import com.mallplus.marking.service.ISmsFlashPromotionProductRelationService;
 import com.mallplus.marking.service.ISmsFlashPromotionSessionService;

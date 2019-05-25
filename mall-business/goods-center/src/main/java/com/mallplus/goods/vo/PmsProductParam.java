@@ -1,10 +1,8 @@
 package com.mallplus.goods.vo;
 
 
-import com.mallplus.common.model.PmsProduct;
-import com.mallplus.goods.entity.CmsPrefrenceAreaProductRelation;
-import com.mallplus.goods.entity.CmsSubjectProductRelation;
-import com.mallplus.goods.entity.*;
+import com.mallplus.common.entity.pms.*;
+import com.mallplus.common.entity.pms.PmsProduct;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.util.List;

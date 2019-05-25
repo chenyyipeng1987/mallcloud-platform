@@ -1,7 +1,7 @@
 package com.mallplus.common.feign.fallback;
 
 import com.mallplus.common.feign.MemberFeignClient;
-import com.mallplus.common.model.UmsMember;
+import com.mallplus.common.entity.ums.UmsMember;
 import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

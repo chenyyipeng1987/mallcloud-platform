@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.goods.mapper.PmsBrandMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.goods.entity.PmsBrand">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.pms.PmsBrand">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="first_letter" property="firstLetter" />

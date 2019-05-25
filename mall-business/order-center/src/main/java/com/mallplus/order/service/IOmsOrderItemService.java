@@ -1,6 +1,6 @@
 package com.mallplus.order.service;
 
-import com.mallplus.order.entity.OmsOrderItem;
+import com.mallplus.common.entity.oms.OmsOrderItem;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.cms.mapper.SmsHomeRecommendSubjectMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.cms.entity.SmsHomeRecommendSubject">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.cms.SmsHomeRecommendSubject">
         <id column="id" property="id" />
         <result column="subject_id" property="subjectId" />
         <result column="subject_name" property="subjectName" />

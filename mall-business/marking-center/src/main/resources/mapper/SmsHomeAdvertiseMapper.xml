@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.marking.mapper.SmsHomeAdvertiseMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.marking.entity.SmsHomeAdvertise">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.sms.SmsHomeAdvertise">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="type" property="type" />

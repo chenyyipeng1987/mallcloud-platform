@@ -1,7 +1,7 @@
 package com.mallplus.member.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.mallplus.member.entity.UmsCollect;
+import com.mallplus.common.entity.ums.UmsCollect;
 import com.mallplus.member.mapper.UmsCollectMapper;
 import com.mallplus.member.service.IUmsCollectService;
 import org.springframework.stereotype.Service;

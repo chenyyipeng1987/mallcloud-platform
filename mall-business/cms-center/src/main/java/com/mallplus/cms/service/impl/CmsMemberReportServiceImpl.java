@@ -1,6 +1,6 @@
 package com.mallplus.cms.service.impl;
 
-import com.mallplus.cms.entity.CmsMemberReport;
+import com.mallplus.common.entity.cms.CmsMemberReport;
 import com.mallplus.cms.mapper.CmsMemberReportMapper;
 import com.mallplus.cms.service.ICmsMemberReportService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

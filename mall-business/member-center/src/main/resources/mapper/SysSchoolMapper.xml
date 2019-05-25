@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.member.mapper.SysSchoolMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.member.entity.SysSchool">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.ums.SysSchool">
         <id column="id" property="id" />
         <result column="longitude" property="longitude" />
         <result column="latitude" property="latitude" />

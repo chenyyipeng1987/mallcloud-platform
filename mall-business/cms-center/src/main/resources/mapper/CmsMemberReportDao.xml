@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.cms.mapper.CmsMemberReportMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.cms.entity.CmsMemberReport">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.cms.CmsMemberReport">
         <result column="id" property="id" />
         <result column="report_type" property="reportType" />
         <result column="report_member_name" property="reportMemberName" />

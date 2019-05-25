@@ -1,6 +1,6 @@
 package com.mallplus.goods.service.impl;
 
-import com.mallplus.goods.entity.PmsFeightTemplate;
+import com.mallplus.common.entity.pms.PmsFeightTemplate;
 import com.mallplus.goods.mapper.PmsFeightTemplateMapper;
 import com.mallplus.goods.service.IPmsFeightTemplateService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

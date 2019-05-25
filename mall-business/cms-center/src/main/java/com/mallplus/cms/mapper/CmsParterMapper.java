@@ -1,6 +1,6 @@
 package com.mallplus.cms.mapper;
 
-import com.mallplus.cms.entity.CmsParter;
+import com.mallplus.common.entity.cms.CmsParter;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

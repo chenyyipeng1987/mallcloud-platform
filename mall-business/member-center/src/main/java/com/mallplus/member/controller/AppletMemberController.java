@@ -3,7 +3,7 @@ package com.mallplus.member.controller;
 
 import com.mallplus.common.annotation.IgnoreAuth;
 import com.mallplus.common.annotation.SysLog;
-import com.mallplus.common.model.UmsMember;
+import com.mallplus.common.entity.ums.UmsMember;
 import com.mallplus.common.utils.CommonResult;
 import com.mallplus.common.vo.TArticleDO;
 import com.mallplus.member.service.IUmsMemberService;

@@ -1,6 +1,6 @@
 package com.mallplus.goods.service.impl;
 
-import com.mallplus.goods.entity.PmsProductAttributeCategory;
+import com.mallplus.common.entity.pms.PmsProductAttributeCategory;
 import com.mallplus.goods.mapper.PmsProductAttributeCategoryMapper;
 import com.mallplus.goods.service.IPmsProductAttributeCategoryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

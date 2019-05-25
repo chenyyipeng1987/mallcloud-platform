@@ -8,7 +8,7 @@ spring:
 mybatis-plus:
   mapper-locations: classpath:/mapper/*.xml
   #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: com.mallplus.member.entity
+  typeAliasesPackage: com.mallplus.ums.entity
   global-config:
     db-config:
       id-type: auto
@@ -19,7 +19,7 @@ mall:
     title: 会员中心
     description: 会员中心接口文档
     version: 1.0
-    base-package: com.mallplus.member.controller
+    base-package: com.mallplus.ums.controller
   cache-manager:
     configs:
       - key: menu

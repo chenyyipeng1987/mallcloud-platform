@@ -1,7 +1,7 @@
 package com.mallplus.goods.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.mallplus.goods.entity.CmsSubjectProductRelation;
+import com.mallplus.common.entity.pms.CmsSubjectProductRelation;
 import com.mallplus.goods.mapper.CmsSubjectProductRelationMapper;
 import com.mallplus.goods.service.ICmsSubjectProductRelationService;
 import org.springframework.stereotype.Service;

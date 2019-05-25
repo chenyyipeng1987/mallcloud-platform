@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.goods.mapper.PmsFeightTemplateMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.goods.entity.PmsFeightTemplate">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.pms.PmsFeightTemplate">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="charge_type" property="chargeType" />

@@ -3,7 +3,7 @@ package com.mallplus.cms.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mallplus.common.annotation.SysLog;
-import com.mallplus.cms.entity.CmsHelpCategory;
+import com.mallplus.common.entity.cms.CmsHelpCategory;
 import com.mallplus.cms.service.ICmsHelpCategoryService;
 import com.mallplus.common.utils.CommonResult;
 import com.mallplus.common.utils.ValidatorUtils;

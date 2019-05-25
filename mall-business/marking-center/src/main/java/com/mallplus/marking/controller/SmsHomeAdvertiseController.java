@@ -3,7 +3,7 @@ package com.mallplus.marking.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mallplus.common.annotation.SysLog;
-import com.mallplus.marking.entity.SmsHomeAdvertise;
+import com.mallplus.common.entity.sms.SmsHomeAdvertise;
 
 import com.mallplus.marking.service.ISmsHomeAdvertiseService;
 import com.mallplus.common.utils.CommonResult;
@@ -34,7 +34,7 @@ public class SmsHomeAdvertiseController {
     @Resource
     private ISmsHomeAdvertiseService ISmsHomeAdvertiseService;
 
-    @SysLog(MODULE = "marking", REMARK = "根据条件查询所有首页轮播广告表列表")
+    @SysLog(MODULE = "sms", REMARK = "根据条件查询所有首页轮播广告表列表")
     @ApiOperation("根据条件查询所有首页轮播广告表列表")
     @GetMapping(value = "/list")
     @PreAuthorize("hasAuthority('marking:SmsHomeAdvertise:read')")
@@ -50,7 +50,7 @@ public class SmsHomeAdvertiseController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "保存首页轮播广告表")
+    @SysLog(MODULE = "sms", REMARK = "保存首页轮播广告表")
     @ApiOperation("保存首页轮播广告表")
     @PostMapping(value = "/create")
     @PreAuthorize("hasAuthority('marking:SmsHomeAdvertise:create')")
@@ -68,7 +68,7 @@ public class SmsHomeAdvertiseController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "更新首页轮播广告表")
+    @SysLog(MODULE = "sms", REMARK = "更新首页轮播广告表")
     @ApiOperation("更新首页轮播广告表")
     @PostMapping(value = "/update/{id}")
     @PreAuthorize("hasAuthority('marking:SmsHomeAdvertise:update')")
@@ -84,7 +84,7 @@ public class SmsHomeAdvertiseController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "删除首页轮播广告表")
+    @SysLog(MODULE = "sms", REMARK = "删除首页轮播广告表")
     @ApiOperation("删除首页轮播广告表")
     @DeleteMapping(value = "/delete/{id}")
     @PreAuthorize("hasAuthority('marking:SmsHomeAdvertise:delete')")
@@ -103,7 +103,7 @@ public class SmsHomeAdvertiseController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "给首页轮播广告表分配首页轮播广告表")
+    @SysLog(MODULE = "sms", REMARK = "给首页轮播广告表分配首页轮播广告表")
     @ApiOperation("查询首页轮播广告表明细")
     @GetMapping(value = "/{id}")
     @PreAuthorize("hasAuthority('marking:SmsHomeAdvertise:read')")

@@ -1,7 +1,7 @@
 package com.mallplus.member.mapper;
 
 
-import com.mallplus.member.entity.Sms;
+import com.mallplus.common.entity.ums.Sms;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;

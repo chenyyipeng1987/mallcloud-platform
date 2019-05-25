@@ -5,21 +5,19 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mallplus.common.annotation.IgnoreAuth;
 import com.mallplus.common.annotation.SysLog;
-import com.mallplus.common.model.PmsProduct;
+import com.mallplus.common.entity.pms.*;
 import com.mallplus.common.redis.constant.RedisToolsConstant;
 import com.mallplus.common.redis.template.RedisRepository;
 import com.mallplus.common.utils.CommonResult;
-import com.mallplus.goods.entity.PmsBrand;
-import com.mallplus.goods.entity.PmsProductAttributeCategory;
-import com.mallplus.goods.entity.PmsProductCategory;
-import com.mallplus.goods.entity.PmsProductConsult;
 import com.mallplus.goods.mapper.*;
 import com.mallplus.goods.service.*;
 import com.mallplus.goods.vo.ConsultTypeCount;
 import com.mallplus.goods.vo.PmsProductParam;
+import com.mallplus.goods.vo.PromotionProduct;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,40 +37,6 @@ import java.util.Map;
 @RequestMapping("/notAuth")
 public class NotAuthPmsController {
 
-    @Resource
-    private IPmsMemberPriceService memberPriceDao;
-    @Resource
-    private PmsMemberPriceMapper memberPriceMapper;
-    @Resource
-    private IPmsProductLadderService productLadderDao;
-    @Resource
-    private PmsProductLadderMapper productLadderMapper;
-    @Resource
-    private IPmsProductFullReductionService productFullReductionDao;
-    @Resource
-    private PmsProductFullReductionMapper productFullReductionMapper;
-    @Resource
-    private IPmsSkuStockService skuStockDao;
-    @Resource
-    private PmsSkuStockMapper skuStockMapper;
-    @Resource
-    private IPmsProductAttributeValueService productAttributeValueDao;
-    @Resource
-    private PmsProductAttributeValueMapper productAttributeValueMapper;
-    @Resource
-    private ICmsSubjectProductRelationService subjectProductRelationDao;
-    @Resource
-    private CmsSubjectProductRelationMapper subjectProductRelationMapper;
-    @Resource
-    private ICmsPrefrenceAreaProductRelationService prefrenceAreaProductRelationDao;
-    @Resource
-    private CmsPrefrenceAreaProductRelationMapper prefrenceAreaProductRelationMapper;
-
-    @Resource
-    private PmsProductVertifyRecordMapper productVertifyRecordDao;
-
-    @Resource
-    private PmsProductVertifyRecordMapper productVertifyRecordMapper;
     @Autowired
     private IPmsProductConsultService pmsProductConsultService;
     @Resource
@@ -81,7 +45,8 @@ public class NotAuthPmsController {
     private IPmsProductAttributeCategoryService productAttributeCategoryService;
     @Resource
     private IPmsProductCategoryService productCategoryService;
-
+    @Resource
+    private PmsProductMapper productMapper;
     @Resource
     private IPmsBrandService IPmsBrandService;
     @Resource
@@ -224,6 +189,13 @@ public class NotAuthPmsController {
         return new CommonResult().success(pmsProductService.getHotProductList(1,1));
     }
 
+    @SysLog(MODULE = "pms", REMARK = "查询商品列表")
+    @IgnoreAuth
+    @ApiOperation(value = "查询商品优惠")
+    @GetMapping(value = "/getPromotionProductList")
+    public List<PromotionProduct> getPromotionProductList(@Param("ids") List<Long> ids){
+        return productMapper.getPromotionProductList(ids);
+    }
 
     @SysLog(MODULE = "pms", REMARK = "查询商品列表")
     @IgnoreAuth

@@ -6,7 +6,7 @@ import com.mallplus.common.annotation.SysLog;
 import com.mallplus.common.utils.CommonResult;
 import com.mallplus.common.utils.DateUtils;
 import com.mallplus.common.utils.ValidatorUtils;
-import com.mallplus.common.model.UmsMember;
+import com.mallplus.common.entity.ums.UmsMember;
 import com.mallplus.member.service.IUmsMemberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

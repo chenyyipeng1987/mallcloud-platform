@@ -1,6 +1,6 @@
 package com.mallplus.marking.service.impl;
 
-import com.mallplus.marking.entity.SmsUserRedPacket;
+import com.mallplus.common.entity.sms.SmsUserRedPacket;
 import com.mallplus.marking.mapper.SmsUserRedPacketMapper;
 import com.mallplus.marking.service.ISmsUserRedPacketService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

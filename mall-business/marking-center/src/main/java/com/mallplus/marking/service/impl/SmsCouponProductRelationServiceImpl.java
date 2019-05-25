@@ -1,6 +1,6 @@
 package com.mallplus.marking.service.impl;
 
-import com.mallplus.marking.entity.SmsCouponProductRelation;
+import com.mallplus.common.entity.sms.SmsCouponProductRelation;
 import com.mallplus.marking.mapper.SmsCouponProductRelationMapper;
 import com.mallplus.marking.service.ISmsCouponProductRelationService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

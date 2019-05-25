@@ -1,7 +1,7 @@
 package com.mallplus.marking.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.mallplus.marking.entity.SmsFlashPromotionSession;
+import com.mallplus.common.entity.sms.SmsFlashPromotionSession;
 import com.mallplus.marking.vo.SmsFlashPromotionSessionDetail;
 
 import java.util.List;

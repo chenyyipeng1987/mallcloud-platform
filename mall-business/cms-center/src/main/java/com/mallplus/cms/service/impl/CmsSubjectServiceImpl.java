@@ -2,9 +2,9 @@ package com.mallplus.cms.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.mallplus.cms.entity.CmsSubject;
-import com.mallplus.cms.entity.CmsSubjectCategory;
-import com.mallplus.cms.entity.SmsHomeRecommendSubject;
+import com.mallplus.common.entity.cms.CmsSubject;
+import com.mallplus.common.entity.cms.CmsSubjectCategory;
+import com.mallplus.common.entity.cms.SmsHomeRecommendSubject;
 import com.mallplus.cms.mapper.CmsSubjectCategoryMapper;
 import com.mallplus.cms.mapper.CmsSubjectMapper;
 import com.mallplus.cms.service.ICmsSubjectService;

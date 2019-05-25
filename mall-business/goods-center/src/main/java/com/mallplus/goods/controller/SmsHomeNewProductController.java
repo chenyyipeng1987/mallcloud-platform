@@ -3,7 +3,7 @@ package com.mallplus.goods.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mallplus.common.annotation.SysLog;
-import com.mallplus.goods.entity.SmsHomeNewProduct;
+import com.mallplus.common.entity.pms.SmsHomeNewProduct;
 import com.mallplus.goods.service.ISmsHomeNewProductService;
 import com.mallplus.common.utils.CommonResult;
 import com.mallplus.common.utils.ValidatorUtils;
@@ -33,7 +33,7 @@ public class SmsHomeNewProductController {
     @Resource
     private ISmsHomeNewProductService ISmsHomeNewProductService;
 
-    @SysLog(MODULE = "marking", REMARK = "根据条件查询所有新鲜好物表列表")
+    @SysLog(MODULE = "sms", REMARK = "根据条件查询所有新鲜好物表列表")
     @ApiOperation("根据条件查询所有新鲜好物表列表")
     @GetMapping(value = "/list")
     @PreAuthorize("hasAuthority('marking:SmsHomeNewProduct:read')")
@@ -49,7 +49,7 @@ public class SmsHomeNewProductController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "保存新鲜好物表")
+    @SysLog(MODULE = "sms", REMARK = "保存新鲜好物表")
     @ApiOperation("保存新鲜好物表")
     @PostMapping(value = "/create")
     @PreAuthorize("hasAuthority('marking:SmsHomeNewProduct:create')")
@@ -65,7 +65,7 @@ public class SmsHomeNewProductController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "更新新鲜好物表")
+    @SysLog(MODULE = "sms", REMARK = "更新新鲜好物表")
     @ApiOperation("更新新鲜好物表")
     @PostMapping(value = "/update/{id}")
     @PreAuthorize("hasAuthority('marking:SmsHomeNewProduct:update')")
@@ -81,7 +81,7 @@ public class SmsHomeNewProductController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "删除新鲜好物表")
+    @SysLog(MODULE = "sms", REMARK = "删除新鲜好物表")
     @ApiOperation("删除新鲜好物表")
     @DeleteMapping(value = "/delete/{id}")
     @PreAuthorize("hasAuthority('marking:SmsHomeNewProduct:delete')")
@@ -100,7 +100,7 @@ public class SmsHomeNewProductController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "marking", REMARK = "给新鲜好物表分配新鲜好物表")
+    @SysLog(MODULE = "sms", REMARK = "给新鲜好物表分配新鲜好物表")
     @ApiOperation("查询新鲜好物表明细")
     @GetMapping(value = "/{id}")
     @PreAuthorize("hasAuthority('marking:SmsHomeNewProduct:read')")

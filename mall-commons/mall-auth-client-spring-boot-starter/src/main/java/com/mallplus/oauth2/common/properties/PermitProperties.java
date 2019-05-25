@@ -25,13 +25,13 @@ public class PermitProperties {
             "/swagger-ui.html",
             "/swagger-resources/**",
             "/webjars/**",
-            "/api-member/api/applet/**",
+            "/api-ums/api/applet/**",
             "/api/applet/**",
             "/druid/**"
     };
 
     private static final String[] marking = {
-            "/api-marking/notAuth/**"
+            "/api-sms/notAuth/**"
     };
     private static final String[] cms = {
             "/api-cms/notAuth/**"
@@ -43,7 +43,7 @@ public class PermitProperties {
             "/api-goods/notAuth/**"
     };
     private static final String[] member = {
-            "/api-member/notAuth/**"
+            "/api-ums/notAuth/**"
     };
     /**
      * 设置不用认证的url

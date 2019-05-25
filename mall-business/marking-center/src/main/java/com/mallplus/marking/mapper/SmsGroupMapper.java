@@ -1,6 +1,6 @@
 package com.mallplus.marking.mapper;
 
-import com.mallplus.marking.entity.SmsGroup;
+import com.mallplus.common.entity.sms.SmsGroup;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

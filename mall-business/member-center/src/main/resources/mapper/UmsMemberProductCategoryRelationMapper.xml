@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.member.mapper.UmsMemberProductCategoryRelationMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.member.entity.UmsMemberProductCategoryRelation">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.ums.UmsMemberProductCategoryRelation">
         <id column="id" property="id" />
         <result column="member_id" property="memberId" />
         <result column="product_category_id" property="productCategoryId" />

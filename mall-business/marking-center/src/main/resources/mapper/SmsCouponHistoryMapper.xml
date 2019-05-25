@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.marking.mapper.SmsCouponHistoryMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.marking.entity.SmsCouponHistory">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.sms.SmsCouponHistory">
         <id column="id" property="id" />
         <result column="coupon_id" property="couponId" />
         <result column="member_id" property="memberId" />

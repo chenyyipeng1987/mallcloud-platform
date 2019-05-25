@@ -2,7 +2,7 @@ package com.mallplus.order.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.mallplus.order.entity.OmsOrderReturnReason;
+import com.mallplus.common.entity.oms.OmsOrderReturnReason;
 import com.mallplus.order.mapper.OmsOrderReturnReasonMapper;
 import com.mallplus.order.service.IOmsOrderReturnReasonService;
 import org.springframework.stereotype.Service;

@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.cms.mapper.CmsPrefrenceAreaMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.cms.entity.CmsPrefrenceArea">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.cms.CmsPrefrenceArea">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="sub_title" property="subTitle" />

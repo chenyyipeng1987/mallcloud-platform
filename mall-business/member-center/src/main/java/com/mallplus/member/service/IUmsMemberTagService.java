@@ -1,7 +1,7 @@
 package com.mallplus.member.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.mallplus.member.entity.UmsMemberTag;
+import com.mallplus.common.entity.ums.UmsMemberTag;
 
 /**
  * <p>

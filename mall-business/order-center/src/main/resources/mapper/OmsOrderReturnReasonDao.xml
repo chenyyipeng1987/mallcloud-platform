@@ -3,7 +3,7 @@
 <mapper namespace="com.mallplus.order.mapper.OmsOrderReturnReasonMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.mallplus.order.entity.OmsOrderReturnReason">
+    <resultMap id="BaseResultMap" type="com.mallplus.common.entity.oms.OmsOrderReturnReason">
         <id column="id" property="id" />
         <result column="name" property="name" />
         <result column="sort" property="sort" />

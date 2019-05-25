@@ -2,7 +2,7 @@ package com.mallplus.cms.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.mallplus.cms.entity.SmsHomeRecommendSubject;
+import com.mallplus.common.entity.cms.SmsHomeRecommendSubject;
 
 /**
  * <p>
