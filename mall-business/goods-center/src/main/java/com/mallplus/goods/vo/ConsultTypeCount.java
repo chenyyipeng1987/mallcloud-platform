@@ -1,5 +1,6 @@
 package com.mallplus.goods.vo;
 
+import com.mallplus.common.entity.BaseEntity;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -10,7 +11,7 @@ import java.io.Serializable;
  * @Description:
  */
 @Data
-public class ConsultTypeCount implements Serializable{
+public class ConsultTypeCount extends BaseEntity implements Serializable{
     private  int all;
     private  int goods;
     private  int general;

@@ -1,10 +1,12 @@
 package com.mallplus.order.vo;
 
+import com.mallplus.common.entity.BaseEntity;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class TbThanks implements Serializable{
+public class TbThanks extends BaseEntity implements Serializable{
     private Integer id;
 
     private String nickName;

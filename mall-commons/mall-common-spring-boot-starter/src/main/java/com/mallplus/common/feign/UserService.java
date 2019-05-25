@@ -3,11 +3,10 @@ package com.mallplus.common.feign;
 import com.mallplus.common.constant.ServiceNameConstants;
 import com.mallplus.common.feign.fallback.UserServiceFallbackFactory;
 import com.mallplus.common.model.LoginAppUser;
+import com.mallplus.common.model.SysAdminLog;
 import com.mallplus.common.model.SysUser;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author mall
@@ -49,5 +48,10 @@ public interface UserService {
     @GetMapping(value = "/users-anon/openId", params = "openId")
     LoginAppUser findByOpenId(@RequestParam("openId") String openId);
 
+
+    LoginAppUser findById(Long id);
+
+    @PostMapping(value = "/sys/SysAdminLog/create")
+     Object saveSysAdminLog(@RequestBody SysAdminLog entity);
 
 }

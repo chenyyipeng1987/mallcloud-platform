@@ -1,5 +1,6 @@
 package com.mallplus.order.vo;
 
+import com.mallplus.common.entity.BaseEntity;
 import lombok.Data;
 
 import java.io.Serializable;

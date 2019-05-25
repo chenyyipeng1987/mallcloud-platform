@@ -16,7 +16,7 @@ import java.io.Serializable;
  * @since 2019-04-19
  */
 @TableName("sms_flash_promotion_product_relation")
-public class SmsFlashPromotionProductRelation implements Serializable {
+public class SmsFlashPromotionProductRelation extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

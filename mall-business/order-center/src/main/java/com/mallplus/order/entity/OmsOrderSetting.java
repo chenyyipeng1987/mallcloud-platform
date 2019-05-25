@@ -1,9 +1,11 @@
 package com.mallplus.order.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.mallplus.common.entity.BaseEntity;
+
 import java.io.Serializable;
 
 /**
@@ -15,7 +17,7 @@ import java.io.Serializable;
  * @since 2019-04-17
  */
 @TableName("oms_order_setting")
-public class OmsOrderSetting implements Serializable {
+public class OmsOrderSetting extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

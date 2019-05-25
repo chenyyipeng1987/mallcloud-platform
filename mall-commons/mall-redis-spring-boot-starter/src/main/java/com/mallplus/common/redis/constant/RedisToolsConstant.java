@@ -19,4 +19,6 @@ public class RedisToolsConstant {
      * Redis cluster
      */
     public final static int CLUSTER = 2 ;
+
+    public static String GOODSDETAIL = "GOODSDETAIL:%s";
 }

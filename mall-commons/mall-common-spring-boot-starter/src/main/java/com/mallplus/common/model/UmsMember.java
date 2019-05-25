@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.mallplus.common.entity.BaseEntity;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.social.security.SocialUserDetails;
@@ -24,7 +25,7 @@ import java.util.HashSet;
  */
 @Data
 @TableName("ums_member")
-public class UmsMember implements Serializable,SocialUserDetails {
+public class UmsMember extends BaseEntity implements Serializable,SocialUserDetails {
 
     private static final long serialVersionUID = 1L;
 

@@ -1,9 +1,11 @@
 package com.mallplus.marking.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.mallplus.common.entity.BaseEntity;
+
 import java.io.Serializable;
 
 /**
@@ -15,7 +17,7 @@ import java.io.Serializable;
  * @since 2019-04-19
  */
 @TableName("sms_coupon_product_relation")
-public class SmsCouponProductRelation implements Serializable {
+public class SmsCouponProductRelation extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

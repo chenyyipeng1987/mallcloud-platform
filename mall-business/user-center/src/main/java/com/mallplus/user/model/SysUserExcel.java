@@ -11,7 +11,7 @@ import java.util.Date;
  * @Author: mall
  */
 @Data
-public class SysUserExcel implements Serializable {
+public class SysUserExcel  implements Serializable {
     private static final long serialVersionUID = -5886012896705137070L;
 
     @Excel(name = "用户姓名", height = 20, width = 30, isImportField = "true_st")

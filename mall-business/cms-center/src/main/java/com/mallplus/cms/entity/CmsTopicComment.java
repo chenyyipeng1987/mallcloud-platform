@@ -1,11 +1,13 @@
 package com.mallplus.cms.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.mallplus.common.entity.BaseEntity;
+
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -16,7 +18,7 @@ import java.io.Serializable;
  * @since 2019-04-17
  */
 @TableName("cms_topic_comment")
-public class CmsTopicComment implements Serializable {
+public class CmsTopicComment extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

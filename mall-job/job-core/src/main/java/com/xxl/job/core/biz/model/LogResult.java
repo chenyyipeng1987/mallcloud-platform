@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by xuxueli on 17/3/23.
  */
-public class LogResult implements Serializable {
+public class LogResult extends BaseEntity implements Serializable {
     private static final long serialVersionUID = 42L;
 
     public LogResult(int fromLineNum, int toLineNum, String logContent, boolean isEnd) {

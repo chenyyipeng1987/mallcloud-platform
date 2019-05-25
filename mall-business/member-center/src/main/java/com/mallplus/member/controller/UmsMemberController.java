@@ -145,7 +145,11 @@ public class UmsMemberController {
     public UmsMember findByOpenId(String openId) {
         return IUmsMemberService.findByOpenId(openId);
     }
-
+    @GetMapping(value = "/id", params = "id")
+    @ApiOperation(value = "根据Id查询用户")
+    public UmsMember findById(Long id) {
+        return IUmsMemberService.getById(id);
+    }
     /**
      * 根据OpenId查询用户信息
      *

@@ -17,7 +17,7 @@ import java.util.Date;
  * @since 2019-04-14
  */
 @TableName("sys_permission")
-public class SysPermission implements Serializable {
+public class SysPermission  implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

@@ -1,5 +1,6 @@
 package com.mallplus.order.vo;
 
+import com.mallplus.common.entity.BaseEntity;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -11,7 +12,7 @@ import java.math.BigDecimal;
  * @Description:
  */
 @Data
-public class HomeOrderData implements Serializable{
+public class HomeOrderData extends BaseEntity implements Serializable{
     private OrderStatusCount orderStatusCount;
     int nowOrderCount = 0; // 今日订单
     BigDecimal nowOrderPay = new BigDecimal(0); //今日销售总额

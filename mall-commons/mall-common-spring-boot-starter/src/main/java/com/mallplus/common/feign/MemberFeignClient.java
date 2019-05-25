@@ -22,8 +22,11 @@ public interface MemberFeignClient {
     @GetMapping(value = "/ums/UmsMember/openId", params = "openId")
     UmsMember findByOpenId(@RequestParam("openId") String openId);
 
+    @GetMapping(value = "/ums/UmsMember/id", params = "id")
+    UmsMember findById(@RequestParam("id") Long id);
+
     @PostMapping(value = "/ums/UmsMember/create")
-    public Object saveUmsMember(@RequestBody UmsMember entity);
+    Object saveUmsMember(@RequestBody UmsMember entity);
 
 
     @GetMapping(value = "/ums/UmsMember/username", params = "username")

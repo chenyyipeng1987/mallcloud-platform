@@ -1,11 +1,13 @@
 package com.mallplus.goods.entity;
 
-import java.math.BigDecimal;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.mallplus.common.entity.BaseEntity;
+
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * <p>
@@ -16,7 +18,7 @@ import java.io.Serializable;
  * @since 2019-04-19
  */
 @TableName("pms_feight_template")
-public class PmsFeightTemplate implements Serializable {
+public class PmsFeightTemplate extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

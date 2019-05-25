@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.mallplus.common.entity.BaseEntity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -17,7 +18,7 @@ import java.math.BigDecimal;
  * @since 2019-04-19
  */
 @TableName("pms_sku_stock")
-public class PmsSkuStock implements Serializable {
+public class PmsSkuStock extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -77,6 +78,7 @@ public class PmsSkuStock implements Serializable {
     @TableField("lock_stock")
     private Integer lockStock;
 
+    @TableField(exist = false)
     private String meno;
 
 

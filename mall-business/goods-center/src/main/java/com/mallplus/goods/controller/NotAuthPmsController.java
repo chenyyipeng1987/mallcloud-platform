@@ -6,13 +6,17 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mallplus.common.annotation.IgnoreAuth;
 import com.mallplus.common.annotation.SysLog;
 import com.mallplus.common.model.PmsProduct;
+import com.mallplus.common.redis.constant.RedisToolsConstant;
+import com.mallplus.common.redis.template.RedisRepository;
 import com.mallplus.common.utils.CommonResult;
 import com.mallplus.goods.entity.PmsBrand;
 import com.mallplus.goods.entity.PmsProductAttributeCategory;
 import com.mallplus.goods.entity.PmsProductCategory;
 import com.mallplus.goods.entity.PmsProductConsult;
+import com.mallplus.goods.mapper.*;
 import com.mallplus.goods.service.*;
 import com.mallplus.goods.vo.ConsultTypeCount;
+import com.mallplus.goods.vo.PmsProductParam;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +39,40 @@ import java.util.Map;
 @RequestMapping("/notAuth")
 public class NotAuthPmsController {
 
+    @Resource
+    private IPmsMemberPriceService memberPriceDao;
+    @Resource
+    private PmsMemberPriceMapper memberPriceMapper;
+    @Resource
+    private IPmsProductLadderService productLadderDao;
+    @Resource
+    private PmsProductLadderMapper productLadderMapper;
+    @Resource
+    private IPmsProductFullReductionService productFullReductionDao;
+    @Resource
+    private PmsProductFullReductionMapper productFullReductionMapper;
+    @Resource
+    private IPmsSkuStockService skuStockDao;
+    @Resource
+    private PmsSkuStockMapper skuStockMapper;
+    @Resource
+    private IPmsProductAttributeValueService productAttributeValueDao;
+    @Resource
+    private PmsProductAttributeValueMapper productAttributeValueMapper;
+    @Resource
+    private ICmsSubjectProductRelationService subjectProductRelationDao;
+    @Resource
+    private CmsSubjectProductRelationMapper subjectProductRelationMapper;
+    @Resource
+    private ICmsPrefrenceAreaProductRelationService prefrenceAreaProductRelationDao;
+    @Resource
+    private CmsPrefrenceAreaProductRelationMapper prefrenceAreaProductRelationMapper;
+
+    @Resource
+    private PmsProductVertifyRecordMapper productVertifyRecordDao;
+
+    @Resource
+    private PmsProductVertifyRecordMapper productVertifyRecordMapper;
     @Autowired
     private IPmsProductConsultService pmsProductConsultService;
     @Resource
@@ -46,14 +84,21 @@ public class NotAuthPmsController {
 
     @Resource
     private IPmsBrandService IPmsBrandService;
+    @Resource
+    private RedisRepository redisRepository;
 
     @SysLog(MODULE = "pms", REMARK = "查询商品详情信息")
     @IgnoreAuth
     @GetMapping(value = "/goods/detail")
     @ApiOperation(value = "查询商品详情信息")
     public Object queryProductDetail(@RequestParam(value = "id", required = false, defaultValue = "0") Long id) {
-        PmsProduct productResult = pmsProductService.getById(id);
-        return new CommonResult().success(productResult);
+        PmsProductParam param = null;
+        try {
+            param = (PmsProductParam) redisRepository.get(String.format(RedisToolsConstant.GOODSDETAIL, id));
+        }catch (Exception e){
+            param = pmsProductService.getGoodsRedisById(id);
+        }
+        return new CommonResult().success(param);
     }
     @SysLog(MODULE = "pms", REMARK = "根据条件查询所有品牌表列表")
     @ApiOperation("根据条件查询所有品牌表列表")
@@ -102,9 +147,9 @@ public class NotAuthPmsController {
         count.setBad(bad);
         count.setGeneral(general);
         count.setGoods(goods);
-        List<PmsProductConsult> productConsults = pmsProductConsultService.list(new QueryWrapper<>(productConsult));
+
         Map<String, Object> objectMap = new HashMap<>();
-        objectMap.put("list", productConsults);
+        objectMap.put("list", list);
         objectMap.put("count", count);
         return new CommonResult().success(objectMap);
     }
@@ -180,6 +225,15 @@ public class NotAuthPmsController {
     }
 
 
+    @SysLog(MODULE = "pms", REMARK = "查询商品列表")
+    @IgnoreAuth
+    @ApiOperation(value = "查询首页推荐商品")
+    @GetMapping(value = "/initGoodsRedis")
+    public Object initGoodsRedis() {
+
+       return pmsProductService.initGoodsRedis();
+
+    }
 
 
 }

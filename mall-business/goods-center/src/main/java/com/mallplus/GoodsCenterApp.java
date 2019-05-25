@@ -1,4 +1,4 @@
-package com.mallplus.goods;
+package com.mallplus;
 
 import com.mallplus.common.annotation.EnableLoginArgResolver;
 import org.springframework.boot.SpringApplication;

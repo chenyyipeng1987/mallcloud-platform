@@ -17,7 +17,7 @@ import java.io.Serializable;
  * @since 2019-04-19
  */
 @TableName("sms_user_red_packet")
-public class SmsUserRedPacket implements Serializable {
+public class SmsUserRedPacket extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

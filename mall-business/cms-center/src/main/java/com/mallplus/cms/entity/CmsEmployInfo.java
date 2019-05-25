@@ -3,6 +3,8 @@ package com.mallplus.cms.entity;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.mallplus.common.entity.BaseEntity;
+
 import java.time.LocalDateTime;
 import java.io.Serializable;
 
@@ -15,7 +17,7 @@ import java.io.Serializable;
  * @since 2019-04-28
  */
 @TableName("cms_employ_info")
-public class CmsEmployInfo implements Serializable {
+public class CmsEmployInfo extends BaseEntity  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

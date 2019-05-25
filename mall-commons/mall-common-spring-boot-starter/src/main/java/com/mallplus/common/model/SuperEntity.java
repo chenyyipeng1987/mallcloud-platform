@@ -26,6 +26,19 @@ public class SuperEntity<T extends Model> extends Model<T> {
     private Date createTime;
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
+    /**
+     * 昵称
+     */
+    @TableField("store_id")
+    private Integer storeId;
+
+    public Integer getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(Integer storeId) {
+        this.storeId = storeId;
+    }
 
     @Override
     protected Serializable pkVal() {

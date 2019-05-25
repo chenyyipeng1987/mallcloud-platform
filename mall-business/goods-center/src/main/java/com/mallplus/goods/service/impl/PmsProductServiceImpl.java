@@ -1,14 +1,18 @@
 package com.mallplus.goods.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mallplus.common.model.PmsProduct;
+import com.mallplus.common.redis.constant.RedisToolsConstant;
+import com.mallplus.common.redis.template.RedisRepository;
 import com.mallplus.goods.entity.*;
 import com.mallplus.goods.mapper.*;
 import com.mallplus.goods.service.*;
 import com.mallplus.goods.vo.PmsProductParam;
 import com.mallplus.goods.vo.PmsProductResult;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
@@ -77,7 +81,8 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductMapper, PmsProd
     @Resource
     private PmsProductVertifyRecordMapper productVertifyRecordMapper;
 
-
+    @Resource
+    private RedisRepository redisRepository;
 
     @Override
     public int create(PmsProductParam productParam) {
@@ -105,6 +110,8 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductMapper, PmsProd
         //关联优选
         relateAndInsertList(prefrenceAreaProductRelationDao, productParam.getPrefrenceAreaProductRelationList(), productId);
         count = 1;
+
+        redisRepository.set(String.format(RedisToolsConstant.GOODSDETAIL, product.getId()), productParam);
         return count;
     }
 
@@ -167,6 +174,7 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductMapper, PmsProd
         prefrenceAreaProductRelationMapper.delete(new QueryWrapper<>(new CmsPrefrenceAreaProductRelation()).eq("product_id",id));
         relateAndInsertList(prefrenceAreaProductRelationDao, productParam.getPrefrenceAreaProductRelationList(), id);
         count = 1;
+        redisRepository.set(String.format(RedisToolsConstant.GOODSDETAIL, product.getId()), productParam);
         return count;
     }
 
@@ -290,6 +298,52 @@ public class PmsProductServiceImpl extends ServiceImpl<PmsProductMapper, PmsProd
                 .map(SmsHomeRecommendProduct::getId)
                 .collect(Collectors.toList());
         return (List<PmsProduct>)productMapper.selectBatchIds(ids);
+    }
+
+    @Override
+    public Object initGoodsRedis() {
+        List<PmsProduct> list = productMapper.selectList(new QueryWrapper<>());
+        for (PmsProduct goods : list) {
+            PmsProductParam param = getPmsProductParam(goods);
+        }
+        return 1;
+    }
+    @Override
+    public PmsProductParam getGoodsRedisById(Long id) {
+        PmsProduct goods = productMapper.selectById(id);
+
+        PmsProductParam param = getPmsProductParam(goods);
+
+        return param;
+    }
+
+    private PmsProductParam getPmsProductParam(PmsProduct goods) {
+        PmsProductParam param = new PmsProductParam();
+        BeanUtils.copyProperties(goods, param);
+
+        List<PmsProductLadder> productLadderList = productLadderMapper.selectList(new QueryWrapper<PmsProductLadder>().eq("product_id", goods.getId()));
+
+        List<PmsProductFullReduction> productFullReductionList = productFullReductionMapper.selectList(new QueryWrapper<PmsProductFullReduction>().eq("product_id", goods.getId()));
+
+        List<PmsMemberPrice> memberPriceList = memberPriceMapper.selectList(new QueryWrapper<PmsMemberPrice>().eq("product_id", goods.getId()));
+
+        List<PmsSkuStock> skuStockList = skuStockMapper.selectList(new QueryWrapper<PmsSkuStock>().eq("product_id", goods.getId()));
+
+        List<PmsProductAttributeValue> productAttributeValueList = productAttributeValueMapper.selectList(new QueryWrapper<PmsProductAttributeValue>().eq("product_id", goods.getId()));
+
+        List<CmsSubjectProductRelation> subjectProductRelationList = subjectProductRelationMapper.selectList(new QueryWrapper<CmsSubjectProductRelation>().eq("product_id", goods.getId()));
+
+        List<CmsPrefrenceAreaProductRelation> prefrenceAreaProductRelationList = prefrenceAreaProductRelationMapper.selectList(new QueryWrapper<CmsPrefrenceAreaProductRelation>().eq("product_id", goods.getId()));
+
+        param.setMemberPriceList(memberPriceList);
+        param.setPrefrenceAreaProductRelationList(prefrenceAreaProductRelationList);
+        param.setProductAttributeValueList(productAttributeValueList);
+        param.setProductFullReductionList(productFullReductionList);
+        param.setProductLadderList(productLadderList);
+        param.setSkuStockList(skuStockList);
+        param.setSubjectProductRelationList(subjectProductRelationList);
+        redisRepository.set(String.format(RedisToolsConstant.GOODSDETAIL, goods.getId()), param);
+        return param;
     }
 }
 

@@ -1,4 +1,4 @@
-package com.mallplus.marking;
+package com.mallplus;
 
 import com.mallplus.common.annotation.EnableLoginArgResolver;
 import org.springframework.boot.SpringApplication;
@@ -15,8 +15,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableFeignClients
 @EnableTransactionManagement
 @SpringBootApplication
-public class MarkingCenterApp {
+public class OrderCenterApp {
     public static void main(String[] args) {
-        SpringApplication.run(MarkingCenterApp.class, args);
+        SpringApplication.run(OrderCenterApp.class, args);
     }
 }

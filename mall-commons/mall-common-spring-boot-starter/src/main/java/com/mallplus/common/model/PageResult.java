@@ -1,12 +1,13 @@
 package com.mallplus.common.model;
 
-import java.io.Serializable;
-import java.util.List;
-
+import com.mallplus.common.entity.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * 分页实体类
@@ -17,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PageResult<T> implements Serializable {
+public class PageResult<T> extends BaseEntity implements Serializable {
     private static final long serialVersionUID = -275582248840137389L;
     /**
      * 总数

@@ -1,5 +1,6 @@
 package com.mallplus.common.model;
 
+import com.mallplus.common.entity.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Result<T> implements Serializable {
+public class Result<T> extends BaseEntity implements Serializable {
 
     private T data;
     private Integer code;

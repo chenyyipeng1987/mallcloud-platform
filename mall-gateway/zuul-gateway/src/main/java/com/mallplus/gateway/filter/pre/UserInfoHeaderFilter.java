@@ -38,6 +38,7 @@ public class UserInfoHeaderFilter extends ZuulFilter {
 
     @Override
     public Object run() {
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && !(authentication instanceof AnonymousAuthenticationToken)) {
             Object principal = authentication.getPrincipal();
@@ -52,6 +53,7 @@ public class UserInfoHeaderFilter extends ZuulFilter {
             RequestContext ctx = RequestContext.getCurrentContext();
             ctx.addZuulRequestHeader(SecurityConstants.USER_HEADER, userInfo);
             ctx.addZuulRequestHeader(SecurityConstants.ROLE_HEADER, CollectionUtil.join(authentication.getAuthorities(), ","));
+
         }
         return null;
     }

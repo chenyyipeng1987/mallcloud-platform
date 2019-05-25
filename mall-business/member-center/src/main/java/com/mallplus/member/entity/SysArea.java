@@ -1,7 +1,9 @@
 package com.mallplus.member.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.mallplus.common.entity.BaseEntity;
+
 import java.io.Serializable;
 
 /**
@@ -13,7 +15,7 @@ import java.io.Serializable;
  * @since 2019-04-14
  */
 @TableName("sys_area")
-public class SysArea implements Serializable {
+public class SysArea extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

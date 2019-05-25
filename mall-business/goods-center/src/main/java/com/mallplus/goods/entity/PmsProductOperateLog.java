@@ -1,12 +1,14 @@
 package com.mallplus.goods.entity;
 
-import java.math.BigDecimal;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.mallplus.common.entity.BaseEntity;
+
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * <p>
@@ -17,7 +19,7 @@ import java.io.Serializable;
  * @since 2019-04-19
  */
 @TableName("pms_product_operate_log")
-public class PmsProductOperateLog implements Serializable {
+public class PmsProductOperateLog extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

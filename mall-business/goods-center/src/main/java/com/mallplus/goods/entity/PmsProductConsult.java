@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.mallplus.common.entity.BaseEntity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -17,7 +18,7 @@ import java.util.Date;
  * @since 2019-04-19
  */
 @TableName("pms_product_consult")
-public class PmsProductConsult implements Serializable {
+public class PmsProductConsult extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -51,11 +52,6 @@ public class PmsProductConsult implements Serializable {
     @TableField("member_name")
     private String memberName;
 
-    /**
-     * 店铺编号
-     */
-    @TableField("store_id")
-    private Long storeId;
 
     /**
      * 咨询发布者邮箱
@@ -91,8 +87,7 @@ public class PmsProductConsult implements Serializable {
      */
     private Boolean isanonymous;
 
-    @TableField("is_del")
-    private Boolean isDel;
+
 
 
     public Long getId() {
@@ -135,13 +130,7 @@ public class PmsProductConsult implements Serializable {
         this.memberName = memberName;
     }
 
-    public Long getStoreId() {
-        return storeId;
-    }
 
-    public void setStoreId(Long storeId) {
-        this.storeId = storeId;
-    }
 
     public String getEmail() {
         return email;
@@ -191,13 +180,6 @@ public class PmsProductConsult implements Serializable {
         this.isanonymous = isanonymous;
     }
 
-    public Boolean getDel() {
-        return isDel;
-    }
-
-    public void setDel(Boolean isDel) {
-        this.isDel = isDel;
-    }
 
     @Override
     public String toString() {
@@ -207,14 +189,14 @@ public class PmsProductConsult implements Serializable {
         ", goodsName=" + goodsName +
         ", memberId=" + memberId +
         ", memberName=" + memberName +
-        ", storeId=" + storeId +
+
         ", email=" + email +
         ", consultContent=" + consultContent +
         ", consultAddtime=" + consultAddtime +
         ", consultReply=" + consultReply +
         ", consultReplyTime=" + consultReplyTime +
         ", isanonymous=" + isanonymous +
-        ", isDel=" + isDel +
+       
         "}";
     }
 }

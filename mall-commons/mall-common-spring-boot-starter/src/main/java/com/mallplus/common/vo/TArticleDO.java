@@ -1,5 +1,7 @@
 package com.mallplus.common.vo;
 
+import com.mallplus.common.entity.BaseEntity;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,7 +11,7 @@ import java.util.Date;
  * @email 951449465@qq.com
  * @date 2017-10-15 15:07:36
  */
-public class TArticleDO implements Serializable {
+public class TArticleDO  implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public TArticleDO() {

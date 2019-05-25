@@ -1,5 +1,6 @@
 package com.mallplus.member.entity;
 
+import com.mallplus.common.entity.BaseEntity;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -17,7 +18,7 @@ import java.util.Date;
  * 序号 	       日期 		        修改人 		         修改原因
  */
 @Data
-public class Sms implements Serializable {
+public class Sms extends BaseEntity implements Serializable {
 
 	/**
 	 * 

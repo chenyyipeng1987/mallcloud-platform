@@ -32,6 +32,7 @@ import org.springframework.security.oauth2.provider.request.DefaultOAuth2Request
 import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -73,17 +74,16 @@ public class OAuth2Controller {
 
     @ApiOperation(value = "用户名密码获取token")
     @PostMapping(SecurityConstants.PASSWORD_LOGIN_PRO_URL)
-    public void getUserTokenInfo( @ApiParam(required = true, name = "username", value = "账号") String username,
-                                  @ApiParam(required = true, name = "password", value = "密码") String password,
+    public void getUserTokenInfo(@RequestBody SysUser param,
             HttpServletRequest request, HttpServletResponse response) throws IOException {
-        if (username == null || "".equals(username)) {
+        if (param.getUsername() == null || "".equals(param.getUsername())) {
             throw new UnapprovedClientAuthenticationException("用户名为空");
         }
-        if ( password == null || "".equals( password)) {
+        if ( param.getPassword() == null || "".equals( param.getPassword())) {
             throw new UnapprovedClientAuthenticationException("密码为空");
         }
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username,  password);
-       SysUser user = userService.selectByUsername(username);
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(param.getUsername(),  param.getPassword());
+       SysUser user = userService.selectByUsername(param.getUsername());
        if (user!=null){
            writerToken(request, response, token, "用户名或密码错误",user.getId());
        }else {

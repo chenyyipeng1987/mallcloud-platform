@@ -2,7 +2,9 @@ package com.mallplus.common.feign.fallback;
 
 import com.mallplus.common.feign.UserService;
 import com.mallplus.common.model.LoginAppUser;
+import com.mallplus.common.model.SysAdminLog;
 import com.mallplus.common.model.SysUser;
+import com.mallplus.common.utils.CommonResult;
 import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -41,6 +43,16 @@ public class UserServiceFallbackFactory implements FallbackFactory<UserService> 
             public LoginAppUser findByOpenId(String openId) {
                 log.error("通过openId查询用户异常:{}", openId, throwable);
                 return new LoginAppUser();
+            }
+            @Override
+            public LoginAppUser findById(Long id) {
+                log.error("通过Id查询用户异常:{}", id, throwable);
+                return new LoginAppUser();
+            }
+            @Override
+            public Object saveSysAdminLog(SysAdminLog entity){
+                log.error("保存日志异常:{}", entity, throwable);
+                return new CommonResult().failed();
             }
         };
     }
