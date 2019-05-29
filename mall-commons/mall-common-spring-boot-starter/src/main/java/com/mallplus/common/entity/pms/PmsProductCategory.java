@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.mallplus.common.entity.BaseEntity;
-import io.swagger.annotations.ApiModelProperty;
+
 import lombok.Data;
 
 import java.io.Serializable;
@@ -74,7 +74,6 @@ public class PmsProductCategory extends BaseEntity implements Serializable {
     private String description;
 
     @TableField(exist = false)
-    @ApiModelProperty("产品相关筛选属性集合")
     private List<Long> productAttributeIdList;
 
 
