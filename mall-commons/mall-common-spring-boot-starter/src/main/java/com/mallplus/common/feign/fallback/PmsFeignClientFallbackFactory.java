@@ -1,10 +1,14 @@
 package com.mallplus.common.feign.fallback;
 
+import com.mallplus.common.entity.pms.PmsSkuStock;
 import com.mallplus.common.feign.PmsFeignClinent;
 import com.mallplus.common.entity.pms.PmsProduct;
+import com.mallplus.common.vo.PromotionProduct;
 import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * userService降级工场
@@ -23,6 +27,21 @@ public class PmsFeignClientFallbackFactory implements FallbackFactory<PmsFeignCl
             public PmsProduct selectById(Long id) {
                 log.error("通过id查询商品异常:{}", id, throwable);
                 return new PmsProduct();
+            }
+
+            @Override
+            public PmsSkuStock selectSkuById(Long id) {
+                return null;
+            }
+
+            @Override
+            public List<PromotionProduct> getPromotionProductList(List<Long> productIdList) {
+                return null;
+            }
+
+            @Override
+            public void updateSkuById(PmsSkuStock skuStock) {
+
             }
         };
     }
