@@ -10,6 +10,8 @@ import com.mallplus.common.vo.PromotionProduct;
 import com.mallplus.common.vo.SmsCouponHistoryDetail;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -35,17 +37,17 @@ public interface MarkingFeignClinent {
     PmsSkuStock selectSkuById(@RequestParam("id") Long id);
 
     @GetMapping(value = "/notAuth/getPromotionProductList", params = "productIdList")
-    List<PromotionProduct> getPromotionProductList(List<Long> productIdList);
+    List<PromotionProduct> getPromotionProductList(@RequestParam("productIdList") List<Long> productIdList);
 
     /**
      * 根据购物车信息获取可用优惠券
      */
     @GetMapping(value = "/notAuth/getPromotionProductList")
-    List<SmsCouponHistoryDetail> listCart(List<CartPromotionItem> cartItemList, Integer type,Long memberId);
+    List<SmsCouponHistoryDetail> listCart(@RequestParam("cartItemList") List<CartPromotionItem> cartItemList, @RequestParam("type") Integer type,@RequestParam("memberId")Long memberId);
 
     @GetMapping(value = "/notAuth/listCouponHistory")
-    List<SmsCouponHistory> listCouponHistory(SmsCouponHistory queryC);
+    List<SmsCouponHistory> listCouponHistory(@RequestBody  SmsCouponHistory queryC);
 
-    @GetMapping(value = "/notAuth/updateCouponHistoryById")
-    void updateCouponHistoryById(SmsCouponHistory couponHistory);
+    @PostMapping(value = "/notAuth/updateCouponHistoryById")
+    void updateCouponHistoryById(@RequestBody  SmsCouponHistory couponHistory);
 }
