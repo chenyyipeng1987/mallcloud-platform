@@ -55,7 +55,7 @@ public class SmsCouponController {
     @PreAuthorize("hasAuthority('marking:SmsCoupon:create')")
     public Object saveSmsCoupon(@RequestBody SmsCouponParam entity) {
         try {
-            if (ISmsCouponService.saves(entity)) {
+            if (ISmsCouponService.save(entity)) {
                 return new CommonResult().success();
             }
         } catch (Exception e) {
@@ -71,7 +71,7 @@ public class SmsCouponController {
     @PreAuthorize("hasAuthority('marking:SmsCoupon:update')")
     public Object updateSmsCoupon(@RequestBody SmsCouponParam entity) {
         try {
-            if (ISmsCouponService.updateByIds(entity)) {
+            if (ISmsCouponService.updateById(entity)) {
                 return new CommonResult().success();
             }
         } catch (Exception e) {
@@ -90,7 +90,7 @@ public class SmsCouponController {
             if (ValidatorUtils.empty(id)) {
                 return new CommonResult().paramFailed("优惠卷表id");
             }
-            if (ISmsCouponService.delete(id)>0) {
+            if (ISmsCouponService.removeById(id)) {
                 return new CommonResult().success();
             }
         } catch (Exception e) {
@@ -100,7 +100,7 @@ public class SmsCouponController {
         return new CommonResult().failed();
     }
 
-    @SysLog(MODULE = "sms", REMARK = "给优惠卷表分配优惠卷表")
+   /* @SysLog(MODULE = "sms", REMARK = "给优惠卷表分配优惠卷表")
     @ApiOperation("查询优惠卷表明细")
     @GetMapping(value = "/{id}")
     @PreAuthorize("hasAuthority('marking:SmsCoupon:read')")
@@ -109,14 +109,14 @@ public class SmsCouponController {
             if (ValidatorUtils.empty(id)) {
                 return new CommonResult().paramFailed("优惠卷表id");
             }
-            SmsCouponParam coupon = ISmsCouponService.getItem(id);
+            SmsCouponParam coupon = ISmsCouponService.s(id);
             return new CommonResult().success(coupon);
         } catch (Exception e) {
             log.error("查询优惠卷表明细：%s", e.getMessage(), e);
             return new CommonResult().failed();
         }
 
-    }
+    }*/
 
 
 
