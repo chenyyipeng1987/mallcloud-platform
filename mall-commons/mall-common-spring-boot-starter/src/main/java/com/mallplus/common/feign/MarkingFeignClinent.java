@@ -43,8 +43,9 @@ public interface MarkingFeignClinent {
     @GetMapping(value = "/notAuth/getPromotionProductList")
     List<SmsCouponHistoryDetail> listCart(List<CartPromotionItem> cartItemList, Integer type,Long memberId);
 
-
+    @GetMapping(value = "/notAuth/listCouponHistory")
     List<SmsCouponHistory> listCouponHistory(SmsCouponHistory queryC);
 
+    @GetMapping(value = "/notAuth/updateCouponHistoryById")
     void updateCouponHistoryById(SmsCouponHistory couponHistory);
 }

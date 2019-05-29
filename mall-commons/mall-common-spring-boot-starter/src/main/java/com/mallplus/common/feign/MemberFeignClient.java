@@ -36,8 +36,9 @@ public interface MemberFeignClient {
     @GetMapping(value = "/ums/UmsMember/mobile", params = "mobile")
     UmsMember findByMobile(@RequestParam("mobile") String mobile);
 
+    @GetMapping(value = "/ums/UmsMember/updateIntegration")
+    void updateIntegration(@RequestParam("id")Long id, @RequestParam("i")int i);
 
-    void updateIntegration(Long id, int i);
-
+    @GetMapping(value = "/ums/UmsMember/selectIntegrationConsumeSettingById", params = "l")
     UmsIntegrationConsumeSetting selectIntegrationConsumeSettingById(long l);
 }

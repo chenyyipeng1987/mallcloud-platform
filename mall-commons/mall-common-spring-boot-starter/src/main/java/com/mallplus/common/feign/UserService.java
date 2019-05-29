@@ -48,7 +48,7 @@ public interface UserService {
     @GetMapping(value = "/users-anon/openId", params = "openId")
     LoginAppUser findByOpenId(@RequestParam("openId") String openId);
 
-
+    @GetMapping(value = "/users-anon/id", params = "id")
     LoginAppUser findById(Long id);
 
     @PostMapping(value = "/sys/SysAdminLog/create")
