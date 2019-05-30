@@ -25,7 +25,7 @@
     </resultMap>
 
     <resultMap id="couponItemParam" type="com.mallplus.marking.vo.SmsCouponParam"
-               extends="com.mallplus.marking.mapper.SmsCouponMapper.BaseResultMap">
+               extends="BaseResultMap">
         <collection property="productRelationList" columnPrefix="cpr_"
                     resultMap="com.mallplus.marking.mapper.SmsCouponProductRelationMapper.BaseResultMap">
         </collection>
